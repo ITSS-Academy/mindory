@@ -1,0 +1,216 @@
+@use "@angular/material" as mat;
+@use "sass:map";
+
+@include mat.core();
+
+$_palettes: (
+  primary: (
+    0: #000000,
+    10: #00046a,
+    20: #000aa7,
+    25: #000ec7,
+    30: #1824d4,
+    35: #2a37df,
+    40: #3946eb,
+    50: #5764ff,
+    60: #7a85ff,
+    70: #9ca4ff,
+    80: #bec2ff,
+    90: #e0e0ff,
+    95: #f1efff,
+    98: #fbf8ff,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  secondary: (
+    0: #000000,
+    10: #161838,
+    20: #2b2e4f,
+    25: #36395a,
+    30: #414466,
+    35: #4d5073,
+    40: #595c7f,
+    50: #72749a,
+    60: #8c8eb4,
+    70: #a6a8d0,
+    80: #c2c3ed,
+    90: #e0e0ff,
+    95: #f1efff,
+    98: #fbf8ff,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  tertiary: (
+    0: #000000,
+    10: #05105a,
+    20: #1f296e,
+    25: #2b347a,
+    30: #374086,
+    35: #434c93,
+    40: #4f58a0,
+    50: #6871ba,
+    60: #828bd6,
+    70: #9da6f3,
+    80: #bcc2ff,
+    90: #dfe0ff,
+    95: #f1efff,
+    98: #fbf8ff,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #1b1b1f,
+    20: #303034,
+    25: #3c3b3f,
+    30: #47464a,
+    35: #535256,
+    40: #5f5e62,
+    50: #78767a,
+    60: #929094,
+    70: #adaaaf,
+    80: #c8c5ca,
+    90: #e5e1e6,
+    95: #f3f0f4,
+    98: #fcf8fd,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #1b1b23,
+    20: #303038,
+    25: #3b3b43,
+    30: #46464f,
+    35: #52525b,
+    40: #5e5d67,
+    50: #777680,
+    60: #91909a,
+    70: #acaab4,
+    80: #c7c5d0,
+    90: #e3e1ec,
+    95: #f2effa,
+    98: #fbf8ff,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7e0007,
+    30: #93000a,
+    35: #a80710,
+    40: #ba1a1a,
+    50: #de3730,
+    60: #ff5449,
+    70: #ff897d,
+    80: #ffb4ab,
+    90: #ffdad6,
+    95: #ffedea,
+    98: #fff8f7,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+);
+
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes, neutral-variant),
+  error: map.get($_palettes, error),
+);
+
+$_primary: map.merge(map.get($_palettes, primary), $_rest);
+$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: $_primary,
+      tertiary: $_tertiary,
+    ),
+    typography: (
+      brand-family: "Open Sans",
+      plain-family: "Open Sans",
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  @include mat.all-component-themes($light-theme);
+  --md-sys-color-primary: rgb(0 10 166);
+  --md-sys-color-surface-tint: rgb(57 70 235);
+  --md-sys-color-on-primary: rgb(255 255 255);
+  --md-sys-color-primary-container: rgb(42 54 222);
+  --md-sys-color-on-primary-container: rgb(244 242 255);
+  --md-sys-color-secondary: rgb(82 88 160);
+  --md-sys-color-on-secondary: rgb(255 255 255);
+  --md-sys-color-secondary-container: rgb(181 186 255);
+  --md-sys-color-on-secondary-container: rgb(35 41 111);
+  --md-sys-color-tertiary: rgb(79 88 160);
+  --md-sys-color-on-tertiary: rgb(255 255 255);
+  --md-sys-color-tertiary-container: rgb(179 187 255);
+  --md-sys-color-on-tertiary-container: rgb(32 42 111);
+  --md-sys-color-error: rgb(186 26 26);
+  --md-sys-color-on-error: rgb(255 255 255);
+  --md-sys-color-error-container: rgb(255 218 214);
+  --md-sys-color-on-error-container: rgb(65 0 2);
+  --md-sys-color-background: rgb(251 248 255);
+  --md-sys-color-on-background: rgb(26 27 36);
+  --md-sys-color-surface: rgb(251 248 255);
+  --md-sys-color-on-surface: rgb(26 27 36);
+  --md-sys-color-surface-variant: rgb(226 225 245);
+  --md-sys-color-on-surface-variant: rgb(69 69 86);
+  --md-sys-color-outline: rgb(117 118 135);
+  --md-sys-color-outline-variant: rgb(198 197 216);
+  --md-sys-color-shadow: rgb(0 0 0);
+  --md-sys-color-scrim: rgb(0 0 0);
+  --md-sys-color-inverse-surface: rgb(47 48 58);
+  --md-sys-color-inverse-on-surface: rgb(241 239 253);
+  --md-sys-color-inverse-primary: rgb(190 194 255);
+  --md-sys-color-primary-fixed: rgb(224 224 255);
+  --md-sys-color-on-primary-fixed: rgb(0 4 106);
+  --md-sys-color-primary-fixed-dim: rgb(190 194 255);
+  --md-sys-color-on-primary-fixed-variant: rgb(24 36 212);
+  --md-sys-color-secondary-fixed: rgb(224 224 255);
+  --md-sys-color-on-secondary-fixed: rgb(9 15 90);
+  --md-sys-color-secondary-fixed-dim: rgb(190 194 255);
+  --md-sys-color-on-secondary-fixed-variant: rgb(57 64 134);
+  --md-sys-color-tertiary-fixed: rgb(223 224 255);
+  --md-sys-color-on-tertiary-fixed: rgb(5 16 90);
+  --md-sys-color-tertiary-fixed-dim: rgb(188 194 255);
+  --md-sys-color-on-tertiary-fixed-variant: rgb(55 64 134);
+  --md-sys-color-surface-dim: rgb(218 216 230);
+  --md-sys-color-surface-bright: rgb(251 248 255);
+  --md-sys-color-surface-container-lowest: rgb(255 255 255);
+  --md-sys-color-surface-container-low: rgb(244 242 255);
+  --md-sys-color-surface-container: rgb(238 236 250);
+  --md-sys-color-surface-container-high: rgb(233 231 244);
+  --md-sys-color-surface-container-highest: rgb(227 225 238);
+}
+
+@include mat.color-variants-backwards-compatibility($light-theme);
+@include mat.typography-hierarchy($light-theme);
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
