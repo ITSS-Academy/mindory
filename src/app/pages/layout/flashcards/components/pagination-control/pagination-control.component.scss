@@ -1,0 +1,30 @@
+.container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon {
+  background-color: var(--md-sys-color-background); /* Default to a primary color */
+  color: var(--md-sys-color-on-background);
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  border-radius: 50%;
+  border: black 1px solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 50px; /* Adds space between the icon and the text */
+}
+
+mat-icon:hover {
+  background-color: var(--md-sys-color-outline-variant); /* Darker shade on hover */
+}
+
+p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}

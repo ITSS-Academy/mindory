@@ -1,0 +1,36 @@
+.container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+
+  text-align: center;
+  width: 190px;
+  height: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+}
+
+.card p {
+  font-weight: 600; /* Reduced from bolder to a lighter weight */
+  margin: 0;
+}
+
