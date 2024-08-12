@@ -3,6 +3,7 @@ import {TopicHierarchyComponent} from "./components/topic-hierarchy/topic-hierar
 import {RegimeComponent} from "./components/regime/regime.component";
 import {LessonContentComponent} from "./components/lesson-content/lesson-content.component";
 import {PaginationControlComponent} from "./components/pagination-control/pagination-control.component";
+import {ViewComponent} from "./components/view/view.component";
 
 @Component({
   selector: 'app-flashcards',
@@ -11,7 +12,8 @@ import {PaginationControlComponent} from "./components/pagination-control/pagina
     TopicHierarchyComponent,
     RegimeComponent,
     LessonContentComponent,
-    PaginationControlComponent
+    PaginationControlComponent,
+    ViewComponent
   ],
   templateUrl: './flashcards.component.html',
   styleUrl: './flashcards.component.scss'

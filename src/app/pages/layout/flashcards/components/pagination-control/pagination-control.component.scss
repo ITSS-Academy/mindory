@@ -4,10 +4,9 @@
   justify-content: center;
   align-items: center;
 }
-
 mat-icon {
-  background-color: var(--md-sys-color-background); /* Default to a primary color */
-  color: var(--md-sys-color-on-background);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface-variant);
   width: 40px;
   height: 40px;
   font-size: 40px;
@@ -15,11 +14,11 @@ mat-icon {
   border: black 1px solid;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 0 50px; /* Adds space between the icon and the text */
+  margin: 0 50px;
 }
 
 mat-icon:hover {
-  background-color: var(--md-sys-color-outline-variant); /* Darker shade on hover */
+  background-color: var(--md-sys-color-outline-variant);
 }
 
 p {
