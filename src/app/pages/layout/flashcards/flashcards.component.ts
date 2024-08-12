@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../shared/modules/material.module';
-import { SharedModule } from '../../../shared/modules/shared.module';
+import { TopicHierarchyComponent } from './components/topic-hierarchy/topic-hierarchy.component';
+import { RegimeComponent } from './components/regime/regime.component';
+import { LessonContentComponent } from './components/lesson-content/lesson-content.component';
+import { PaginationControlComponent } from './components/pagination-control/pagination-control.component';
+import { ViewComponent } from './components/view/view.component';
 
 @Component({
   selector: 'app-flashcards',
   standalone: true,
-  imports: [MaterialModule, SharedModule],
+  imports: [
+    TopicHierarchyComponent,
+    RegimeComponent,
+    LessonContentComponent,
+    PaginationControlComponent,
+    ViewComponent,
+  ],
   templateUrl: './flashcards.component.html',
   styleUrl: './flashcards.component.scss',
 })
