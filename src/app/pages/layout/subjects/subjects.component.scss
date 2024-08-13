@@ -1,0 +1,83 @@
+#container{
+  width: 100%;
+  height: 100vh;
+  background-color: #000aa7;
+  display: flex;
+
+}
+#container-right{
+  width: 10%;
+  height: 100%;
+  background-color: var(--md-sys-color-on-primary);
+}
+#container-left{
+  width: 10%;
+  height: 100%;
+  background-color: var(--md-sys-color-on-primary);
+}
+#container-center{
+  width: 80%;
+  height: 100%;
+  background-color: white;
+}
+
+.title-First{
+  font-size: 30px;
+  position: fixed;
+  top: 90px;
+  left: 175px;
+
+}
+
+.category-bar {
+  background-color: var(--md-sys-color-on-primary);
+  border-radius: 5px;
+  position: fixed;
+
+  top: 130px;
+  left: 165px;
+  width: calc(100% - 330px); // Điều chỉnh chiều rộng nếu cần
+  padding: 10px;
+  box-sizing: border-box;
+
+
+}
+
+.category {
+  margin: 0 1px;
+  color: var(--md-sys-color-surface-tint);
+  font-weight: 550;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  letter-spacing: -0.5px;
+}
+
+
+.category:hover {
+  background-color: var(--md-sys-color-on-primary);
+  border-radius: 5px;
+}
+
+.category:active {
+  background-color: var(--md-sys-color-on-primary);
+}
+
+
+#Button-Back-Next {
+  position: fixed; /* Giữ các nút ở vị trí cố định khi cuộn trang */
+  bottom: 20px; /* Khoảng cách từ các nút đến cạnh dưới của màn hình */
+  right: 20px; /* Khoảng cách từ các nút đến cạnh phải của màn hình */
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa hai nút */
+  color: var(--md-sys-color-on-surface);
+}
+
+mat-card-actions button {
+  display: inline-block;
+  padding: 0 10px;
+  border: 1px solid var(--md-sys-color-surface-dim);
+  border-radius: 12px;
+  background-color: var(--md-sys-color-surface-dim);
+  color: var(--md-sys-color-inverse-surface);
+}
