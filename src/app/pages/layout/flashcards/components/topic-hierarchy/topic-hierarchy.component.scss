@@ -1,7 +1,80 @@
 .container {
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: column;
+}
+
+/* Media query for large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    width: 55%; /* Adjust width for large screens */
+  }
+
+  h1 {
+    font-size: 32px; /* Slightly larger heading font size */
+  }
+
+  .author-avatar img {
+    width: 40px;
+    height: 40px; /* Increase avatar size */
+  }
+
+  .author-details p, .author-details span {
+    font-size: 14px; /* Larger font size for better readability */
+  }
+
+  .btn {
+    padding: 7px 12px; /* Increase padding for larger buttons */
+  }
+}
+
+/* Media query for medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 65%; /* Slightly narrower for tablets */
+  }
+
+  h1 {
+    font-size: 28px; /* Adjust heading font size */
+  }
+
+  .author-avatar img {
+    width: 30px;
+    height: 30px; /* Adjust avatar size */
+  }
+
+  .author-details p, .author-details span {
+    font-size: 12px; /* Maintain current font size */
+  }
+
+  .btn {
+    padding: 6px 10px; /* Adjust button padding */
+  }
+}
+
+/* Media query for small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  .container {
+    width: 90%; /* Make container full-width on small screens */
+  }
+
+  h1 {
+    font-size: 24px; /* Smaller heading font size */
+  }
+
+  .author-avatar img {
+    width: 30px;
+    height: 30px; /* Keep the avatar size */
+  }
+
+  .author-details p, .author-details span {
+    font-size: 10px; /* Smaller font size */
+  }
+
+  .btn {
+    padding: 5px 8px; /* Smaller padding for buttons */
+    font-size: 8px; /* Smaller button font size */
+  }
 }
 
 .author-info, .buttons {
@@ -19,8 +92,8 @@
 }
 
 .author-avatar img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 10px;
 }
