@@ -1,0 +1,53 @@
+.container{
+  display: flex;
+  height: 500px;
+  background-color: black;
+  margin: 100px auto 0;
+  width: 1120px;
+  border-radius: 20px;
+  color: white;
+}
+.main-content{
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+}
+
+.top{
+  margin-bottom: 100px;
+}
+
+.middle{
+
+}
+
+.bottom{
+  position: relative;
+  margin-top: 50px;
+  padding: 100px;
+}
+
+.bottom button {
+  position: absolute;
+}
+
+.bottom button:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.bottom button:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.bottom button:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+
+.bottom button:nth-child(4) {
+  bottom: 0;
+  right: 0;
+}
