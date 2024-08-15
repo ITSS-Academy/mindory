@@ -1,0 +1,60 @@
+#container-card {
+  width: 400px;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#content-card {
+  padding: 20px;
+}
+
+.terms {
+  width: 60px;
+  height: 20px;
+  background-color: #E0E0FF;
+  font-size: 14px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.name-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.preview-button button {
+  width: 100px;
+  background-color: #CCCCCC;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.preview-button button:hover {
+  background-color: #999999;
+}
+#button-bottom{
+  display: flex;
+  justify-content: space-between;
+}
