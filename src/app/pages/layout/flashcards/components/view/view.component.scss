@@ -1,9 +1,9 @@
 .container {
   height: 70px;
-  width: 60%;
+  width: 70%;
   display: flex;
   background-color: white;
-  border: black 1px solid;
+  border: 1px solid black;
   border-radius: 10px;
   align-items: center;
   justify-content: space-between;
@@ -23,4 +23,43 @@
   margin: 0 auto;
   flex-grow: 1;
   padding-right: 10%;
+}
+
+  /* For large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+  .container {
+    width: 70%;
+  }
+  .tu {
+    padding-left: 20px;
+  }
+  .nghia {
+    padding-right: 10%;
+  }
+}
+
+/* For medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 70%;
+  }
+  .tu {
+    padding-left: 20px;
+  }
+  .nghia {
+    padding-right: 10%;
+  }
+}
+
+/* For small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  .container {
+    width: 70%;
+  }
+  .tu {
+    padding-left: 20px;
+  }
+  .nghia {
+    padding-right: 10%;
+  }
 }

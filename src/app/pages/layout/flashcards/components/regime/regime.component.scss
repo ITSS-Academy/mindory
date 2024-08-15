@@ -1,29 +1,23 @@
 .container {
-  width: 60%;
+  width: 70%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .card {
-  background-color: #f0f0f0;
   border-radius: 10px;
-
   text-align: center;
-  width: 190px;
   height: 50px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .card:hover {
-  width: 190px;
-  height: 49px;
-  background-color: #e0e0e0;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  height: 45px;
 }
 
 .card img {
@@ -32,7 +26,88 @@
 }
 
 .card p {
-  font-weight: 600; /* Reduced from bolder to a lighter weight */
+  font-weight: 600;
   margin: 0;
 }
 
+/* For large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    width: 70%;
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 24%;
+    height: 60px;
+  }
+
+  .card:hover {
+    width: 24%;
+    height: 57px;
+    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
+
+  }
+
+  .card p {
+    padding-right: 10px;
+    font-size: 90%;
+    font-weight: 600;
+  }
+}
+
+/* For medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .container {
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 24%;
+    height: 50px;
+  }
+
+  .card:hover {
+    width: 24%;
+    height: 47px;
+    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .card p {
+    font-size: 80%;
+    font-weight: 700;
+  }
+
+  .card img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* For small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  .container {
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 23%;
+    height: 40px;
+  }
+
+  .card:hover {
+    width: 23%;
+    height: 37px;
+    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .card img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .card p {
+    font-size: 65%;
+    font-weight: 800;
+  }
+}

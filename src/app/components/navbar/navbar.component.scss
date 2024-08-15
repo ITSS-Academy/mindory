@@ -1,8 +1,6 @@
-.container {
+#navbar-container {
   width: 100%;
-}
-
-.navbar {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +34,7 @@
 
 .navbar-nav .nav-item.active::after {
   position: absolute;
-  bottom: -17px;
+  bottom: -22px;
   content: "";
   display: block;
   width: 100%;
