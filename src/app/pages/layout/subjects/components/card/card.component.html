@@ -1,163 +1,20 @@
 <div class="cards-container">
-  <!-- Thẻ 1 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">5 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span> Monkey D. Luffy</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
+  @for (card of cards; track card) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ card.header }}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-chip>{{ card.subtitle }}</mat-chip>
+        </mat-card-subtitle>
+      </mat-card-header>
 
-  <!-- Thẻ 2 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">10 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Roronoa Zoro</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 3 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">15 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Sanji</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 4 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">20 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Usopp</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 5 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">25 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Nami</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 6 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">30 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Nico Robin</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 7 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">35 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Franky</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 8 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">40 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Brook</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Thẻ 9 -->
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="header-avatar"></div>
-      <mat-card-title>Header</mat-card-title>
-      <mat-card-subtitle><div class="terms-box">45 terms</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="card-content">
-        <img src="../../../../../../assets/icon/13.jpg" alt="Avatar" class="avatar">
-        <span>Jinbe</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button (click)="openPreview()">Preview</button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions align="end">
+        <div class="card-content">
+          <img [src]="card.imgSrc" alt="Avatar" class="avatar" />
+          <span> {{ card.name }}</span>
+        </div>
+        <button mat-button (click)="openPreview()">Preview</button>
+      </mat-card-actions>
+    </mat-card>
+  }
 </div>

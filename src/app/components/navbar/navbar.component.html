@@ -1,32 +1,30 @@
-<div class="container">
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <span class="logo">Mindory</span>
+<nav id="navbar-container">
+  <div class="navbar-brand">
+    <span class="logo">Mindory</span>
+  </div>
+  <ul class="navbar-nav">
+    @for (page of navLinks; track $index) {
+      <li
+        [ngClass]="{ active: activeLink === page }"
+        (click)="setActive(page)"
+        class="nav-item"
+      >
+        {{ page.name }}
+      </li>
+    }
+  </ul>
+  <div class="search-container">
+    <input type="text" placeholder="Hinted search text" />
+    <mat-icon fontIcon="search" class="search-icon"></mat-icon>
+  </div>
+  <div class="navbar-icons">
+    <div class="action">
+      <button mat-icon-button class="btn-add" [routerLink]="['/create-set']">
+        <mat-icon class="icon">add</mat-icon>
+      </button>
     </div>
-    <ul class="navbar-nav">
-      @for (page of navLinks; track $index) {
-        <li
-          [ngClass]="{ active: activeLink === page }"
-          (click)="setActive(page)"
-          class="nav-item"
-        >
-          {{ page.name }}
-        </li>
-      }
-    </ul>
-    <div class="search-container">
-      <input type="text" placeholder="Hinted search text" />
-      <mat-icon fontIcon="search" class="search-icon"></mat-icon>
+    <div class="user-avatar">
+      <img src="user-avatar.png" alt="" />
     </div>
-    <div class="navbar-icons">
-      <div class="action">
-        <button mat-icon-button class="btn-add" [routerLink]="['/create-set']">
-          <mat-icon class="icon">add</mat-icon>
-        </button>
-      </div>
-      <div class="user-avatar">
-        <img src="user-avatar.png" alt="" />
-      </div>
-    </div>
-  </nav>
-</div>
+  </div>
+</nav>

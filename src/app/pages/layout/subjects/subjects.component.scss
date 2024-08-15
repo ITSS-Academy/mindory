@@ -1,39 +1,46 @@
 #container {
   width: 100%;
-  height: 100vh;
-  background-color: var(--md-sys-color-on-primary);
-  display: flex;
-}
-
-#container-right,
-#container-left {
-  width: 10%;
   height: 100%;
-  background-color: var(--md-sys-color-on-primary);
+  background-color: #f6f7fb;
+  display: flex;
+  justify-content: center;
 }
 
 #container-center {
   width: 80%;
   height: 100%;
-  background-color: white;
+  margin-top: 1rem;
 }
 
 .title-First {
   font-size: 30px;
-  position: fixed;
-  top: 90px;
-  left: 175px;
 }
 
 .category-bar {
-  background-color: var(--md-sys-color-on-primary);
+  display: flex;
+  justify-content: space-between;
   border-radius: 5px;
-  position: fixed;
-  top: 130px;
-  left: 165px;
-  width: calc(100% - 330px);
-  padding: 10px;
-  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  mat-chip-option {
+    width: fit-content;
+  }
+
+  mat-chip-option::ng-deep .mdc-evolution-chip__text-label {
+    color: var(--md-sys-color-on-primary-fixed-variant) !important;
+    font-weight: 600;
+  }
+
+  mat-chip-option::ng-deep .mdc-evolution-chip__action--primary::before {
+
+    border-style: none;
+  }
+}
+
+
+#vegeta {
+  width: 100%;
 }
 
 .category {
@@ -49,13 +56,9 @@
 .category:hover,
 .category:active {
   background-color: var(--md-sys-color-on-primary);
-  border-radius: 5px;
 }
 
 #Button-Back-Next {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
   display: flex;
   gap: 1px;
   color: var(--md-sys-color-on-surface);
@@ -70,120 +73,94 @@ mat-card-actions button {
   color: var(--md-sys-color-inverse-surface);
 }
 
-/* Media Queries for Responsive Design */
-
-@media (min-width: 992px) {
-  #container-right,
-  #container-left {
-    width: 10%;
-  }
-
-  #container-center {
-    width: 80%;
-  }
-
-  .title-First {
-    font-size: 30px;
-    left: 175px;
-  }
-
-  .category-bar {
-    left: 165px;
-    width: calc(100% - 330px);
-  }
-
-  mat-card-actions button {
-    padding: 0 10px;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  #container-right,
-  #container-left {
-    width: 15%;
-  }
-
-  #container-center {
-    width: 70%;
-  }
-
-  .title-First {
-    font-size: 28px;
-    left: 155px;
-  }
-
-  .category-bar {
-    left: 155px;
-    width: calc(100% - 310px);
-  }
-
-  mat-card-actions button {
-    padding: 0 9px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 767px) {
-  #container-right,
-  #container-left {
-    width: 25%;
-  }
-
-  #container-center {
-    width: 50%;
-  }
-
-  .title-First {
-    font-size: 24px;
-    left: 135px;
-  }
-
-  .category-bar {
-    left: 135px;
-    width: calc(100% - 270px);
-  }
-
-  mat-card-actions button {
-    padding: 0 7px;
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 576px) {
-  #container-right,
-  #container-left {
-    width: 100%;
-    display: none; /* Ẩn các phần này trên thiết bị nhỏ */
-  }
-
-  #container-center {
-    width: 100%;
-  }
-
-  .title-First {
-    font-size: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .category-bar {
-    width: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  mat-card {
-    width: 90%; /* Căn giữa các thẻ */
-    margin: 10px auto; /* Thêm khoảng cách giữa các thẻ */
-  }
-
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-  }
-}
+//
+//@media (min-width: 992px) {
+//  #container-center {
+//    width: 80%;
+//  }
+//
+//  .title-First {
+//    font-size: 30px;
+//    left: 175px;
+//  }
+//
+//  .category-bar {
+//    left: 165px;
+//    width: calc(100% - 330px);
+//  }
+//
+//  mat-card-actions button {
+//    padding: 0 10px;
+//    font-size: 14px;
+//  }
+//}
+//
+//@media (min-width: 768px) and (max-width: 991px) {
+//  #container-center {
+//    width: 70%;
+//  }
+//
+//  .title-First {
+//    font-size: 28px;
+//    left: 155px;
+//  }
+//
+//  .category-bar {
+//    left: 155px;
+//    width: calc(100% - 310px);
+//  }
+//
+//  mat-card-actions button {
+//    padding: 0 9px;
+//    font-size: 13px;
+//  }
+//}
+//
+//@media (max-width: 767px) {
+//  #container-center {
+//    width: 50%;
+//  }
+//
+//  .title-First {
+//    font-size: 24px;
+//  }
+//
+//  .category-bar {
+//    width: calc(100% - 270px);
+//  }
+//
+//  mat-card-actions button {
+//    padding: 0 7px;
+//    font-size: 11px;
+//  }
+//}
+//
+//@media (max-width: 576px) {
+//  #container-center {
+//    width: 100%;
+//  }
+//
+//  .title-First {
+//    font-size: 20px;
+//    transform: translateX(-50%);
+//  }
+//
+//  .category-bar {
+//    width: 90%;
+//    transform: translateX(-50%);
+//  }
+//
+//  mat-card {
+//    width: 90%; /* Căn giữa các thẻ */
+//    margin: 10px auto; /* Thêm khoảng cách giữa các thẻ */
+//  }
+//
+//  .cards-container {
+//    display: flex;
+//    flex-wrap: wrap;
+//    justify-content: center;
+//    align-items: center;
+//    width: 100%;
+//    padding: 10px 0;
+//  }
+//}

@@ -1,31 +1,17 @@
 <div id="container">
-  <div id="container-right"></div>
   <div id="container-center">
     <div id="social">
-      <div class="title-First">Social Science Flashcards</div>
+      <h3 class="title-First">Social Science Flashcards</h3>
     </div>
-    <div id="Anthropo">
-      <div class="category-bar">
-        <a mat-button class="category">Anthropology</a>
-        <a mat-button class="category">Business</a>
-        <a mat-button class="category">Economics</a>
-        <a mat-button class="category">Human Geography</a>
-        <a mat-button class="category">Law</a>
-        <a mat-button class="category">Political Science</a>
-        <a mat-button class="category">Psychology</a>
-        <a mat-button class="category">Sociology</a>
-        <a mat-button class="category">World Geography</a>
-      </div>
+    <div class="category-bar">
+      <mat-chip-listbox class="mat-mdc-chip-set-stacked">
+        @for (category of categories; track category) {
+          <mat-chip-option>{{ category }}</mat-chip-option>
+        }
+      </mat-chip-listbox>
     </div>
-    <div id="vegeta"><app-card></app-card></div>
-    <div id="Button-Back-Next">
-      <mat-card-actions align="end">
-        <button mat-button>NEXT</button>
-      </mat-card-actions>
-      <mat-card-actions align="end">
-        <button mat-button>BACK</button>
-      </mat-card-actions>
+    <div id="vegeta">
+      <app-card></app-card>
     </div>
   </div>
-  <div id="container-left"></div>
 </div>
