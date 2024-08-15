@@ -1,37 +1,40 @@
-
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px; // Khoảng cách giữa các thẻ
-  justify-content: center; // Căn giữa các thẻ trong hàng
+  gap: 16px; /* Khoảng cách giữa các thẻ */
+  justify-content: center; /* Căn giữa các thẻ trong hàng */
   position: absolute;
-  top: 210px; // Đặt cách biệt từ phần tử trên
+  top: 210px; /* Đặt cách biệt từ phần tử trên */
   left: 160px;
-  width: calc(100% - 330px); // Điều chỉnh chiều rộng nếu cần
+  width: calc(100% - 330px); /* Điều chỉnh chiều rộng nếu cần */
   box-sizing: border-box;
+
 }
+
 .card-content {
   display: flex;
   align-items: center;
-
 }
+
 .card-content img {
   margin-right: 6px; /* Khoảng cách nhỏ giữa hình ảnh và tên người dùng */
 }
+
 .avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
-mat-card-title{
+
+mat-card-title {
   font-size: 15px;
   font-weight: bold;
   position: absolute;
   top: 10px;
   left: 5px;
-  //margin: 10px;
 }
+
 .terms-box {
   font-size: 12px;
   font-weight: bold;
@@ -47,12 +50,13 @@ mat-card-title{
   color: var(--md-sys-color-scrim);
 }
 
-mat-card-content{
+mat-card-content {
   font-size: 15px;
   position: absolute;
   top: 125px;
   left: 5px;
 }
+
 mat-card {
   width: 380px;
   height: 160px;
@@ -69,8 +73,67 @@ mat-card-actions button {
   border-radius: 12px;
   background-color: var(--md-sys-color-surface-dim);
   color: var(--md-sys-color-inverse-surface);
+  font-size: 14px; /* Kích thước chữ mặc định */
 }
 
+/* For large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .cards-container {
+    top: 210px; /* Giữ nguyên khoảng cách từ trên */
+    left: 160px;
+    width: calc(100% - 330px);
+  }
 
+  mat-card {
+    width: 370px;
+  }
 
+  mat-card-actions button {
+    padding: 0 17px;
+    font-size: 14px;
+  }
+}
 
+/* For medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .cards-container {
+    top: 180px; /* Điều chỉnh khoảng cách từ trên */
+    left: 120px;
+    width: calc(100% - 240px);
+  }
+
+  mat-card {
+    width: 340px;
+  }
+
+  mat-card-actions button {
+    padding: 0 15px;
+    font-size: 13px; /* Giảm kích thước chữ */
+  }
+}
+
+/* For small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  .cards-container {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; /* Khoảng cách padding để các thẻ không chạm viền */
+    box-sizing: border-box;
+  }
+
+  mat-card {
+    width: 100%;
+    max-width: 100%; /* Đặt giới hạn chiều rộng tối đa cho thẻ */
+    margin-bottom: 16px;
+  }
+
+  mat-card-actions button {
+    padding: 0 11px;
+    font-size: 11px;
+  }
+}

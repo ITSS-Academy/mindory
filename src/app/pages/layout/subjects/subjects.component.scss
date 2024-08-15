@@ -1,46 +1,39 @@
-#container{
+#container {
   width: 100%;
   height: 100vh;
-  background-color: #000aa7;
+  background-color: var(--md-sys-color-on-primary);
   display: flex;
+}
 
-}
-#container-right{
+#container-right,
+#container-left {
   width: 10%;
   height: 100%;
   background-color: var(--md-sys-color-on-primary);
 }
-#container-left{
-  width: 10%;
-  height: 100%;
-  background-color: var(--md-sys-color-on-primary);
-}
-#container-center{
+
+#container-center {
   width: 80%;
   height: 100%;
   background-color: white;
 }
 
-.title-First{
+.title-First {
   font-size: 30px;
   position: fixed;
   top: 90px;
   left: 175px;
-
 }
 
 .category-bar {
   background-color: var(--md-sys-color-on-primary);
   border-radius: 5px;
   position: fixed;
-
   top: 130px;
   left: 165px;
-  width: calc(100% - 330px); // Điều chỉnh chiều rộng nếu cần
+  width: calc(100% - 330px);
   padding: 10px;
   box-sizing: border-box;
-
-
 }
 
 .category {
@@ -53,23 +46,18 @@
   letter-spacing: -0.5px;
 }
 
-
-.category:hover {
+.category:hover,
+.category:active {
   background-color: var(--md-sys-color-on-primary);
   border-radius: 5px;
 }
 
-.category:active {
-  background-color: var(--md-sys-color-on-primary);
-}
-
-
 #Button-Back-Next {
-  position: fixed; /* Giữ các nút ở vị trí cố định khi cuộn trang */
-  bottom: 20px; /* Khoảng cách từ các nút đến cạnh dưới của màn hình */
-  right: 20px; /* Khoảng cách từ các nút đến cạnh phải của màn hình */
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
   display: flex;
-  gap: 10px; /* Khoảng cách giữa hai nút */
+  gap: 1px;
   color: var(--md-sys-color-on-surface);
 }
 
@@ -80,4 +68,150 @@ mat-card-actions button {
   border-radius: 12px;
   background-color: var(--md-sys-color-surface-dim);
   color: var(--md-sys-color-inverse-surface);
+}
+
+/* Media Queries for Responsive Design */
+
+@media (min-width: 992px) {
+  #container-right,
+  #container-left {
+    width: 10%;
+  }
+
+  #container-center {
+    width: 80%;
+  }
+
+  .title-First {
+    font-size: 30px;
+    left: 175px;
+  }
+
+  .category-bar {
+    left: 165px;
+    width: calc(100% - 330px);
+  }
+
+  mat-card-actions button {
+    padding: 0 10px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #container-right,
+  #container-left {
+    width: 15%;
+  }
+
+  #container-center {
+    width: 70%;
+  }
+
+  .title-First {
+    font-size: 28px;
+    left: 155px;
+  }
+
+  .category-bar {
+    left: 155px;
+    width: calc(100% - 310px);
+  }
+
+  mat-card-actions button {
+    padding: 0 9px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  #container-right,
+  #container-left {
+    width: 25%;
+  }
+
+  #container-center {
+    width: 50%;
+  }
+
+  .title-First {
+    font-size: 24px;
+    left: 135px;
+  }
+
+  .category-bar {
+    left: 135px;
+    width: calc(100% - 270px);
+  }
+
+  mat-card-actions button {
+    padding: 0 7px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 576px) {
+  #container-right,
+  #container-left {
+    width: 30%;
+  }
+
+  #container-center {
+    width: 40%;
+  }
+
+  .title-First {
+    font-size: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .category-bar {
+    left: 50%;
+    width: calc(100% - 40px);
+    transform: translateX(-50%);
+  }
+
+  mat-card-actions button {
+    padding: 0 6px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  #container-right,
+  #container-left {
+    width: 100%;
+    display: none; /* Ẩn các phần này trên thiết bị nhỏ */
+  }
+
+  #container-center {
+    width: 100%;
+  }
+
+  .title-First {
+    font-size: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .category-bar {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  mat-card {
+    width: 90%;
+    margin: 0 auto; /* Căn giữa các thẻ */
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+  }
 }
