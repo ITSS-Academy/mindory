@@ -1,8 +1,4 @@
 import { Routes } from '@angular/router';
-import {
-  InformationFolderComponent,
-} from "./pages/layout/library/components/information-folder/information-folder.component";
-
 export const routes: Routes = [
   {
     path: '',

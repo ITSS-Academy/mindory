@@ -60,3 +60,31 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+@media (max-width: 320px) {
+  #container{
+    display: block;
+  }
+  #container-left{
+    width: 100%;
+    height: 10%;
+  }
+  #container-center{
+    width: 100%;
+    height: 80%;
+  }
+  #container-right{
+    width: 100%;
+    height: 10%;
+  }
+  #createBy{
+    display: block;
+    text-align: center;
+  }
+  #nameFolder{
+    display: block;
+    text-align: center;
+  }
+  #contents{
+    display: block;
+  }
+}
