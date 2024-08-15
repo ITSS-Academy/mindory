@@ -153,34 +153,6 @@ mat-card-actions button {
 @media (max-width: 576px) {
   #container-right,
   #container-left {
-    width: 30%;
-  }
-
-  #container-center {
-    width: 40%;
-  }
-
-  .title-First {
-    font-size: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .category-bar {
-    left: 50%;
-    width: calc(100% - 40px);
-    transform: translateX(-50%);
-  }
-
-  mat-card-actions button {
-    padding: 0 6px;
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 576px) {
-  #container-right,
-  #container-left {
     width: 100%;
     display: none; /* Ẩn các phần này trên thiết bị nhỏ */
   }
@@ -202,8 +174,8 @@ mat-card-actions button {
   }
 
   mat-card {
-    width: 90%;
-    margin: 0 auto; /* Căn giữa các thẻ */
+    width: 90%; /* Căn giữa các thẻ */
+    margin: 10px auto; /* Thêm khoảng cách giữa các thẻ */
   }
 
   .cards-container {

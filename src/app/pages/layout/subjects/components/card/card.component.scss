@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   gap: 16px; /* Khoảng cách giữa các thẻ */
   justify-content: center; /* Căn giữa các thẻ trong hàng */
-  position: absolute;
+  position: fixed;
   top: 210px; /* Đặt cách biệt từ phần tử trên */
   left: 160px;
   width: calc(100% - 330px); /* Điều chỉnh chiều rộng nếu cần */
@@ -122,18 +122,19 @@ mat-card-actions button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px; /* Khoảng cách padding để các thẻ không chạm viền */
+    padding: 0 10px; /* Giảm padding để tiết kiệm không gian */
     box-sizing: border-box;
   }
 
   mat-card {
-    width: 100%;
-    max-width: 100%; /* Đặt giới hạn chiều rộng tối đa cho thẻ */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của `.cards-container` */
+    max-width: 100%; /* Giới hạn chiều rộng không vượt quá 100% */
     margin-bottom: 16px;
+    box-sizing: border-box; /* Đảm bảo padding và border không làm tăng chiều rộng tổng thể */
   }
 
   mat-card-actions button {
-    padding: 0 11px;
-    font-size: 11px;
+    padding: 0 8px; /* Giảm padding cho nút */
+    font-size: 12px; /* Cập nhật kích thước font cho phù hợp */
   }
 }
