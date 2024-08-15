@@ -1,6 +1,6 @@
 .container, .container2 {
   position: relative;
-  width: 70%;
+  width: 60%;
   height: 500px;
   border-radius: 10px;
   display: flex;
@@ -58,7 +58,7 @@
 /* For large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .container2 .container {
-    width: 70%;
+    width: 60%;
     height: 500px;
     border-radius: 10px;
     display: flex;
@@ -88,7 +88,7 @@
 /* For medium devices (tablets, 768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .container2 .container {
-    width: 70%;
+    width:70%;
     border-radius: 10px;
     display: flex;
     justify-content: center;

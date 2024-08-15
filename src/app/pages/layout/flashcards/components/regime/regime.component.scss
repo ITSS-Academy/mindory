@@ -1,5 +1,5 @@
 .container {
-  width: 70%;
+  width: 60%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap; /* Ensures that cards wrap on smaller screens */
@@ -38,7 +38,7 @@
 /* For large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .container {
-    width: 70%;
+    width: 60%;
     justify-content: space-between;
   }
 
