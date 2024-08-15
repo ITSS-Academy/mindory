@@ -1,3 +1,4 @@
+// pagination-control.component.ts
 import { Component, Output, EventEmitter } from '@angular/core';
 import { SharedModule } from '../../../../../../shared/modules/shared.module';
 import { MaterialModule } from '../../../../../../shared/modules/material.module';
@@ -10,20 +11,18 @@ import { MaterialModule } from '../../../../../../shared/modules/material.module
   styleUrls: ['./pagination-control.component.scss']
 })
 export class PaginationControlComponent {
-  @Output() nextPage = new EventEmitter<void>();
-  @Output() previousPage = new EventEmitter<void>();
-
+  @Output() nextPage = new EventEmitter<number>();
   page = 1;
 
-  onNextPage() {
+  goToNextPage() {
     this.page++;
-    this.nextPage.emit();
+    this.nextPage.emit(this.page);
   }
 
-  onPreviousPage() {
+  goToPreviousPage() {
     if (this.page > 1) {
       this.page--;
-      this.previousPage.emit();
+      this.nextPage.emit(this.page);
     }
   }
 }

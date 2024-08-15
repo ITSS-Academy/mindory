@@ -2,6 +2,7 @@
   width: 70%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap; /* Ensures that cards wrap on smaller screens */
 }
 
 .card {
@@ -12,19 +13,23 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
+/* Hover effect for cards */
 .card:hover {
-  height: 45px;
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  box-shadow: rgba(180, 120, 255, 0.4) 0px 4px, 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
+/* Card image styling */
 .card img {
   width: 50px;
   height: 50px;
 }
 
+/* Card text styling */
 .card p {
   font-weight: 600;
   margin: 0;
@@ -42,24 +47,16 @@
     height: 60px;
   }
 
-  .card:hover {
-    width: 24%;
-    height: 57px;
-    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
-
-  }
-
   .card p {
     padding-right: 10px;
-    font-size: 90%;
-    font-weight: 600;
+    font-size: 80%;
   }
 }
 
 /* For medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .container {
-    justify-content: space-around;
+    width: 70%;
   }
 
   .card {
@@ -67,38 +64,29 @@
     height: 50px;
   }
 
-  .card:hover {
-    width: 24%;
-    height: 47px;
-    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
+  .card img {
+    width: 40px;
+    height: 1000px;
   }
 
   .card p {
-    font-size: 80%;
-    font-weight: 700;
-  }
-
-  .card img {
-    width: 40px;
-    height: 40px;
+    font-weight: 650;
+    font-size: 65%;
   }
 }
 
 /* For small devices (phones, 767px and down) */
 @media (max-width: 767px) {
   .container {
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    /* Full width on small screens *//* Center content on small screens */
   }
 
   .card {
-    width: 23%;
+    width: 45%; /* Adjusted width for better alignment */
     height: 40px;
-  }
-
-  .card:hover {
-    width: 23%;
-    height: 37px;
-    box-shadow: rgba(180, 120, 255, 0.4) 0px 4px,0 2px 5px rgba(0, 0, 0, 0.15);
   }
 
   .card img {
@@ -108,6 +96,5 @@
 
   .card p {
     font-size: 65%;
-    font-weight: 800;
   }
 }

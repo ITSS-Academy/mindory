@@ -1,9 +1,14 @@
-<div class="container">
-  <div class="card" >
-    <div class="theform"><p>a</p></div>
-    <div class="theback"><p>b</p></div>
-  </div>
-</div>
 
-<app-pagination-control >
-</app-pagination-control>
+  <div class="container">
+    <div class="card">
+      <div class="theform"><p></p></div>
+      <div class="theback"><p></p></div>
+    </div>
+
+
+
+
+  </div>
+  <div >
+    <app-pagination-control class="pagination-control" (nextPage)="onPageChange($event)"></app-pagination-control>
+  </div>

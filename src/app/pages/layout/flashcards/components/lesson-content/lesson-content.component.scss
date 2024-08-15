@@ -116,30 +116,31 @@
 
 /* For small devices (phones, 767px and down) */
 @media (max-width: 767px) {
-  .container2 .container {
-    width: 100%; /* Make the container full-width on small screens */
-    height: 400px; /* Reduce the height on small screens */
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 600px; /* Adjust perspective for smaller screens */
+    .container2 .container {
+      width:100%;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 800px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      transform: rotateY(0deg);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .theform, .theback {
+      font-weight: 600;
+      font-size: 25px;
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  .card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    transform: rotateY(0deg);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
 
-  .theform, .theback {
-    font-weight: 650;
-    font-size:23px; /* Slightly reduce font size for better fit */
-    width: 100%;
-    height: 100%;
-  }
-}

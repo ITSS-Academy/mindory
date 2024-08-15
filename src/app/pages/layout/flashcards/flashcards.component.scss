@@ -1,10 +1,17 @@
 .container{
   width: 100%;
+  height: auto;
 }
-.pading{
-  padding-top: 20px;
-}
-.padingleft{
-  padding-left: 13%;
-  padding-top: 40px;
+ .padding{
+  padding: 20px 0 0  50px;
+ }
+
+@media (max-width: 767px) {
+  .container{
+
+    width: 70%;
+  }
+  .padding{
+    padding: 20px 5px 0  5px;
+  }
 }

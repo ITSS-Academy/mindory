@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
-import {PaginationControlComponent} from "./pagination-control/pagination-control.component";
+// lesson-content.component.ts
+import { Component, AfterViewInit } from '@angular/core';
+import { PaginationControlComponent } from "./pagination-control/pagination-control.component";
 
 @Component({
   selector: 'app-lesson-content',
@@ -11,16 +12,15 @@ import {PaginationControlComponent} from "./pagination-control/pagination-contro
   styleUrls: ['./lesson-content.component.scss']
 })
 export class LessonContentComponent implements AfterViewInit {
-
-  @Input() activeIndex = 0;
-  private cards!: NodeListOf<HTMLElement>;
-
-  constructor() { }
+  currentPage: number = 1;
+  currentIndex: number = 0;
+  a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  b = ["ANH","EM","CHỊ","BẠN","MẸ","BỐ","ÔNG","BÀ","CHÚ","CÔ","ANH","EM","CHỊ","BẠN","MẸ","BỐ","ÔNG","BÀ","CHÚ","CÔ"];
 
   ngAfterViewInit() {
-    this.cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
+    const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
 
-    this.cards.forEach(cardElement => {
+    cards.forEach(cardElement => {
       cardElement.addEventListener('click', () => {
         cardElement.classList.toggle('clicked');
       });
@@ -29,21 +29,32 @@ export class LessonContentComponent implements AfterViewInit {
     document.addEventListener('keydown', (event) => {
       if (event.code === 'Space') {
         event.preventDefault();
-        this.cards.forEach(cardElement => {
+        cards.forEach(cardElement => {
           cardElement.classList.toggle('clicked');
         });
       }
     });
+
+    this.updateCardContent();
   }
 
-  onNext() {
-    this.activeIndex = (this.activeIndex + 1) % this.cards.length;
-    this.updateCard();
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.currentIndex = (page - 1) % this.a.length; // Tính toán chỉ số hiện tại
+    this.updateCardContent();
   }
 
-  private updateCard() {
-    this.cards.forEach((cardElement, index) => {
-      cardElement.style.display = index === this.activeIndex ? 'block' : 'none';
-    });
+  updateCardContent() {
+    if(this.a.length<this.b.length || this.a.length>this.b.length){
+      alert("Số lượng từ vựng không khớp nhau");
+      return
+    }
+    const theFormElement = document.querySelector('.theform p') as HTMLElement;
+    const theBackElement = document.querySelector('.theback p') as HTMLElement;
+
+    if (theFormElement && theBackElement) {
+      theFormElement.textContent = this.a[this.currentIndex].toString();
+      theBackElement.textContent = this.b[this.currentIndex].toString();
+    }
   }
 }
