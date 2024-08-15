@@ -1,9 +1,13 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="container">
-  <h1>Your library</h1>
-  <mat-tab-group>
-    <mat-tab label="Flashcard sets"> <app-flashcard-card></app-flashcard-card></mat-tab>
-    <mat-tab label="Folders"> <app-folder-card></app-folder-card></mat-tab>
-  </mat-tab-group>
+<div id="container">
+  <div id="main-content">
+    <h3 id="title">Your library</h3>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Flashcard Sets">
+        <div id="card-container">
+          <app-flashcard-card></app-flashcard-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Folders">Content 2</mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
-<app-information-folder></app-information-folder>
