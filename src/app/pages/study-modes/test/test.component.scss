@@ -1,53 +1,242 @@
-.container{
+//.container{
+//  display: flex;
+//  height: 500px;
+//  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//  margin: 100px auto 0;
+//  width: 1120px;
+//  border-radius: 20px;
+//  color: white;
+//}
+//.main-content{
+//  display: flex;
+//  flex-direction: column;
+//  padding: 40px;
+//  width: 100%;
+//}
+//
+//.top{
+//  margin-bottom: 100px;
+//  color: black;
+//}
+//
+//.middle{
+// color: black;
+//}
+//
+//.bottom{
+//  position: relative;
+//  margin-top: 50px;
+//  padding: 100px;
+//}
+//
+//.bottom p {
+//  position: absolute;
+//}
+//
+//.bottom p:hover {
+//  background-color: #f0f0f0;
+//  border-color: #000aa7;
+//  transition: 0.5s;
+//}
+//
+//
+//
+//.bottom p:nth-child(1) {
+//  top: 0;
+//  left: 0;
+//  border: 2px solid;
+//  width: 500px;
+//  height: 70px;
+//  border-radius: 10px;
+//  padding: 20px 50px;
+//  cursor: pointer;
+//}
+//
+//.bottom p:nth-child(2) {
+//  top: 0;
+//  right: 0;
+//  border: 2px solid black;
+//  width: 500px;
+//  height: 70px;
+//  border-radius: 10px;
+//  padding: 20px 50px;
+//  cursor: pointer;
+//}
+//
+//.bottom p:nth-child(3) {
+//  bottom: 0;
+//  left: 0;
+//  border: 2px solid black;
+//  width: 500px;
+//  height: 70px;
+//  border-radius: 10px;
+//  padding: 20px 50px;
+//  cursor: pointer;
+//}
+//
+//.bottom p:nth-child(4) {
+//  bottom: 0;
+//  right: 0;
+//  border: 2px solid black;
+//  width: 500px;
+//  height: 70px;
+//  border-radius: 10px;
+//  padding: 20px 50px;
+//  cursor: pointer;
+//}
+
+
+
+
+.container {
   display: flex;
   height: 500px;
-  background-color: black;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 100px auto 0;
   width: 1120px;
   border-radius: 20px;
   color: white;
 }
-.main-content{
+
+.test-card{
+  width: 1120px;
+}
+
+.main-content {
   display: flex;
   flex-direction: column;
   padding: 40px;
   width: 100%;
+  height: 100%;
 }
 
-.top{
+.top {
   margin-bottom: 100px;
+  color: black;
+  inline-size: 1000px;
+  overflow-wrap: break-word;
 }
 
-.middle{
-
+.top h3{
+  height: 100px;
 }
 
-.bottom{
+.middle {
+  height: 100%;
+  color: black;
+}
+
+.bottom {
   position: relative;
   margin-top: 50px;
   padding: 100px;
 }
 
-.bottom button {
+.bottom p {
   position: absolute;
+  cursor: pointer;
 }
 
-.bottom button:nth-child(1) {
+.bottom p:hover {
+  background-color: #f0f0f0;
+  border-color: #000aa7;
+  transition: 0.5s;
+}
+
+.bottom p:nth-child(1) {
   top: 0;
   left: 0;
+  border: 1px solid;
+  width: 500px;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 50px;
 }
 
-.bottom button:nth-child(2) {
+.bottom p:nth-child(2) {
   top: 0;
   right: 0;
+  border: 1px solid black;
+  width: 500px;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 50px;
 }
 
-.bottom button:nth-child(3) {
+.bottom p:nth-child(3) {
   bottom: 0;
   left: 0;
+  border: 1px solid black;
+  width: 500px;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 50px;
 }
 
-.bottom button:nth-child(4) {
+.bottom p:nth-child(4) {
   bottom: 0;
   right: 0;
+  border: 1px solid black;
+  width: 500px;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 50px;
 }
+
+.selected {
+  background-color: #d3d3d3;
+}
+
+.selected:hover {
+  background-color: #d3d3d3;
+}
+
+
+//@media (max-width: 1200px) {
+//  .container {
+//    width: 100%;
+//  }
+//
+//  .bottom p {
+//    width: 45%;
+//    height: 60px;
+//    padding: 15px 30px;
+//  }
+//
+//  .bottom p:nth-child(1),
+//  .bottom p:nth-child(2) {
+//    top: 0;
+//  }
+//
+//  .bottom p:nth-child(3),
+//  .bottom p:nth-child(4) {
+//    bottom: 0;
+//  }
+//}
+//
+//@media (max-width: 768px) {
+//  .container {
+//    flex-direction: column;
+//    height: auto;
+//  }
+//
+//  .bottom {
+//    padding: 50px 20px;
+//  }
+//
+//  .bottom p {
+//    position: relative;
+//    width: 100%;
+//    margin-bottom: 20px;
+//  }
+//
+//  .bottom p:nth-child(1),
+//  .bottom p:nth-child(2),
+//  .bottom p:nth-child(3),
+//  .bottom p:nth-child(4) {
+//    top: auto;
+//    bottom: auto;
+//    left: auto;
+//    right: auto;
+//  }
+//}

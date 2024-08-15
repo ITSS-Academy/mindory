@@ -1,20 +1,46 @@
-<div class="container">
+
+<!--@for (question of questions; track $index) {-->
+<!--<div class="container">-->
+
+<!--  <div class="main-content">-->
+
+<!--    <div class="top">-->
+<!--      <h3>{{question.question}}</h3>-->
+<!--    </div>-->
+
+<!--    <div class="middle">-->
+<!--      <p>Choose matching term</p>-->
+<!--      <div class="bottom">-->
+<!--        <p>{{question.options[0]}}</p>-->
+<!--        <p>{{question.options[1]}}</p>-->
+<!--        <p>{{question.options[2]}}</p>-->
+<!--        <p>{{question.options[3]}}</p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</div>-->
+<!--}-->
+
+<mat-card *ngFor="let question of questions; let i = index" class="container">
 
   <div class="main-content">
+
     <div class="top">
-      <p>test</p>
+      <h3>{{ question.question }}</h3>
     </div>
 
     <div class="middle">
       <p>Choose matching term</p>
-
       <div class="bottom">
-        <button>test</button>
-        <button>test</button>
-        <button>test</button>
-        <button>test</button>
+        <p
+          *ngFor="let option of question.options"
+          (click)="selectOption(option, i)"
+          [ngClass]="{'selected': isSelected(option, i)}">
+          {{ option }}
+        </p>
       </div>
     </div>
-
-
   </div>
+</mat-card>
