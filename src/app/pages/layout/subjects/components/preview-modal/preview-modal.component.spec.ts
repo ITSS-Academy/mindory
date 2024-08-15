@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopularQuestionComponent } from './popular-question.component';
+import { PreviewModalComponent } from './preview-modal.component';
 
-describe('PopularQuestionComponent', () => {
-  let component: PopularQuestionComponent;
-  let fixture: ComponentFixture<PopularQuestionComponent>;
+describe('PreviewModalComponent', () => {
+  let component: PreviewModalComponent;
+  let fixture: ComponentFixture<PreviewModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopularQuestionComponent]
+      imports: [PreviewModalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopularQuestionComponent);
+    fixture = TestBed.createComponent(PreviewModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
