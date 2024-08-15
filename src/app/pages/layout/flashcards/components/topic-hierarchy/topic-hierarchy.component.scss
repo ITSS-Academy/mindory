@@ -1,5 +1,6 @@
 .container {
-  width: 70%;
+  width: 65%;
+  height: 15%;
   display: flex;
   flex-direction: column;
 }
@@ -7,7 +8,8 @@
 /* Media query for large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .container {
-    width: 55%; /* Adjust width for large screens */
+    height: 15%;
+    width: 70%; /* Adjust width for large screens */
   }
 
   h1 {
@@ -55,7 +57,7 @@
 /* Media query for small devices (phones, 767px and down) */
 @media (max-width: 767px) {
   .container {
-    width: 90%; /* Make container full-width on small screens */
+    width: 100%; /* Make container full-width on small screens */
   }
 
   h1 {
