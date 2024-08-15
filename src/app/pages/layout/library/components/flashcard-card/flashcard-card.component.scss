@@ -1,0 +1,19 @@
+mat-card-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+mat-chip::ng-deep .mdc-evolution-chip__action--primary::before {
+  background-color: var(--md-sys-color-secondary-container) !important;
+  color: var(--md-sys-color-on-secondary-container);
+  border-style: none;
+}
+
+mat-card {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}

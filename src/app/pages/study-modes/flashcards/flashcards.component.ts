@@ -8,7 +8,7 @@ import {MatIcon} from "@angular/material/icon";
     MatIcon
   ],
   templateUrl: './flashcards.component.html',
-  styleUrl: './flashcards.component.scss'
+  styleUrl: './flashcards.component.scss',
 })
 export class FlashcardsComponent implements AfterViewInit {
   ngAfterViewInit() {

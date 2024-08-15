@@ -1,60 +1,38 @@
-
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px; // Khoảng cách giữa các thẻ
-  justify-content: center; // Căn giữa các thẻ trong hàng
-  position: absolute;
-  top: 210px; // Đặt cách biệt từ phần tử trên
-  left: 160px;
-  width: calc(100% - 330px); // Điều chỉnh chiều rộng nếu cần
-  box-sizing: border-box;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
+
 .card-content {
   display: flex;
   align-items: center;
+}
 
-}
 .card-content img {
-  margin-right: 6px; /* Khoảng cách nhỏ giữa hình ảnh và tên người dùng */
+  margin-right: 6px;
 }
+
 .avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
-mat-card-title{
+
+mat-card-title {
   font-size: 15px;
   font-weight: bold;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  //margin: 10px;
-}
-.terms-box {
-  font-size: 12px;
-  font-weight: bold;
-  position: absolute;
-  top: 40px;
-  left: 5px;
-  display: inline-block;
-  margin: 0 15px;
-  padding: 0 8px;
-  border: 1px solid var(--md-sys-color-tertiary-container);
-  border-radius: 12px;
-  background-color: var(--md-sys-color-tertiary-container);
-  color: var(--md-sys-color-scrim);
 }
 
-mat-card-content{
-  font-size: 15px;
-  position: absolute;
-  top: 125px;
-  left: 5px;
+mat-chip::ng-deep .mdc-evolution-chip__action--primary::before {
+  background-color: var(--md-sys-color-secondary-container) !important;
+  color: var(--md-sys-color-on-secondary-container);
+  border-style: none;
 }
+
 mat-card {
-  width: 380px;
+  width: 100%;
   height: 160px;
   display: flex;
   flex-direction: column;
@@ -62,15 +40,16 @@ mat-card {
   box-sizing: border-box;
 }
 
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
 mat-card-actions button {
   display: inline-block;
   padding: 0 17px;
   border: 1px solid var(--md-sys-color-surface-dim);
-  border-radius: 12px;
   background-color: var(--md-sys-color-surface-dim);
   color: var(--md-sys-color-inverse-surface);
+  font-size: 14px; /* Kích thước chữ mặc định */
 }
-
-
-
-

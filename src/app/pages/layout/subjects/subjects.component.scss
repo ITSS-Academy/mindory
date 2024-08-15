@@ -1,46 +1,44 @@
-#container{
+#container {
   width: 100%;
-  height: 100vh;
-  background-color: #000aa7;
+  height: 100%;
+  background-color: #f6f7fb;
   display: flex;
+  justify-content: center;
+}
 
-}
-#container-right{
-  width: 10%;
-  height: 100%;
-  background-color: var(--md-sys-color-on-primary);
-}
-#container-left{
-  width: 10%;
-  height: 100%;
-  background-color: var(--md-sys-color-on-primary);
-}
-#container-center{
+#container-center {
   width: 80%;
   height: 100%;
-  background-color: white;
+  margin-top: 1rem;
 }
 
-.title-First{
+.title-First {
   font-size: 30px;
-  position: fixed;
-  top: 90px;
-  left: 175px;
-
 }
 
 .category-bar {
-  background-color: var(--md-sys-color-on-primary);
+  display: flex;
+  justify-content: space-between;
   border-radius: 5px;
-  position: fixed;
+  width: 100%;
+  margin-bottom: 1rem;
 
-  top: 130px;
-  left: 165px;
-  width: calc(100% - 330px); // Điều chỉnh chiều rộng nếu cần
-  padding: 10px;
-  box-sizing: border-box;
+  mat-chip-option {
+    width: fit-content;
+  }
 
+  mat-chip-option::ng-deep .mdc-evolution-chip__text-label {
+    color: var(--md-sys-color-on-primary-fixed-variant) !important;
+    font-weight: 600;
+  }
 
+  mat-chip-option::ng-deep .mdc-evolution-chip__action--primary::before {
+    border-style: none;
+  }
+}
+
+#vegeta {
+  width: 100%;
 }
 
 .category {
@@ -53,23 +51,14 @@
   letter-spacing: -0.5px;
 }
 
-
-.category:hover {
-  background-color: var(--md-sys-color-on-primary);
-  border-radius: 5px;
-}
-
+.category:hover,
 .category:active {
   background-color: var(--md-sys-color-on-primary);
 }
 
-
 #Button-Back-Next {
-  position: fixed; /* Giữ các nút ở vị trí cố định khi cuộn trang */
-  bottom: 20px; /* Khoảng cách từ các nút đến cạnh dưới của màn hình */
-  right: 20px; /* Khoảng cách từ các nút đến cạnh phải của màn hình */
   display: flex;
-  gap: 10px; /* Khoảng cách giữa hai nút */
+  gap: 1px;
   color: var(--md-sys-color-on-surface);
 }
 

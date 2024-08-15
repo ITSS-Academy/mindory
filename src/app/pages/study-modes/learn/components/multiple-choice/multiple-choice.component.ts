@@ -21,6 +21,8 @@ export interface Question {
   templateUrl: './multiple-choice.component.html',
   styleUrl: './multiple-choice.component.scss'
 })
+
+
 export class MultipleChoiceComponent {
   questions: Question[] = [
     {
