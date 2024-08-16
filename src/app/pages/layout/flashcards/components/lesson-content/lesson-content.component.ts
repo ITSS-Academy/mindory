@@ -1,4 +1,4 @@
-// lesson-content.component.ts
+
 import { Component, AfterViewInit } from '@angular/core';
 import { PaginationControlComponent } from "./pagination-control/pagination-control.component";
 
@@ -14,8 +14,8 @@ import { PaginationControlComponent } from "./pagination-control/pagination-cont
 export class LessonContentComponent implements AfterViewInit {
   currentPage: number = 1;
   currentIndex: number = 0;
-  a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  b = ["ANH","EM","CHỊ","BẠN","MẸ","BỐ","ÔNG","BÀ","CHÚ","CÔ","ANH","EM","CHỊ","BẠN","MẸ","BỐ","ÔNG","BÀ","CHÚ","CÔ"];
+  a = ["BROTHER","SISTER","SISTER","FRIEND","MOTHER","FATHER","GRANDFATHER","GRANDMOTHER","UNCLE","AUNT"];
+  b = ["ANH TRAI","EM GÁI","CHỊ","BẠN BÈ","MẸ","BỐ","ÔNG","BÀ","CHÚ","CÔ"];
 
   ngAfterViewInit() {
     const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;

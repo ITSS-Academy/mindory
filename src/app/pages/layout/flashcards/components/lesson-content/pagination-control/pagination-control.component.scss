@@ -1,12 +1,12 @@
-
-.container  {
+.container {
   width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
 }
+
 mat-icon {
-  background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-surface-variant);
   width: 40px;
   height: 40px;
@@ -28,57 +28,53 @@ p {
   font-weight: 500;
   color: #333;
 }
-/* For large devices (desktops, 992px and up) */
+
 @media (min-width: 992px) {
-  container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .container {
     width: 60%;
   }
   mat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    margin: 0 100px;
-  }
-  p {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 500;
-    color: #333;
-  }
-}
-/* For medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  container {
-    width: 70%;
-  }
-  mat-icon {
+    color: #7e7d7d;
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  mat-icon {
     width: 40px;
     height: 40px;
-    font-size: 35px;
-    margin: 0 75px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   p {
     font-size: 18px;
   }
 }
-/* For small devices (phones, 767px and down) */
+
 @media (max-width: 767px) {
-  container {
+  .container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   mat-icon {
     width: 30px;
     height: 30px;
-    font-size:30px;
+    font-size: 30px;
     margin: 0 50px;
   }
   p {

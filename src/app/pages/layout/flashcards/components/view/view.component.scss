@@ -1,6 +1,6 @@
 .container {
   height: 70px;
-  width: 60%;
+  width: 65%;
   display: flex;
   background-color: white;
   border: 1px solid black;
@@ -25,40 +25,43 @@
   padding-right: 10%;
 }
 
-  /* For large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
+@media (min-width: 992px) {
   .container {
-    width: 60%;
+    width: 65%;
   }
+
   .tu {
     padding-left: 20px;
   }
+
   .nghia {
     padding-right: 10%;
   }
 }
 
-/* For medium devices (tablets, 768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .container {
     width: 70%;
   }
+
   .tu {
     padding-left: 20px;
   }
+
   .nghia {
     padding-right: 10%;
   }
 }
 
-/* For small devices (phones, 767px and down) */
 @media (max-width: 767px) {
   .container {
     width: 100%;
   }
+
   .tu {
     padding-left: 20px;
   }
+
   .nghia {
     padding-right: 10%;
   }

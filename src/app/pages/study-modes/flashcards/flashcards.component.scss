@@ -5,7 +5,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding:20px 70px;
+  padding: 20px 70px;
+  background-color: var(--md-sys-color-on-surface-variant);
 }
 
 .card {
@@ -36,16 +37,15 @@
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
-  font-size: 30px;
 }
 
 .theform {
-  background: #fafafa;
+  background: var(--md-sys-color-on-primary);
   color: #000;
 }
 
 .theback {
-  background: #fafafa;
+  background: var(--md-sys-color-on-primary);
   color: #333;
   transform: rotateX(180deg);
 }
@@ -62,7 +62,6 @@ mat-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
   color: #5D5F86;
   margin: 0 30px;
   padding: 2px;
@@ -72,14 +71,14 @@ mat-icon {
   border-radius: 50%;
   border: #E4E5F2 2px solid;
 }
-.mat-icon:hover {
+
+mat-icon:hover {
   background-color: #E4E5F2;
 }
 
-/* For large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .card {
-    width: 75%;
+    width: 65%;
     height: 80%;
   }
 
@@ -88,8 +87,7 @@ mat-icon {
   }
 
   .navigator {
-    width: 75%;
-    margin-top: 20px;
+    width: 65%;
   }
 
   mat-icon {
@@ -99,10 +97,9 @@ mat-icon {
   }
 }
 
-/* For medium devices (tablets, 768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .card {
-    width: 100%;
+    width: 70%;
     height: 80%;
   }
 
@@ -111,20 +108,16 @@ mat-icon {
   }
 
   .navigator {
-    width: 100%;
-    margin-top: 20px;
+    width: 70%;
   }
 
   mat-icon {
     height: 40px;
     width: 40px;
     font-size: 36px;
-    justify-content: center;
-    align-items: center;
   }
 }
 
-/* For small devices (phones, 767px and down) */
 @media (max-width: 767px) {
   .card {
     width: 100%;
@@ -137,15 +130,11 @@ mat-icon {
 
   .navigator {
     width: 100%;
-    margin-top: 20px;
   }
 
   mat-icon {
     height: 36px;
     width: 36px;
     font-size: 32px;
-    justify-content: center;
-    align-items: center;
   }
 }
-

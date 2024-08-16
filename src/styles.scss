@@ -157,7 +157,7 @@ $light-theme: mat.define-theme(
   --md-sys-color-tertiary-container: rgb(179 187 255);
   --md-sys-color-on-tertiary-container: rgb(32 42 111);
   --md-sys-color-error: rgb(186 26 26);
-  --md-sys-color-on-error: rgb(255 255 255);
+  --md-sys-color-on-error: rgb(60, 56, 56);
   --md-sys-color-error-container: rgb(255 218 214);
   --md-sys-color-on-error-container: rgb(65 0 2);
   --md-sys-color-background: rgb(251 248 255);
@@ -165,9 +165,9 @@ $light-theme: mat.define-theme(
   --md-sys-color-surface: rgb(251 248 255);
   --md-sys-color-on-surface: rgb(26 27 36);
   --md-sys-color-surface-variant: rgb(226 225 245);
-  --md-sys-color-on-surface-variant: rgb(91, 91, 94);
+  --md-sys-color-on-surface-variant: rgb(246, 247, 252);
   --md-sys-color-outline: rgb(117 118 135);
-  --md-sys-color-outline-variant: rgb(198 197 216);
+  --md-sys-color-outline-variant: rgb(216, 216, 221);
   --md-sys-color-shadow: rgb(0 0 0);
   --md-sys-color-scrim: rgb(0 0 0);
   --md-sys-color-inverse-surface: rgb(47 48 58);

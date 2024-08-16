@@ -1,6 +1,7 @@
 .container{
   width: 100%;
   height: auto;
+  background-color: var(--md-sys-color-on-surface-variant);
 }
  .padding{
   padding: 20px 0 0  50px;
@@ -8,7 +9,6 @@
 
 @media (max-width: 767px) {
   .container{
-
     width: 70%;
   }
   .padding{
