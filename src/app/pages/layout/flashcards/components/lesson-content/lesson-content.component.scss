@@ -1,16 +1,8 @@
-.container, .container2 {
+.main-content {
   position: relative;
-  width: 70%;
+  min-width: 100vh;
   height: 500px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   perspective: 1000px;
-}
-
-.container2 {
-  background-color: #713f3f;
 }
 
 .card {
@@ -28,7 +20,8 @@
   transform: rotateX(180deg);
 }
 
-.theform, .theback {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -44,102 +37,38 @@
   font-size: 30px;
 }
 
-.theform {
-  background: #fafafa;;
+.front {
+  background: #fafafa;
   color: #000;
 }
 
-.theback {
+.back {
   background: #fafafa;
   color: #333;
   transform: rotateX(180deg);
 }
 
-/* For large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .container2 .container {
-    width: 70%;
-    height: 500px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 2000px;
-  }
-
-  .card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    transform: rotateY(0deg);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .theform, .theback {
-    font-weight: 600;
-    font-size:30px;
-    width: 100%;
-    height: 100%;
-  }
+.pagination-control {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-/* For medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .container2 .container {
-    width: 70%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 800px;
-  }
-
-  .card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    transform: rotateY(0deg);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .theform, .theback {
-    font-weight: 600;
-    font-size: 25px;
-    width: 100%;
-    height: 100%;
-  }
+mat-icon {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface-variant);
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  border-radius: 50%;
+  border: #bac1c7 1px solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 50px;
 }
 
-/* For small devices (phones, 767px and down) */
-@media (max-width: 767px) {
-  .container2 .container {
-    width: 100%; /* Make the container full-width on small screens */
-    height: 400px; /* Reduce the height on small screens */
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 600px; /* Adjust perspective for smaller screens */
-  }
-
-  .card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-    transform: rotateY(0deg);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .theform, .theback {
-    font-weight: 650;
-    font-size:23px; /* Slightly reduce font size for better fit */
-    width: 100%;
-    height: 100%;
-  }
+mat-icon:hover {
+  background-color: var(--md-sys-color-outline-variant);
 }

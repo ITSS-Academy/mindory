@@ -1,65 +1,18 @@
-.container {
-  height: 70px;
-  width: 70%;
+:host {
+  --mdc-outlined-card-container-color: #ffffff;
+}
+
+.main-content {
+  width: 100%;
   display: flex;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 10px;
   align-items: center;
-  justify-content: space-between;
-  padding-left: 10px;
-  margin-bottom: 20px;
-}
-
-.tu {
-  display: flex;
-  padding-left: 10px;
-}
-
-.nghia {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  flex-grow: 1;
-  padding-right: 10%;
-}
 
-  /* For large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-  .container {
-    width: 70%;
+  .term {
+    width: 50%;
   }
-  .tu {
-    padding-left: 20px;
-  }
-  .nghia {
-    padding-right: 10%;
-  }
-}
 
-/* For medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .container {
-    width: 70%;
-  }
-  .tu {
-    padding-left: 20px;
-  }
-  .nghia {
-    padding-right: 10%;
-  }
-}
-
-/* For small devices (phones, 767px and down) */
-@media (max-width: 767px) {
-  .container {
-    width: 70%;
-  }
-  .tu {
-    padding-left: 20px;
-  }
-  .nghia {
-    padding-right: 10%;
+  .definition {
+    width: 50%;
   }
 }

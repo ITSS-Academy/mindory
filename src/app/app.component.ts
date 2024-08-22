@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { AuthState } from './ngrx/auth/auth.state';
 import * as AuthActions from './ngrx/auth/auth.actions';
+import * as ProfileActions from './ngrx/profile/profile.actions';
 
 @Component({
   selector: 'app-root',
@@ -30,5 +31,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.token$.subscribe((idToken) => {
+      if (idToken) {
+        this.store.dispatch(ProfileActions.createProfile({ idToken }));
+        this.store.dispatch(ProfileActions.getProfile({ idToken }));
+      }
+    });
+  }
 }
