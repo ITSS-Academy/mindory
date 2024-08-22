@@ -23,8 +23,14 @@
         <mat-icon class="icon">add</mat-icon>
       </button>
     </div>
-    <div class="user-avatar">
-      <img src="user-avatar.png" alt="" />
-    </div>
+    @if (!(profile$ | async)) {
+      <button mat-flat-button class="btn-login" (click)="openDialog()">
+        Login
+      </button>
+    } @else {
+      <div class="user-avatar">
+        <img src="{{ photoUrl }}" alt="" />
+      </div>
+    }
   </div>
 </nav>

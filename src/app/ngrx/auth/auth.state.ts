@@ -1,8 +1,11 @@
 export interface AuthState {
   idToken: string;
-  isLoading: boolean;
-  isSuccessful: boolean;
+
+  isLoginLoading: boolean;
+  isLoginSuccess: boolean;
+  loginErrorMessage: string;
+
   isLogoutLoading: boolean;
   isLogoutSuccess: boolean;
-  errorMessage: string;
+  logoutErrorMessage: string;
 }

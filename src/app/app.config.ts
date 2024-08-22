@@ -12,6 +12,8 @@ import { authReducer } from './ngrx/auth/auth.reducer';
 import { AuthEffects } from './ngrx/auth/auth.effects';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { profileReducer } from './ngrx/profile/profile.reducer';
+import { ProfileEffects } from './ngrx/profile/profile.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +24,9 @@ export const appConfig: ApplicationConfig = {
     provideStorage(() => getStorage()),
     provideStore(),
     provideState({ name: 'auth', reducer: authReducer }),
-    provideEffects(AuthEffects),
+    provideState({ name: 'profile', reducer: profileReducer }),
+
+    provideEffects(AuthEffects, ProfileEffects),
     provideHttpClient(),
   ],
 };

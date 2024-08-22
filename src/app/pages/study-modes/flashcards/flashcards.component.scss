@@ -1,29 +1,41 @@
 .container {
-  position: relative;
   width: 100%;
-  height: 100vh;
-  border-radius: 10px;
+  height: 100%;
+  background-color: #f6f7fb;
   display: flex;
-  flex-direction: column;
-  padding:20px 70px;
+  justify-content: center;
+}
+
+.main-content {
+  width: 80%;
+  height: 100%;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+
+.content {
+  //min-width: 100vh;
+  height: 500px;
+  perspective: 1000px;
 }
 
 .card {
   position: relative;
-  width: 75%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
+  transform: rotateY(0deg);
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  perspective: 800px;
 }
 
 .card.clicked {
   transform: rotateX(180deg);
 }
 
-.theform, .theback {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -33,119 +45,197 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0); /* Helps to reduce text blurriness */
+  -webkit-font-smoothing: antialiased; /* For smoother fonts on WebKit browsers */
   font-weight: 600;
   font-size: 30px;
 }
 
-.theform {
+.front {
   background: #fafafa;
   color: #000;
 }
 
-.theback {
+.back {
   background: #fafafa;
   color: #333;
   transform: rotateX(180deg);
 }
 
-.navigator {
-  width: 75%;
+.pagination-control {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 mat-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  color: #5D5F86;
-  margin: 0 30px;
-  padding: 2px;
-  height: 44px;
-  width: 44px;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface-variant);
+  width: 40px;
+  height: 40px;
   font-size: 40px;
   border-radius: 50%;
-  border: #E4E5F2 2px solid;
-}
-.mat-icon:hover {
-  background-color: #E4E5F2;
-}
-
-/* For large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .card {
-    width: 75%;
-    height: 80%;
-  }
-
-  .theform, .theback {
-    font-size: 30px;
-  }
-
-  .navigator {
-    width: 75%;
-    margin-top: 20px;
-  }
-
-  mat-icon {
-    height: 44px;
-    width: 44px;
-    font-size: 40px;
-  }
+  border: #bac1c7 1px solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 50px;
 }
 
-/* For medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .card {
-    width: 100%;
-    height: 80%;
-  }
-
-  .theform, .theback {
-    font-size: 25px;
-  }
-
-  .navigator {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  mat-icon {
-    height: 40px;
-    width: 40px;
-    font-size: 36px;
-    justify-content: center;
-    align-items: center;
-  }
+mat-icon:hover {
+  background-color: var(--md-sys-color-outline-variant);
 }
 
-/* For small devices (phones, 767px and down) */
-@media (max-width: 767px) {
-  .card {
-    width: 100%;
-    height: 80%;
-  }
 
-  .theform, .theback {
-    font-size: 23px;
-  }
-
-  .navigator {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  mat-icon {
-    height: 36px;
-    width: 36px;
-    font-size: 32px;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
+//.container {
+//  position: relative;
+//  width: 100%;
+//  height: 100vh;
+//  border-radius: 10px;
+//  display: flex;
+//  flex-direction: column;
+//  padding:20px 70px;
+//}
+//
+//.card {
+//  position: relative;
+//  width: 75%;
+//  height: 70%;
+//  transform-style: preserve-3d;
+//  transition: transform 0.5s ease;
+//  border-radius: 10px;
+//  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+//  perspective: 800px;
+//}
+//
+//.card.clicked {
+//  transform: rotateX(180deg);
+//}
+//
+//.theform, .theback {
+//  position: absolute;
+//  width: 100%;
+//  height: 100%;
+//  backface-visibility: hidden;
+//  border-radius: 10px;
+//  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  transform: translateZ(0);
+//  -webkit-font-smoothing: antialiased;
+//  font-weight: 600;
+//  font-size: 30px;
+//}
+//
+//.theform {
+//  background: #fafafa;
+//  color: #000;
+//}
+//
+//.theback {
+//  background: #fafafa;
+//  color: #333;
+//  transform: rotateX(180deg);
+//}
+//
+//.navigator {
+//  width: 75%;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  margin-top: 20px;
+//}
+//
+//mat-icon {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  background-color: white;
+//  color: #5D5F86;
+//  margin: 0 30px;
+//  padding: 2px;
+//  height: 44px;
+//  width: 44px;
+//  font-size: 40px;
+//  border-radius: 50%;
+//  border: #E4E5F2 2px solid;
+//}
+//.mat-icon:hover {
+//  background-color: #E4E5F2;
+//}
+//
+///* For large devices (desktops, 992px and up) */
+//@media (min-width: 992px) {
+//  .card {
+//    width: 75%;
+//    height: 80%;
+//  }
+//
+//  .theform, .theback {
+//    font-size: 30px;
+//  }
+//
+//  .navigator {
+//    width: 75%;
+//    margin-top: 20px;
+//  }
+//
+//  mat-icon {
+//    height: 44px;
+//    width: 44px;
+//    font-size: 40px;
+//  }
+//}
+//
+///* For medium devices (tablets, 768px to 991px) */
+//@media (min-width: 768px) and (max-width: 991px) {
+//  .card {
+//    width: 100%;
+//    height: 80%;
+//  }
+//
+//  .theform, .theback {
+//    font-size: 25px;
+//  }
+//
+//  .navigator {
+//    width: 100%;
+//    margin-top: 20px;
+//  }
+//
+//  mat-icon {
+//    height: 40px;
+//    width: 40px;
+//    font-size: 36px;
+//    justify-content: center;
+//    align-items: center;
+//  }
+//}
+//
+///* For small devices (phones, 767px and down) */
+//@media (max-width: 767px) {
+//  .card {
+//    width: 100%;
+//    height: 80%;
+//  }
+//
+//  .theform, .theback {
+//    font-size: 23px;
+//  }
+//
+//  .navigator {
+//    width: 100%;
+//    margin-top: 20px;
+//  }
+//
+//  mat-icon {
+//    height: 36px;
+//    width: 36px;
+//    font-size: 32px;
+//    justify-content: center;
+//    align-items: center;
+//  }
+//}
+//

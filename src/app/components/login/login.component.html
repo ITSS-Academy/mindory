@@ -1,0 +1,28 @@
+<mat-dialog-content class="dialog-container">
+  <div class="dialog-content">
+    <h2 class="dialog-title">Mindory</h2>
+    <p class="description-text">Welcome to Mindory!</p>
+
+    <button
+      mat-raised-button
+      class="google-login-btn"
+      (click)="signWithGoogle()"
+    >
+      <div id="google-info">
+        <img
+          class="google-logo"
+          src="assets/img/google-logo.png"
+          alt="Google-logo"
+        />
+        <div class="google-login-text">Sign in with Google</div>
+      </div>
+    </button>
+
+    <p class="or-text">or</p>
+
+    <p class="guest-text">
+      Continue as a
+      <span mat-dialog-close class="guest-link">Guest</span>
+    </p>
+  </div>
+</mat-dialog-content>
