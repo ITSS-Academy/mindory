@@ -13,13 +13,13 @@
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 120px); /* Increased size */
-  grid-gap: 15px; /* Increased gap between cards */
+  grid-template-columns: repeat(4, 150px); /* Increased size */
+  grid-gap: 200px; /* Increased gap between cards */
 }
 
 .card {
-  width: 120px;  /* Increased width */
-  height: 160px; /* Increased height */
+  width: 300px;  /* Increased width */
+  height: 300px; /* Increased height */
   perspective: 1000px;
 }
 
