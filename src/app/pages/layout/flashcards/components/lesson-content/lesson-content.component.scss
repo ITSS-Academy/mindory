@@ -1,13 +1,10 @@
-.container {
-  width: 60%;
-  height: 500px;
+.main-content {
   position: relative;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-width: 100vh;
+  height: 500px;
   perspective: 1000px;
 }
+
 .card {
   position: relative;
   width: 100%;
@@ -22,7 +19,9 @@
 .card.clicked {
   transform: rotateX(180deg);
 }
-.theform, .theback {
+
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -38,109 +37,38 @@
   font-size: 30px;
 }
 
-.theform {
-  background: var(--md-sys-color-on-primary);
+.front {
+  background: #fafafa;
   color: #000;
 }
 
-.theback {
-  background: var(--md-sys-color-on-primary);
+.back {
+  background: #fafafa;
   color: #333;
   transform: rotateX(180deg);
 }
 
-@media (min-width: 992px) {
-  .container {
-    width: 65%;
-    height: 500px;
-    perspective: 2000px;
-  }
-
-  .card {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .theform, .theback {
-    font-size: 30px;
-  }
-
-  .pagination-control {
-    width: 65%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  mat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    margin: 0 100px;
-  }
-
-  p {
-    font-size: 20px;
-  }
+.pagination-control {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .container {
-    width: 70%;
-    height: 450px;
-    perspective: 1500px;
-  }
-
-  .card {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
-  }
-
-  .theform, .theback {
-    font-size: 28px;
-  }
-
-  .pagination-control {
-    width: 70%;
-  }
-
-  mat-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 35px;
-    margin: 0 75px;
-  }
-
-  p {
-    font-size: 18px;
-  }
+mat-icon {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface-variant);
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  border-radius: 50%;
+  border: #bac1c7 1px solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 50px;
 }
 
-@media (max-width: 767px) {
-  .container {
-    width: 100%;
-    height: 350px;
-    perspective: 800px;
-  }
-
-  .card {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .theform, .theback {
-    font-size: 24px;
-  }
-
-  .pagination-control {
-    width: 100%;
-  }
-
-  mat-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-    margin: 0 50px;
-  }
-
-  p {
-    font-size: 16px;
-  }
+mat-icon:hover {
+  background-color: var(--md-sys-color-outline-variant);
 }
