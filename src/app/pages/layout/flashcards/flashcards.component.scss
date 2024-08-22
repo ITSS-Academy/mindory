@@ -7,17 +7,18 @@
 }
 
 #main-content {
-  width: 700px;
+  width: 60%;
   height: 100%;
   padding: 20px 0;
   margin-top: 1rem;
 }
 
-#regime,
-#lesson-content,
-#view {
+#box-content {
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 #topic-hierarchy {
@@ -56,7 +57,9 @@
 }
 
 #regime {
-  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  //height: auto;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -92,4 +95,34 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  #box-content {
+    flex-direction: column-reverse;
+
+    #regime {
+      height: auto;
+      flex-wrap: wrap;
+
+      .card {
+        flex: 1 1 45%; /* Adjust the percentage to fit two items per row */
+      }
+    }
+  }
+
+  #main-content {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #regime {
+    flex-direction: column;
+
+    .card {
+      width: 100%;
+      margin: 0;
+    }
+  }
 }
