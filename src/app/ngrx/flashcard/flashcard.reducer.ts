@@ -7,6 +7,8 @@ export const initialState: FlashcardState = {
   flashcard: <FlashcardModel>{},
   isGetFlashcardSuccess: false,
   getFlashcardError: '',
+
+  flashcards: [],
 };
 
 export const flashcardReducer = createReducer(
@@ -33,4 +35,32 @@ export const flashcardReducer = createReducer(
       getFlashcardError: errorMessage,
     };
   }),
+  on(FlashcardActions.getFlashcardBySubject, (state, action) => {
+    console.log(action.type);
+    return {
+      ...state,
+    };
+  }),
+  on(
+    FlashcardActions.getFlashcardBySubjectSuccess,
+    (state, { flashcards, type }) => {
+      console.log(type);
+      return {
+        ...state,
+        isGetFlashcardSuccess: true,
+        flashcards: flashcards,
+      };
+    },
+  ),
+  on(
+    FlashcardActions.getFlashcardBySubjectFailure,
+    (state, { errorMessage, type }) => {
+      console.log(type);
+      return {
+        ...state,
+        isGetFlashcardSuccess: false,
+        getFlashcardError: errorMessage,
+      };
+    },
+  ),
 );

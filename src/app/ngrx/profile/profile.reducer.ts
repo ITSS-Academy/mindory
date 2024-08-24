@@ -15,14 +15,12 @@ export const initialState: ProfileState = {
 export const profileReducer = createReducer(
   initialState,
   on(ProfileActions.createProfile, (state, action) => {
-    console.log(action.type);
     return {
       ...state,
     };
   }),
 
   on(ProfileActions.createProfileSuccess, (state, action) => {
-    console.log(action.type);
     return {
       ...state,
       isCreatedProfileSuccessful: true,
@@ -30,7 +28,6 @@ export const profileReducer = createReducer(
   }),
 
   on(ProfileActions.createProfileFailure, (state, { errorMessage, type }) => {
-    console.log(type);
     return {
       ...state,
       isCreatedProfileSuccessful: false,
@@ -39,14 +36,12 @@ export const profileReducer = createReducer(
   }),
 
   on(ProfileActions.getProfile, (state, action) => {
-    console.log(action.type);
     return {
       ...state,
     };
   }),
 
   on(ProfileActions.getProfileSuccess, (state, { profile, type }) => {
-    console.log(type);
     return {
       ...state,
       isGettingProfileSuccessful: true,
@@ -55,7 +50,6 @@ export const profileReducer = createReducer(
   }),
 
   on(ProfileActions.getProfileFailure, (state, { errorMessage, type }) => {
-    console.log(type);
     return {
       ...state,
       isGettingProfileSuccessful: false,

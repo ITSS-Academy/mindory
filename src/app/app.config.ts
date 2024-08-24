@@ -16,6 +16,8 @@ import { profileReducer } from './ngrx/profile/profile.reducer';
 import { ProfileEffects } from './ngrx/profile/profile.effects';
 import { flashcardReducer } from './ngrx/flashcard/flashcard.reducer';
 import { FlashcardEffects } from './ngrx/flashcard/flashcard.effects';
+import { subjectReducer } from './ngrx/subjects/subjects.reducer';
+import { SubjectEffects } from './ngrx/subjects/subjects.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,8 +30,14 @@ export const appConfig: ApplicationConfig = {
     provideState({ name: 'auth', reducer: authReducer }),
     provideState({ name: 'profile', reducer: profileReducer }),
     provideState({ name: 'flashcard', reducer: flashcardReducer }),
+    provideState({ name: 'subject', reducer: subjectReducer }),
 
-    provideEffects(AuthEffects, ProfileEffects, FlashcardEffects),
+    provideEffects(
+      AuthEffects,
+      ProfileEffects,
+      FlashcardEffects,
+      SubjectEffects,
+    ),
     provideHttpClient(),
   ],
 };

@@ -66,7 +66,6 @@ export class NavbarComponent implements OnInit {
       }
     });
     this.store.select('profile', 'profile').subscribe((profile) => {
-      console.log(profile);
       this.photoUrl = profile.photoUrl;
     });
     this.router.events
@@ -101,5 +100,9 @@ export class NavbarComponent implements OnInit {
     dialogConfig.panelClass = 'custom-dialog-container';
 
     this.dialog.open(LoginComponent, dialogConfig);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
   }
 }
