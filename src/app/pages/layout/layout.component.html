@@ -1,8 +1,13 @@
 <div class="container">
   <div class="navbar">
-    <app-navbar></app-navbar>
+    <app-navbar (menuClick)="onMenuClick()"></app-navbar>
   </div>
-  <div class="main-content">
-    <router-outlet></router-outlet>
+  <div class="main-content" [ngClass]="{ disabled: isSlideBarVisible }">
+    <cdk-virtual-scroll-viewport itemSize="50" class="scroll">
+      <router-outlet></router-outlet>
+    </cdk-virtual-scroll-viewport>
   </div>
+</div>
+<div class="slide-bar" [ngClass]="{ hidden: !isSlideBarVisible }">
+  <app-slidebar></app-slidebar>
 </div>
