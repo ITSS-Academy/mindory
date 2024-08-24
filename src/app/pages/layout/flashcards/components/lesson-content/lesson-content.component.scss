@@ -31,8 +31,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateZ(0); /* Helps to reduce text blurriness */
-  -webkit-font-smoothing: antialiased; /* For smoother fonts on WebKit browsers */
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
   font-weight: 600;
   font-size: 30px;
 }
