@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.token$.subscribe((idToken) => {
       if (idToken) {
+        console.log('idToken', idToken);
         this.store.dispatch(ProfileActions.createProfile({ idToken }));
         this.store.dispatch(ProfileActions.getProfile({ idToken }));
       }
