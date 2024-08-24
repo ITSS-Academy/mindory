@@ -1,0 +1,79 @@
+.sidebar {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.sidebar .logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 20px;
+}
+
+.sidebar .profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar .profile .username {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-left: 10px;
+}
+
+.btn-create {
+  font-size: 16px;
+  width: 90%;
+  height: 45px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  width: 90%;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 15px;
+  text-decoration: none;
+  border-radius: 100px;
+  color: var(--md-sys-color-on-background);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar nav a:hover {
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.sidebar nav a.active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 600;
+}
+
+.sidebar nav a .icon {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: 200px;
+}

@@ -1,52 +1,45 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
-import { MaterialModule } from '../../shared/modules/material.module';
-import { SharedModule } from '../../shared/modules/shared.module';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { AsyncPipe, NgClass } from '@angular/common';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MaterialModule } from '../../shared/modules/material.module';
+import { SharedModule } from '../../shared/modules/shared.module';
+import { NgClass } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AuthState } from '../../ngrx/auth/auth.state';
 import { ProfileState } from '../../ngrx/profile/profile.state';
-import { LoginComponent } from '../login/login.component';
+import { AuthState } from '../../ngrx/auth/auth.state';
+import * as AuthActions from '../../ngrx/auth/auth.actions';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-slidebar',
   standalone: true,
-  imports: [MaterialModule, SharedModule, NgClass, AsyncPipe],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  imports: [MaterialModule, SharedModule, NgClass],
+  templateUrl: './slidebar.component.html',
+  styleUrl: './slidebar.component.scss',
 })
-export class NavbarComponent implements OnInit {
-  @Output() menuClick = new EventEmitter<void>();
-
-  onMenuClick(): void {
-    this.menuClick.emit();
-  }
-
+export class SlidebarComponent implements OnInit {
   navLinks = [
     {
       name: 'Home',
       route: '/home',
+      icon: 'home',
     },
     {
       name: 'Library',
       route: '/library',
+      icon: 'folder_open',
     },
     {
       name: 'Subjects',
       route: '/subjects',
+      icon: 'category',
     },
   ];
-  dialog = inject(MatDialog);
-  profile$ = this.store.select('profile', 'isGettingProfileSuccessful');
-  photoUrl = '';
 
   activeLink = this.navLinks[0];
 
   constructor(
     private router: Router,
-    private store: Store<{ auth: AuthState; profile: ProfileState }>,
+    private store: Store<{ profile: ProfileState; auth: AuthState }>,
   ) {
     if (this.router.url.includes('home')) {
       this.activeLink = this.navLinks[0];
@@ -60,15 +53,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select('auth', 'isLoginSuccess').subscribe((isLoginSuccess) => {
-      if (isLoginSuccess) {
-        this.dialog.closeAll();
-      }
-    });
-    this.store.select('profile', 'profile').subscribe((profile) => {
-      console.log(profile);
-      this.photoUrl = profile.photoUrl;
-    });
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -94,16 +78,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '40vw';
-    dialogConfig.maxWidth = '80vw';
-    dialogConfig.panelClass = 'custom-dialog-container';
-
-    this.dialog.open(LoginComponent, dialogConfig);
-  }
-
-  navigateToHome() {
-    this.router.navigate(['/']);
+  signOut() {
+    this.store.dispatch(AuthActions.logout());
   }
 }

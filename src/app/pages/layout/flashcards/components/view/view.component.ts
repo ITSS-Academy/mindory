@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../../../../shared/modules/material.module';
+import { CardModel } from '../../../../../models/card.model';
 
 @Component({
   selector: 'app-view',
@@ -8,4 +9,6 @@ import { MaterialModule } from '../../../../../shared/modules/material.module';
   templateUrl: './view.component.html',
   styleUrl: './view.component.scss',
 })
-export class ViewComponent {}
+export class ViewComponent {
+  @Input() card!: CardModel;
+}

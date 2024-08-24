@@ -4,7 +4,6 @@ import { FlashcardsComponent } from './flashcards/flashcards.component';
 import { LearnComponent } from './learn/learn.component';
 import { MatchComponent } from './match/match.component';
 import { TestComponent } from './test/test.component';
-import {MatchPlayComponent} from "./match-play/match-play.component";
 
 export const STUDY_MODES_ROUTERS: Routes = [
   {
@@ -31,10 +30,6 @@ export const STUDY_MODES_ROUTERS: Routes = [
       {
         path: 'test',
         component: TestComponent,
-      },
-      {
-        path: 'match-play',
-        component: MatchPlayComponent,
       },
     ],
   },
