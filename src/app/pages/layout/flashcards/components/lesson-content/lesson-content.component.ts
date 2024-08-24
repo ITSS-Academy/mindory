@@ -1,15 +1,17 @@
-import {AfterViewInit, Component, Input, input} from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { CardModel } from '../../../../../models/card.model';
 
 @Component({
-  selector: 'app-lesson-content',
+  selector: 'gitapp-lesson-content',
   standalone: true,
   templateUrl: './lesson-content.component.html',
   imports: [MatIcon],
   styleUrls: ['./lesson-content.component.scss'],
 })
 export class LessonContentComponent implements AfterViewInit {
-  @Input()
+  @Input() cards!: CardModel[];
+
   ngAfterViewInit() {
     const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
 

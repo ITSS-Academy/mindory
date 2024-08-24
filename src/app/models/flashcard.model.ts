@@ -1,5 +1,6 @@
 import { SubjectModel } from './subject.model';
 import { CardModel } from './card.model';
+import { Profile } from './profile.model';
 
 export interface FlashcardModel {
   id: string;
@@ -8,4 +9,5 @@ export interface FlashcardModel {
   isPublic: boolean;
   subjectId: SubjectModel;
   cards: CardModel[];
+  authorId: Profile;
 }

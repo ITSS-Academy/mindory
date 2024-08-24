@@ -1,7 +1,15 @@
 <div class="main-content">
   <div class="card">
-    <div class="front"><p>1</p></div>
-    <div class="back"><p>2</p></div>
+    @for (card of cards; track $index) {
+      <div class="front">
+        <p>{{ card.term }}</p>
+      </div>
+    }
+    @for (card of cards; track $index) {
+      <div class="back">
+        <p>{{ card.definition }}</p>
+      </div>
+    }
   </div>
 </div>
 <div class="pagination-control">

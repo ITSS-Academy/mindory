@@ -1,13 +1,13 @@
 <div id="container">
   <div id="main-content">
     <div id="topic-hierarchy">
-      <h3 class="title">U.S. State Capitals</h3>
+      <h3 class="title">{{ flashcard.title }}</h3>
       <div class="author-info">
         <div class="author-avatar">
-          <img src="assets/img/mtri.jpg" alt="" />
+          <img [src]="profile.photoUrl" alt="" />
         </div>
         <div class="author-details">
-          <span class="name">Tri Vo Minh</span>
+          <span class="name">{{ profile.fullName }}</span>
           <span class="time">Thời gian tạo</span>
         </div>
       </div>
@@ -32,14 +32,14 @@
         </div>
       </div>
       <div id="lesson-content">
-        <app-lesson-content></app-lesson-content>
+        <app-lesson-content [cards]="cards"></app-lesson-content>
       </div>
     </div>
 
     <div id="view">
-      <app-view></app-view>
-      <app-view></app-view>
-      <app-view></app-view>
+      @for (item of cards; track $index) {
+        <app-view [card]="item"></app-view>
+      }
     </div>
   </div>
 </div>

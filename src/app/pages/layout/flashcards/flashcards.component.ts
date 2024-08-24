@@ -8,6 +8,10 @@ import { Store } from '@ngrx/store';
 import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
 import { AuthState } from '../../../ngrx/auth/auth.state';
 import { ActivatedRoute } from '@angular/router';
+import { FlashcardModel } from '../../../models/flashcard.model';
+import { CardModel } from '../../../models/card.model';
+import { ProfileState } from '../../../ngrx/profile/profile.state';
+import { Profile } from '../../../models/profile.model';
 
 @Component({
   selector: 'app-flashcards',
@@ -18,9 +22,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FlashcardsComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
+  flashcard!: FlashcardModel;
+  cards: CardModel[] = [];
+  profile!: Profile;
 
   constructor(
-    private store: Store<{ auth: AuthState; flashcard: FlashcardState }>,
+    private store: Store<{
+      auth: AuthState;
+      flashcard: FlashcardState;
+      profile: ProfileState;
+    }>,
     private activeRoute: ActivatedRoute,
   ) {}
 
@@ -39,7 +50,10 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
         }
       }),
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
-        console.log(flashcard);
+        this.flashcard = flashcard as FlashcardModel;
+        this.cards = flashcard.cards as CardModel[];
+        console.log(this.cards.length);
+        this.profile = flashcard.authorId as Profile;
       }),
     );
   }
