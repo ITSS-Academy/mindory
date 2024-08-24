@@ -6,7 +6,7 @@ import * as SubjectsActions from './subjects.actions';
 import { SubjectsService } from '../../services/subjects/subjects.service';
 
 @Injectable()
-export class SubjectsEffects {
+export class SubjectEffects {
   constructor(
     private actions$: Actions,
     private subjectsService: SubjectsService,
@@ -16,15 +16,17 @@ export class SubjectsEffects {
     return this.actions$.pipe(
       ofType(SubjectsActions.getSubjects),
       switchMap((action) => {
-        return this.subjectsService.getSubject(action.idToken, action.id).pipe(
+        return this.subjectsService.getSubject(action.idToken).pipe(
           map((subjects: any) => {
             return SubjectsActions.getSubjectsSuccess({ subjects });
           }),
           catchError((error) => {
-            return of(SubjectsActions.getSubjectsFailure({ errorMessage: error }));
-          })
+            return of(
+              SubjectsActions.getSubjectsFailure({ errorMessage: error }),
+            );
+          }),
         );
-      })
+      }),
     );
   });
 }

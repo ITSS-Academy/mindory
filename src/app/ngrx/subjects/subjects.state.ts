@@ -1,8 +1,7 @@
-import { Subject } from '../../models/subjects.model';
+import { SubjectModel } from '../../models/subject.model';
 
-export interface SubjectsState {
-  subject: Subject;
+export interface SubjectState {
+  subjects: SubjectModel[];
   isGettingSubjectSuccessful: boolean;
   gettingSubjectError: string;
-
 }

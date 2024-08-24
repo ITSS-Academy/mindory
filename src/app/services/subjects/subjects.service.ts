@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SubjectsService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-  }
-
-  getSubject(idToken: string, id: string) {
-    return this.http.get(`${environment.apiUrl}/subjects/${id}`, {
+  getSubject(idToken: string) {
+    return this.http.get(`${environment.apiUrl}/subject`, {
       headers: new HttpHeaders({
         Authorization: `${idToken}`,
       }),

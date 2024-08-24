@@ -31,4 +31,28 @@ export class FlashcardEffects {
       }),
     );
   });
+
+  getFlashcardBySubject$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(FlashcardActions.getFlashcardBySubject),
+      switchMap((action) => {
+        return this.flashcardService.getFlashcardBySubjectId(
+          action.idToken,
+          action.subjectId,
+        );
+      }),
+      map((flashcard: any) => {
+        return FlashcardActions.getFlashcardBySubjectSuccess({
+          flashcards: flashcard,
+        });
+      }),
+      catchError((error) => {
+        return of(
+          FlashcardActions.getFlashcardBySubjectFailure({
+            errorMessage: error,
+          }),
+        );
+      }),
+    );
+  });
 }

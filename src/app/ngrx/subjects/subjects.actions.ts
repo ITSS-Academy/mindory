@@ -1,18 +1,17 @@
 import { createAction, props } from '@ngrx/store';
-import { Subject } from '../../models/subjects.model';
+import { SubjectModel } from '../../models/subject.model';
 
 export const getSubjects = createAction(
   '[Subjects] Get Subjects',
-  props<{ idToken: string, id: string }>(),
+  props<{ idToken: string }>(),
 );
 
 export const getSubjectsSuccess = createAction(
   '[Subjects] Get Subjects Success',
-  props<{ subjects: Subject}>(),
+  props<{ subjects: SubjectModel[] }>(),
 );
 
 export const getSubjectsFailure = createAction(
   '[Subjects] Get Subjects Failure',
   props<{ errorMessage: string }>(),
 );
-

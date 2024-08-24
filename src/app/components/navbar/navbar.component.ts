@@ -66,7 +66,6 @@ export class NavbarComponent implements OnInit {
       }
     });
     this.store.select('profile', 'profile').subscribe((profile) => {
-      console.log(profile);
       this.photoUrl = profile.photoUrl;
     });
     this.router.events

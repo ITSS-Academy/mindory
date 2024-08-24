@@ -1,25 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
 import * as SubjectsActions from './subjects.actions';
-import { SubjectsState } from './subjects.state';
-import { Subject } from '../../models/subjects.model';
+import { SubjectState } from './subjects.state';
 
-export const initialState: SubjectsState = {
-  subject: <Subject>{},
+export const initialState: SubjectState = {
+  subjects: [],
   isGettingSubjectSuccessful: false,
   gettingSubjectError: '',
-
 };
 
-export const subjectsReducer = createReducer(
+export const subjectReducer = createReducer(
   initialState,
   on(SubjectsActions.getSubjects, (state) => ({
     ...state,
     isGettingSubjectSuccessful: false,
-    gettingSubjectError: '',
   })),
   on(SubjectsActions.getSubjectsSuccess, (state, { subjects }) => ({
     ...state,
-    subject: subjects,
+    subjects: subjects,
     isGettingSubjectSuccessful: true,
   })),
   on(SubjectsActions.getSubjectsFailure, (state, { errorMessage }) => ({
