@@ -24,7 +24,6 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
   flashcard!: FlashcardModel;
   cards: CardModel[] = [];
-  photoUrl = '';
   profile!: Profile;
 
   constructor(
@@ -50,14 +49,11 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
           );
         }
       }),
-      this.store.select('profile', 'profile').subscribe((profile) => {
-        console.log(profile);
-        this.photoUrl = profile.photoUrl;
-        this.profile = profile as Profile;
-      }),
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
         this.flashcard = flashcard as FlashcardModel;
         this.cards = flashcard.cards as CardModel[];
+        console.log(this.cards.length);
+        this.profile = flashcard.authorId as Profile;
       }),
     );
   }
@@ -65,6 +61,4 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.forEach((sub) => sub.unsubscribe());
   }
-
-  protected readonly FlashcardsComponent = FlashcardsComponent;
 }

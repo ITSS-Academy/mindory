@@ -1,0 +1,28 @@
+<div class="sidebar">
+  <h1 class="logo">Mindory</h1>
+  <!--  <div class="profile">-->
+  <!--    @if (profile.photoUrl) {-->
+  <!--      <img src="{{profile.photoUrl}}" alt="">-->
+  <!--    }-->
+  <!--    <span class="username">{{ profile.fullName }}</span>-->
+  <!--  </div>-->
+  <button [routerLink]="['/creator']" class="btn-create" mat-flat-button>
+    <mat-icon fontIcon="add"></mat-icon>
+    Create
+  </button>
+  <nav>
+    @for (page of navLinks; track $index) {
+      <a [ngClass]="{ active: activeLink === page }" (click)="setActive(page)">
+        <mat-icon [fontIcon]="page.icon" class="icon"></mat-icon>
+        {{ page.name }}</a
+      >
+    }
+  </nav>
+
+  <nav class="logout">
+    <a (click)="signOut()">
+      <mat-icon fontIcon="logout" class="icon"></mat-icon>
+      Logout</a
+    >
+  </nav>
+</div>

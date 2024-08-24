@@ -1,22 +1,18 @@
 <header class="header">
   <div class="dropdown">
     <div class="dropdown-select">
-      <img src="assets/icon/flashcard.svg" alt="" class="icon-select" />
-      <span class="select">Flashcard</span>
+      <img [src]="activeLink.imgUrl" class="icon-select" />
+      <span class="select">{{ activeLink.name }}</span>
     </div>
     <div class="dropdown-list">
-      <div class="dropdown-list__item">
-        <img src="assets/icon/learn.svg" alt="" class="icon-select" />
-        <span class="dropdown-list__text">Learn</span>
-      </div>
-      <div class="dropdown-list__item">
-        <img src="assets/icon/test.svg" alt="" class="icon-select" />
-        <span class="dropdown-list__text">Test</span>
-      </div>
-      <div class="dropdown-list__item">
-        <img src="assets/icon/match.svg" alt="" class="icon-select" />
-        <span class="dropdown-list__text">Match</span>
-      </div>
+      @for (item of dropDownLinks; track $index) {
+        @if (item.name !== activeLink.name) {
+          <div class="dropdown-list__item" (click)="chooseStudyMode(item.name)">
+            <img [src]="item.imgUrl" alt="" class="icon-select" />
+            <span class="dropdown-list__text">{{ item.name }}</span>
+          </div>
+        }
+      }
     </div>
   </div>
   <div class="title">

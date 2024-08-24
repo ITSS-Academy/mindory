@@ -6,7 +6,8 @@
   <div class="progress-bar">
     <mat-progress-bar
       mode="determinate"
-      [style.width]="(progress / questions.length) * 100 + '%'"></mat-progress-bar>
+      [style.width]="(progress / questions.length) * 100 + '%'"
+    ></mat-progress-bar>
   </div>
 
   <div class="right-content">
@@ -14,40 +15,8 @@
   </div>
 </div>
 
-
-<!--<div class="container">-->
-
-<!--  <div class="main-content">-->
-<!--    <div class="top">-->
-<!--      <p>test</p>-->
-<!--    </div>-->
-
-<!--    <div class="middle" *ngIf="!showScore; else scoreTemplate">-->
-<!--      <p>Choose matching term</p>-->
-
-<!--        <h2>Question {{ currentQuestionIndex + 1 }}/{{ questions.length }}</h2>-->
-<!--        <p>{{ questions[currentQuestionIndex].question }}</p>-->
-
-<!--      <div class="bottom">-->
-<!--        <button>test</button>-->
-<!--        <button>test</button>-->
-<!--        <button>test</button>-->
-<!--        <button>test</button>-->
-
-<!--        <button class="next-button" (click)="nextQuestion()" [disabled]="!selectedOption">Next</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <ng-template #scoreTemplate>-->
-<!--    <h2>Your Score: {{ score }}/{{ questions.length }}</h2>-->
-<!--    <button (click)="restartQuiz()">Restart Quiz</button>-->
-<!--  </ng-template>-->
-
-
 <div class="container">
   <div class="main-content" *ngIf="!showScore; else scoreTemplate">
-
     <div class="question">
       <h2>{{ currentQuestion.question }}</h2>
     </div>
@@ -56,24 +25,78 @@
       <p>Choose matching term</p>
     </div>
     <div class="corner-buttons">
-
-      <p class="top-left" (click)="selectOption(questions[currentQuestionIndex].options[0])"
-         [ngClass]="{'selected': questions[currentQuestionIndex].options[0] === selectedOption, 'correct': questions[currentQuestionIndex].options[0] === currentQuestion.correctAnswer && selectedOption === currentQuestion.correctAnswer, 'incorrect': questions[currentQuestionIndex].options[0] !== currentQuestion.correctAnswer && selectedOption === questions[currentQuestionIndex].options[0]}">
+      <p
+        class="top-left"
+        (click)="selectOption(questions[currentQuestionIndex].options[0])"
+        [ngClass]="{
+          selected:
+            questions[currentQuestionIndex].options[0] === selectedOption,
+          correct:
+            questions[currentQuestionIndex].options[0] ===
+              currentQuestion.correctAnswer &&
+            selectedOption === currentQuestion.correctAnswer,
+          incorrect:
+            questions[currentQuestionIndex].options[0] !==
+              currentQuestion.correctAnswer &&
+            selectedOption === questions[currentQuestionIndex].options[0]
+        }"
+      >
         {{ questions[currentQuestionIndex].options[0] }}
       </p>
-      <p class="top-right" (click)="selectOption(questions[currentQuestionIndex].options[1])"
-         [ngClass]="{'selected': questions[currentQuestionIndex].options[1] === selectedOption, 'correct': questions[currentQuestionIndex].options[1] === currentQuestion.correctAnswer && selectedOption === currentQuestion.correctAnswer, 'incorrect': questions[currentQuestionIndex].options[1] !== currentQuestion.correctAnswer && selectedOption === questions[currentQuestionIndex].options[1]}">
+      <p
+        class="top-right"
+        (click)="selectOption(questions[currentQuestionIndex].options[1])"
+        [ngClass]="{
+          selected:
+            questions[currentQuestionIndex].options[1] === selectedOption,
+          correct:
+            questions[currentQuestionIndex].options[1] ===
+              currentQuestion.correctAnswer &&
+            selectedOption === currentQuestion.correctAnswer,
+          incorrect:
+            questions[currentQuestionIndex].options[1] !==
+              currentQuestion.correctAnswer &&
+            selectedOption === questions[currentQuestionIndex].options[1]
+        }"
+      >
         {{ questions[currentQuestionIndex].options[1] }}
       </p>
-      <p class="bottom-left" (click)="selectOption(questions[currentQuestionIndex].options[2])"
-         [ngClass]="{'selected': questions[currentQuestionIndex].options[2] === selectedOption, 'correct': questions[currentQuestionIndex].options[2] === currentQuestion.correctAnswer && selectedOption === currentQuestion.correctAnswer, 'incorrect': questions[currentQuestionIndex].options[2] !== currentQuestion.correctAnswer && selectedOption === questions[currentQuestionIndex].options[2]}">
+      <p
+        class="bottom-left"
+        (click)="selectOption(questions[currentQuestionIndex].options[2])"
+        [ngClass]="{
+          selected:
+            questions[currentQuestionIndex].options[2] === selectedOption,
+          correct:
+            questions[currentQuestionIndex].options[2] ===
+              currentQuestion.correctAnswer &&
+            selectedOption === currentQuestion.correctAnswer,
+          incorrect:
+            questions[currentQuestionIndex].options[2] !==
+              currentQuestion.correctAnswer &&
+            selectedOption === questions[currentQuestionIndex].options[2]
+        }"
+      >
         {{ questions[currentQuestionIndex].options[2] }}
       </p>
-      <p class="bottom-right" (click)="selectOption(questions[currentQuestionIndex].options[3])"
-         [ngClass]="{'selected': questions[currentQuestionIndex].options[3] === selectedOption, 'correct': questions[currentQuestionIndex].options[3] === currentQuestion.correctAnswer && selectedOption === currentQuestion.correctAnswer, 'incorrect': questions[currentQuestionIndex].options[3] !== currentQuestion.correctAnswer && selectedOption === questions[currentQuestionIndex].options[3]}">
+      <p
+        class="bottom-right"
+        (click)="selectOption(questions[currentQuestionIndex].options[3])"
+        [ngClass]="{
+          selected:
+            questions[currentQuestionIndex].options[3] === selectedOption,
+          correct:
+            questions[currentQuestionIndex].options[3] ===
+              currentQuestion.correctAnswer &&
+            selectedOption === currentQuestion.correctAnswer,
+          incorrect:
+            questions[currentQuestionIndex].options[3] !==
+              currentQuestion.correctAnswer &&
+            selectedOption === questions[currentQuestionIndex].options[3]
+        }"
+      >
         {{ questions[currentQuestionIndex].options[3] }}
       </p>
-
     </div>
 
     <div class="feedback" *ngIf="showFeedback">

@@ -12,27 +12,30 @@
         </div>
       </div>
     </div>
-    <div id="regime">
-      <div class="card">
-        <img src="assets/icon/flashcard.svg" alt="Flashcard" />
-        <span>Flashcard</span>
+    <div id="box-content">
+      <div id="regime">
+        <div class="card">
+          <img src="assets/icon/flashcard.svg" alt="Flashcard" />
+          <span>Flashcard</span>
+        </div>
+        <div class="card">
+          <img src="assets/icon/learn.svg" alt="Learn" />
+          <span>Learn</span>
+        </div>
+        <div class="card">
+          <img src="assets/icon/match.svg" alt="Test" />
+          <span>Test</span>
+        </div>
+        <div class="card">
+          <img src="assets/icon/test.svg" alt="Match" />
+          <span>Match</span>
+        </div>
       </div>
-      <div class="card">
-        <img src="assets/icon/learn.svg" alt="Learn" />
-        <span>Learn</span>
-      </div>
-      <div class="card">
-        <img src="assets/icon/match.svg" alt="Test" />
-        <span>Test</span>
-      </div>
-      <div class="card">
-        <img src="assets/icon/test.svg" alt="Match" />
-        <span>Match</span>
+      <div id="lesson-content">
+        <app-lesson-content [cards]="cards"></app-lesson-content>
       </div>
     </div>
-    <div id="lesson-content">
-      <app-lesson-content></app-lesson-content>
-    </div>
+
     <div id="view">
       @for (item of cards; track $index) {
         <app-view [card]="item"></app-view>
