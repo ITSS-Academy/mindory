@@ -9,7 +9,7 @@ export class FlashcardService {
   constructor(private http: HttpClient) {}
 
   getFlashcardById(idToken: string, id: string) {
-    return this.http.get(`${environment.apiUrl}/flashcard/${id}`, {
+    return this.http.get(`${environment.apiUrl}/flashcard?id=${id}`, {
       headers: new HttpHeaders({
         Authorization: `${idToken}`,
       }),
