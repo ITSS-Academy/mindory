@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AuthState } from '../../../ngrx/auth/auth.state';
+import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
+import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
 
 interface Card {
   id: number;
@@ -18,29 +23,50 @@ interface Card {
   templateUrl: './match.component.html',
   styleUrl: './match.component.scss',
 })
-export class MatchComponent implements OnInit {
+export class MatchComponent implements OnInit, OnDestroy {
+  subscription: Subscription[] = [];
+  contents = [
+    'Apple',
+    'Banana',
+    'Orange',
+    'Grapes',
+    'Apple',
+    'Banana',
+    'Orange',
+    'Grapes',
+  ];
   isStarted = false;
   cards: Card[] = [];
   flippedCards: Card[] = [];
   matchedCardsCount = 0;
   points = 0; // Points tracking
 
+  constructor(
+    private store: Store<{ auth: AuthState; flashcard: FlashcardState }>,
+  ) {}
+
   ngOnInit() {
+    this.subscription.push(
+      this.store.select('auth', 'idToken').subscribe((idToken) => {
+        if (idToken) {
+          this.store.dispatch(
+            FlashcardActions.getFlashcard({
+              idToken: idToken,
+              flashcardId: 'f3428598-79e6-4841-8453-eb085e542a58',
+            }),
+          );
+        }
+      }),
+      this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
+        if (flashcard) {
+        }
+      }),
+    );
     this.initializeCards();
   }
 
   initializeCards() {
-    const contents = [
-      'Apple',
-      'Banana',
-      'Orange',
-      'Grapes',
-      'Apple',
-      'Banana',
-      'Orange',
-      'Grapes',
-    ];
-    this.cards = contents
+    this.cards = this.contents
       .map((content, index) => ({
         id: index,
         content,
@@ -100,4 +126,6 @@ export class MatchComponent implements OnInit {
   start() {
     this.isStarted = true;
   }
+
+  ngOnDestroy() {}
 }

@@ -16,17 +16,25 @@
       <div class="game-board">
         <div
           class="card"
-          *ngFor="let card of cards"
           [ngClass]="{ hidden: !card.visible }"
           (click)="flipCard(card)"
         >
-          <div
-            class="card-inner"
-            [ngClass]="{ flipped: card.flipped || card.matched }"
-          >
-            <div class="card-front"></div>
-            <div class="card-back">{{ card.content }}</div>
-          </div>
+          @for (card of cards; track $index) {
+            <div
+              class="card-inner"
+              [ngClass]="{ flipped: card.flipped || card.matched }"
+            >
+              <div class="card-front"></div>
+              <div class="card-back">{{ card.content }}</div>
+            </div>
+            <div
+              class="card-inner"
+              [ngClass]="{ flipped: card.flipped || card.matched }"
+            >
+              <div class="card-front"></div>
+              <div class="card-back">{{ card.content }}</div>
+            </div>
+          }
         </div>
       </div>
       <button mat-button color="primary" (click)="resetGame()">
