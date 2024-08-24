@@ -27,7 +27,7 @@ export const LAYOUT_ROUTERS: Routes = [
           import('./subjects/subjects.routes').then((m) => m.SUBJECTS_ROUTERS),
       },
       {
-        path: 'flashcards/:uid',
+        path: 'flashcards/:id',
         loadChildren: () =>
           import('./flashcards/flashcards.routes').then(
             (m) => m.FLASHCARDS_ROUTERS,
