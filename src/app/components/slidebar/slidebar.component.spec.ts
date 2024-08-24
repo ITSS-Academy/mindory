@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchPlayComponent } from './match-play.component';
+import { SlidebarComponent } from './slidebar.component';
 
-describe('MatchPlayComponent', () => {
-  let component: MatchPlayComponent;
-  let fixture: ComponentFixture<MatchPlayComponent>;
+describe('SlidebarComponent', () => {
+  let component: SlidebarComponent;
+  let fixture: ComponentFixture<SlidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatchPlayComponent]
+      imports: [SlidebarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MatchPlayComponent);
+    fixture = TestBed.createComponent(SlidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

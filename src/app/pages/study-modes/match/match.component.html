@@ -1,6 +1,38 @@
 <div class="container">
-  <h1>Ready to play ?</h1>
-  <p>Match all the terms with their definitions as fast as you can.</p>
-  <p>Avoid wrong matches, they add extra time!</p>
-  <button routerLink="/match-play" class="button-play" mat-flat-button>Start game!</button>
+  @if (!isStarted) {
+    <div class="main-content">
+      <span class="ready">Ready to play ?</span>
+      <p>Match all the terms with their definitions as fast as you can.</p>
+      <p>Avoid wrong matches, they add extra time!</p>
+      <button class="button-play" mat-flat-button (click)="start()">
+        Start game!
+      </button>
+    </div>
+  } @else {
+    <div class="game-container">
+      <div class="score">
+        <p>Points: {{ points }}</p>
+      </div>
+      <div class="game-board">
+        <div
+          class="card"
+          *ngFor="let card of cards"
+          [ngClass]="{ hidden: !card.visible }"
+          (click)="flipCard(card)"
+        >
+          <div
+            class="card-inner"
+            [ngClass]="{ flipped: card.flipped || card.matched }"
+          >
+            <div class="card-front"></div>
+            <div class="card-back">{{ card.content }}</div>
+          </div>
+        </div>
+      </div>
+      <button mat-button color="primary" (click)="resetGame()">
+        Reset Game
+      </button>
+      <p *ngIf="matchedCardsCount === cards.length">You won! 🎉</p>
+    </div>
+  }
 </div>

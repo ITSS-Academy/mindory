@@ -85,3 +85,31 @@
   color: var(--md-sys-color-on-primary-container);
   cursor: pointer;
 }
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  .search-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    width: 50%;
+  }
+}
