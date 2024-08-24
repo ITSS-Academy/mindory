@@ -3,7 +3,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }
 
 .main-content {
@@ -31,7 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  //margin-top: 20px;
 }
 
 .score {
@@ -44,15 +46,16 @@
   width: 100%;
   //height: auto;
   display: grid;
-  grid-template-columns: repeat(4, 120px); /* Increased size */
-  grid-gap: 15px; /* Increased gap between cards */
+  grid-template-columns: repeat(4, 300px); /* Increased size */
+  grid-gap: 50px; /* Increased gap between cards */
   justify-content: center;
+  align-items: center;
 }
 
 .card {
-  width: 120px; /* Increased width */
-  height: 160px; /* Increased height */
-  perspective: 1000px;
+  width: 300px; /* Increased width */
+  height: 300px; /* Increased height */
+  //perspective: 1000px;
 }
 
 .card-inner {
@@ -73,21 +76,24 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid #3946eb; /* Add a border to both sides */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .card-front {
   background: #3946eb;
-  border-radius: 8px; /* Rounded corners */
+  border: 2px solid #3946eb; /* Rounded corners */
 }
 
 .card-back {
   background: #ffffff;
   transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px; /* Increased font size */
-  border-radius: 8px; /* Rounded corners */
+  font-size: 20px;
+  border: 2px solid #3946eb; /* Ensure the border is visible when flipped */
 }
 
 /* Add this for hidden cards */
