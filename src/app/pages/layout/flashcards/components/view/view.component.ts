@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { MaterialModule } from '../../../../../shared/modules/material.module';
 
 @Component({
@@ -8,4 +8,7 @@ import { MaterialModule } from '../../../../../shared/modules/material.module';
   templateUrl: './view.component.html',
   styleUrl: './view.component.scss',
 })
-export class ViewComponent {}
+export class ViewComponent {
+  @Input()
+  viewFlashcards: any;
+}

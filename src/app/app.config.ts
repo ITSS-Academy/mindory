@@ -14,6 +14,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { profileReducer } from './ngrx/profile/profile.reducer';
 import { ProfileEffects } from './ngrx/profile/profile.effects';
+import { flashcardReducer } from './ngrx/flashcard/flashcard.reducer';
+import { FlashcardEffects } from './ngrx/flashcard/flashcard.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,8 +27,9 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState({ name: 'auth', reducer: authReducer }),
     provideState({ name: 'profile', reducer: profileReducer }),
+    provideState({ name: 'flashcard', reducer: flashcardReducer }),
 
-    provideEffects(AuthEffects, ProfileEffects),
+    provideEffects(AuthEffects, ProfileEffects, FlashcardEffects),
     provideHttpClient(),
   ],
 };

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import {AfterViewInit, Component, Input, input} from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -9,6 +9,7 @@ import { MatIcon } from '@angular/material/icon';
   styleUrls: ['./lesson-content.component.scss'],
 })
 export class LessonContentComponent implements AfterViewInit {
+  @Input()
   ngAfterViewInit() {
     const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
 
