@@ -1,6 +1,6 @@
 <nav id="navbar-container">
-  <div class="navbar-brand">
-    <span class="logo">Mindory</span>
+  <div class="navbar-brand" (click)="navigateToHome()">
+    <img src="assets/logo/Asset%2024.png" alt="this is mindory logo"  class = "logo"/>
   </div>
   <ul class="navbar-nav">
     @for (page of navLinks; track $index) {

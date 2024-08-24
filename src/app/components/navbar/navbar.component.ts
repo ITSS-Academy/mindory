@@ -95,4 +95,8 @@ export class NavbarComponent implements OnInit {
 
     this.dialog.open(LoginComponent, dialogConfig);
   }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
 }

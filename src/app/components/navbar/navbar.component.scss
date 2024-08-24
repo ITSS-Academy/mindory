@@ -10,10 +10,10 @@
 }
 
 .navbar-brand .logo {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--md-sys-color-primary-container);
-  text-decoration: none;
+  max-width: 150px;
+  max-height: 50px;
+  object-fit: contain;
+  margin-bottom: 0;
 }
 
 .navbar-nav {
