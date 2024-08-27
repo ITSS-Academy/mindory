@@ -55,4 +55,24 @@ export class FlashcardEffects {
       }),
     );
   });
+
+  createFlashcard$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(FlashcardActions.createFlashcard),
+      switchMap((action) => {
+        return this.flashcardService.createFlashcard(
+          action.idToken,
+          action.flashcard,
+        );
+      }),
+      map(() => {
+        return FlashcardActions.createFlashcardSuccess();
+      }),
+      catchError((error) => {
+        return of(
+          FlashcardActions.createFlashcardFailure({ errorMessage: error }),
+        );
+      }),
+    );
+  });
 }

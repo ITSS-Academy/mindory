@@ -18,6 +18,7 @@ import { flashcardReducer } from './ngrx/flashcard/flashcard.reducer';
 import { FlashcardEffects } from './ngrx/flashcard/flashcard.effects';
 import { subjectReducer } from './ngrx/subjects/subjects.reducer';
 import { SubjectEffects } from './ngrx/subjects/subjects.effects';
+import { studyModeReducer } from './ngrx/study-mode/study-mode.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
     provideState({ name: 'profile', reducer: profileReducer }),
     provideState({ name: 'flashcard', reducer: flashcardReducer }),
     provideState({ name: 'subject', reducer: subjectReducer }),
+    provideState({ name: 'studyMode', reducer: studyModeReducer }),
 
     provideEffects(
       AuthEffects,

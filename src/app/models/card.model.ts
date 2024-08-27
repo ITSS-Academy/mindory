@@ -1,5 +1,5 @@
 export interface CardModel {
-  id: string;
+  uid: string;
   term: string;
   definition: string;
 }

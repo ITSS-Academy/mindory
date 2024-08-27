@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {Auth, idToken, onAuthStateChanged} from '@angular/fire/auth';
+import { Auth, idToken, onAuthStateChanged } from '@angular/fire/auth';
 import { AuthState } from './ngrx/auth/auth.state';
 import * as AuthActions from './ngrx/auth/auth.actions';
 import * as ProfileActions from './ngrx/profile/profile.actions';
@@ -25,9 +25,7 @@ export class AppComponent implements OnInit {
   ) {
     onAuthStateChanged(this.auth, async (user) => {
       if (user) {
-
         const idToken = await user.getIdToken(true);
-        console.log(idToken);
         this.store.dispatch(AuthActions.storeIdToken({ idToken }));
       }
     });

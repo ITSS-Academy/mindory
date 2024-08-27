@@ -10,6 +10,7 @@ import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
 import { ActivatedRoute } from '@angular/router';
 import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
 import { ProfileState } from '../../../ngrx/profile/profile.state';
+import { StudyModeState } from '../../../ngrx/study-mode/study-mode.state';
 
 @Component({
   selector: 'app-flashcards',
@@ -19,17 +20,19 @@ import { ProfileState } from '../../../ngrx/profile/profile.state';
   styleUrls: ['./flashcards.component.scss'],
 })
 export class FlashcardsComponent implements OnInit, OnDestroy, AfterViewInit {
-  private subscription: Subscription[] = [];
+  subscription: Subscription[] = [];
   flashcard!: FlashcardModel;
   cards: CardModel[] = [];
   profile!: Profile;
   page = 0;
+  idFlashcard!: string;
 
   constructor(
     private store: Store<{
       auth: AuthState;
       flashcard: FlashcardState;
       profile: ProfileState;
+      studyMode: StudyModeState;
     }>,
     private route: ActivatedRoute,
   ) {}
@@ -38,15 +41,19 @@ export class FlashcardsComponent implements OnInit, OnDestroy, AfterViewInit {
     const flashcardId = this.route.snapshot.params['id'];
     console.log(flashcardId);
     this.subscription.push(
-      this.store.select('auth', 'idToken').subscribe((idToken) => {
-        if (idToken) {
-          this.store.dispatch(
-            FlashcardActions.getFlashcard({
-              idToken: idToken,
-              flashcardId: flashcardId,
-            }),
-          );
-        }
+      this.store.select('studyMode', 'idFlashcard').subscribe((flashcardId) => {
+        this.idFlashcard = flashcardId;
+        console.log(this.idFlashcard);
+        this.store.select('auth', 'idToken').subscribe((idToken) => {
+          if (idToken) {
+            this.store.dispatch(
+              FlashcardActions.getFlashcard({
+                idToken: idToken,
+                flashcardId: flashcardId,
+              }),
+            );
+          }
+        });
       }),
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
         this.flashcard = flashcard as FlashcardModel;
@@ -57,7 +64,7 @@ export class FlashcardsComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.forEach((sub) => sub.unsubscribe());
   }
 
