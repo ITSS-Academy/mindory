@@ -20,6 +20,7 @@ export const initialState: FlashcardState = {
 export const flashcardReducer = createReducer(
   initialState,
   on(FlashcardActions.getFlashcard, (state, action) => {
+    console.log(action.flashcardId);
     console.log(action.type);
     return {
       ...state,

@@ -18,13 +18,14 @@ import { Profile } from '../../../models/profile.model';
   standalone: true,
   imports: [LessonContentComponent, ViewComponent, MatIcon],
   templateUrl: './flashcards.component.html',
-  styleUrl: './flashcards.component.scss',
+  styleUrls: ['./flashcards.component.scss'],
 })
 export class FlashcardsComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
   flashcard!: FlashcardModel;
   cards: CardModel[] = [];
   profile!: Profile;
+  page = 0;
 
   constructor(
     private store: Store<{
@@ -60,5 +61,10 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.forEach((sub) => sub.unsubscribe());
+  }
+
+  onPageChange(newPage: number) {
+    this.page = newPage;
+    console.log(`Page changed to: ${this.page}`);
   }
 }

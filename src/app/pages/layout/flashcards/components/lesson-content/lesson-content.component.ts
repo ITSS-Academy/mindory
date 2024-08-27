@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+} from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CardModel } from '../../../../../models/card.model';
 
@@ -11,6 +17,8 @@ import { CardModel } from '../../../../../models/card.model';
 })
 export class LessonContentComponent implements AfterViewInit {
   @Input() cards!: CardModel[];
+  @Input() page: number = 0;
+  @Output() pageChange = new EventEmitter<number>();
 
   ngAfterViewInit() {
     const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
@@ -29,5 +37,19 @@ export class LessonContentComponent implements AfterViewInit {
         });
       }
     });
+  }
+
+  prevPage() {
+    if (this.page > 0) {
+      this.page--;
+      this.pageChange.emit(this.page);
+    }
+  }
+
+  nextPage() {
+    if (this.page < this.cards.length - 1) {
+      this.page++;
+      this.pageChange.emit(this.page);
+    }
   }
 }

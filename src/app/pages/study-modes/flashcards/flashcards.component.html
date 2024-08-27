@@ -2,14 +2,18 @@
   <div class="main-content">
     <div class="content">
       <div class="card">
-        <div class="front"><p>1</p></div>
-        <div class="back"><p>2</p></div>
+        <div class="front">
+          <p>{{ cards[page].term }}</p>
+        </div>
+        <div class="back">
+          <p>{{ cards[page].definition }}</p>
+        </div>
       </div>
     </div>
     <div class="pagination-control">
-      <mat-icon>arrow_back</mat-icon>
-      <span>1</span>
-      <mat-icon>arrow_forward</mat-icon>
+      <mat-icon (click)="prevPage()">arrow_back</mat-icon>
+      <span>{{ page + 1 }}</span>
+      <mat-icon (click)="nextPage()">arrow_forward</mat-icon>
     </div>
   </div>
 </div>
