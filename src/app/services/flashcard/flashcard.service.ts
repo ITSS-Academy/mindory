@@ -16,6 +16,14 @@ export class FlashcardService {
     });
   }
 
+  getStudyFlashcardById(idToken: string, id: string) {
+    return this.http.get(`${environment.apiUrl}/flashcard?id=${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `${idToken}`,
+      }),
+    });
+  }
+
   getFlashcardBySubjectId(idToken: string, id: string) {
     return this.http.get(`${environment.apiUrl}/flashcard/subject?id=${id}`, {
       headers: new HttpHeaders({

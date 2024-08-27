@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { FlashcardModel } from '../../models/flashcard.model';
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 
 export const getFlashcard = createAction(
   '[Flashcard] Get Flashcard',
