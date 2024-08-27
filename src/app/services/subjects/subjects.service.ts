@@ -8,11 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SubjectsService {
   constructor(private http: HttpClient) {}
 
-  getSubject(idToken: string) {
-    return this.http.get(`${environment.apiUrl}/subject`, {
-      headers: new HttpHeaders({
-        Authorization: `${idToken}`,
-      }),
-    });
+  getSubject() {
+    return this.http.get(`${environment.apiUrl}/subject`, {});
   }
 }

@@ -1,67 +1,110 @@
-<div class="containers">
-  <div class="left-content">
-    <h2>Create a new  flashcard set</h2>
+<div id="container">
+  <div id="main-content">
+    <div id="header">
+      <h3 id="title">Create a new flashcard set</h3>
+      <button mat-flat-button (click)="createFlashcard()">Create</button>
+    </div>
 
-    <div class="top-content">
-      <div class="input-field-left">
-        <mat-form-field class="input-field">
-          <mat-label>Enter title</mat-label>
-          <input matInput>
+    <div class="info">
+      <div class="info-input">
+        <mat-form-field appearance="fill">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            [(ngModel)]="settings.title"
+            (ngModelChange)="updateSettings()"
+          ></textarea>
+          <mat-hint class="label-input" align="start">TITLE</mat-hint>
         </mat-form-field>
-        <p>TITLE</p>
+
+        <mat-form-field appearance="fill">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            [(ngModel)]="settings.description"
+            (ngModelChange)="updateSettings()"
+          ></textarea>
+          <mat-hint class="label-input" align="start">DESCRIPTION</mat-hint>
+        </mat-form-field>
       </div>
 
-      <div class="input-field-left">
-        <mat-form-field class="input-field">
-          <mat-label>Add a description</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <p>DESCRIPTION</p>
-      </div>
-
-  </div>
-
-
-
-  <div class="right-content">
-
-  </div>
-
-  <div>
-    <mat-card class="example-card" appearance="outlined">
-      <mat-card-content>
-       <div class="title">
-         <mat-card-title>1</mat-card-title>
-         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
-       </div>
-        <div class="content">
-          <div class="input-field-left">
-            <mat-form-field class="input-field">
-              <mat-label>Enter term</mat-label>
-              <input matInput>
-            </mat-form-field>
-            <p>Term</p>
-          </div>
-
-          <div class="input-field-right">
-            <mat-form-field class="input-field">
-              <mat-label>Enter definition</mat-label>
-              <input matInput>
-            </mat-form-field>
-            <p>Definition</p>
-          </div>
+      <div class="info-setting">
+        <div class="subjects">
+          <mat-form-field>
+            <mat-label>Categories</mat-label>
+            <mat-select (selectionChange)="onSubjectChange($event)" value="0">
+              @if (isGettingSubjects$ | async) {
+                @for (subject of listSubjects; track $index) {
+                  <mat-option value="{{ $index }}"
+                    >{{ subject.name }}
+                  </mat-option>
+                }
+              }
+            </mat-select>
+          </mat-form-field>
         </div>
+        <div class="visibility">
+          <mat-radio-group
+            [(ngModel)]="settings.isPublic"
+            (change)="handleVisibilityChange($event)"
+          >
+            <mat-radio-button [value]="true">Public</mat-radio-button>
+            <mat-radio-button [value]="false">Private</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
 
-      </mat-card-content>
-    </mat-card>
+    <div class="cards">
+      @for (card of flashcard.cards; track $index) {
+        <mat-card appearance="outlined">
+          <mat-card-header class="card-header">
+            <mat-card-title class="card-title">{{ $index + 1 }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="card-content">
+              <div class="term">
+                <mat-form-field appearance="fill" class="term-input">
+                  <textarea
+                    matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    [(ngModel)]="flashcard.cards[$index].term"
+                    (ngModelChange)="
+                      updateCardByIndex($index, flashcard.cards[$index])
+                    "
+                  ></textarea>
+                  <mat-hint class="label-input" align="start">TERM</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="definition">
+                <mat-form-field appearance="fill" class="definition-input">
+                  <textarea
+                    matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    [(ngModel)]="flashcard.cards[$index].definition"
+                    (ngModelChange)="
+                      updateCardByIndex($index, flashcard.cards[$index])
+                    "
+                  ></textarea>
+                  <mat-hint class="label-input" align="start"
+                    >DEFINITION
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+
+    <div class="buttons">
+      <mat-card appearance="outlined" class="add-card" (click)="addCard()">
+        <mat-card-content>+ ADD CARD</mat-card-content>
+      </mat-card>
+    </div>
   </div>
-</div>
-
-<mat-card class="bottom-example-card">
-  <button mat-raised-button color="primary">Add another card</button>
-</mat-card>
-
-<div class="bottom">
-  <button mat-raised-button color="primary">Create set</button>
-</div>
 </div>

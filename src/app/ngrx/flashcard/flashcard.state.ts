@@ -6,4 +6,9 @@ export interface FlashcardState {
   getFlashcardError: string;
 
   flashcards: FlashcardModel[];
+  isGetFlashcardBySubjectSuccess: boolean;
+  getFlashcardBySubjectError: string;
+
+  isCreateFlashcardSuccess: boolean;
+  createFlashcardError: string;
 }

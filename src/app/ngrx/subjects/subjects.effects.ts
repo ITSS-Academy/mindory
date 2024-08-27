@@ -15,8 +15,8 @@ export class SubjectEffects {
   getSubjects$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(SubjectsActions.getSubjects),
-      switchMap((action) => {
-        return this.subjectsService.getSubject(action.idToken).pipe(
+      switchMap(() => {
+        return this.subjectsService.getSubject().pipe(
           map((subjects: any) => {
             return SubjectsActions.getSubjectsSuccess({ subjects });
           }),

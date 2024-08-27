@@ -214,3 +214,24 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+.mat-mdc-form-field-hint-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 !important;
+}
+
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-top: 28px !important;
+  padding-bottom: 0 !important;
+}
+
+.mdc-text-field {
+  padding: 0 !important;
+}
+
+div.mat-mdc-select-panel {
+  background-color: var(--md-sys-color-on-primary) !important;
+}
