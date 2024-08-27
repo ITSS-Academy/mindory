@@ -2,13 +2,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
-import { Subscription, take } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../ngrx/auth/auth.state';
 import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
 import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
-import { CardModel } from '../../../models/card.model';
+import { StudyModeState } from '../../../ngrx/study-mode/study-mode.state';
 import { FlashcardModel } from '../../../models/flashcard.model';
+
+interface Card {
+  id: number;
+  content: string;
+  flipped: boolean;
+  matched: boolean;
+  visible: boolean;
+}
 
 @Component({
   selector: 'app-match',
@@ -19,52 +27,133 @@ import { FlashcardModel } from '../../../models/flashcard.model';
 })
 export class MatchComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
+  idFlashcard!: string;
 
-  cards: CardModel[] = [];
-  shuffledCards: any[] = [];
-  points: number = 0;
+  contents: any[] = [];
+
+  isStarted = false;
+  cards: Card[] = [];
+  flippedCards: Card[] = [];
+  matchedCardsCount = 0;
+  points = 0; // Points tracking
 
   constructor(
-    private store: Store<{ auth: AuthState; flashcard: FlashcardState }>,
+    private store: Store<{
+      auth: AuthState;
+      flashcard: FlashcardState;
+      studyMode: StudyModeState;
+    }>,
   ) {}
 
-  ngOnInit(): void {
-    // this.store
-    //   .select('flashcard', 'flashcard')
-    //   .subscribe((flashcard: CardModel[]) => {
-    //     if (flashcard) {
-    //       this.cards = flashcard;
-    //       this.initializeCards();
-    //     }
-    //   });
+  ngOnInit() {
+    this.subscription.push(
+      this.store.select('studyMode', 'idFlashcard').subscribe((idFlashcard) => {
+        this.idFlashcard = idFlashcard;
+      }),
+      this.store.select('auth', 'idToken').subscribe((idToken) => {
+        if (idToken) {
+          this.store.dispatch(
+            FlashcardActions.getFlashcard({
+              idToken: idToken,
+              flashcardId: this.idFlashcard,
+            }),
+          );
+        }
+      }),
+      this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
+        if (flashcard.cards !== undefined) {
+          const newFlashcard: FlashcardModel = this.deepCopy(flashcard);
+          let card: {
+            content: string;
+            uid: string;
+          }[] = [];
+
+          // Shuffle the flashcard.cards array
+          const shuffledCards = newFlashcard.cards.sort(
+            () => Math.random() - 0.5,
+          );
+
+          // Select the first 6 cards
+          const selectedCards = shuffledCards.slice(0, 6);
+
+          selectedCards.forEach((c) => {
+            card.push({
+              content: c.term,
+              uid: c.id,
+            });
+            card.push({
+              content: c.definition,
+              uid: c.id,
+            });
+          });
+
+          this.contents = card;
+          this.initializeCards();
+        }
+      }),
+    );
   }
 
-  initializeCards(): void {
-    let terms = this.cards.map((card) => ({
-      id: card.id,
-      content: card.term,
-      type: 'term',
-    }));
-    let definitions = this.cards.map((card) => ({
-      id: card.id,
-      content: card.definition,
-      type: 'definition',
-    }));
-    this.shuffledCards = this.shuffle([...terms, ...definitions]);
+  initializeCards() {
+    this.cards = this.contents
+      .map((content) => ({
+        id: content.uid,
+        content: content.content,
+        flipped: false,
+        matched: false,
+        visible: true,
+      }))
+      .sort(() => Math.random() - 0.5); // Shuffle cards
   }
-  shuffle(array: any[]): any[] {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+
+  flipCard(card: Card) {
+    if (card.flipped || card.matched || this.flippedCards.length === 2) {
+      return;
     }
-    return array;
+
+    card.flipped = true;
+    this.flippedCards.push(card);
+
+    if (this.flippedCards.length === 2) {
+      this.checkForMatch();
+    }
   }
 
-  onCardClick(card: any): void {
-    // Add logic to handle card click and match logic
+  checkForMatch() {
+    const [card1, card2] = this.flippedCards;
+
+    if (card1.id === card2.id) {
+      card1.matched = true;
+      card2.matched = true;
+
+      // Update points
+      this.points += 10;
+
+      // Hide matched cards after a short delay
+      setTimeout(() => {
+        card1.visible = false;
+        card2.visible = false;
+        this.matchedCardsCount += 2;
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        card1.flipped = false;
+        card2.flipped = false;
+      }, 1000);
+    }
+
+    this.flippedCards = [];
+  }
+
+  start() {
+    this.isStarted = true;
+  }
+
+  deepCopy(obj: any) {
+    return JSON.parse(JSON.stringify(obj));
   }
 
   ngOnDestroy() {
-    this.subscription.forEach((sub) => sub.unsubscribe());
+    this.subscription.forEach((s) => s.unsubscribe());
   }
 }

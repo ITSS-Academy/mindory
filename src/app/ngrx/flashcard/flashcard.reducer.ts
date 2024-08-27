@@ -85,7 +85,7 @@ export const flashcardReducer = createReducer(
         cards: [
           ...state.flashcard.cards,
           {
-            uid: '',
+            id: '',
             term: '',
             definition: '',
           },
@@ -151,6 +151,21 @@ export const flashcardReducer = createReducer(
         isPublic: setting.isPublic,
         subject: setting.subject,
       },
+    };
+  }),
+  on(FlashcardActions.clearState, (state) => {
+    return {
+      ...state,
+      flashcard: <FlashcardModel>{},
+      isGetFlashcardSuccess: false,
+      getFlashcardError: '',
+
+      flashcards: [],
+      isGetFlashcardBySubjectSuccess: false,
+      getFlashcardBySubjectError: '',
+
+      isCreateFlashcardSuccess: false,
+      createFlashcardError: '',
     };
   }),
 );

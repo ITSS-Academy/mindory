@@ -1,3 +1,67 @@
-<div class="container">
-  <app-multiple-choice></app-multiple-choice>
+<div class="containers">
+  <div class="left-content">
+    <p>{{ progress }}</p>
+  </div>
+
+  <div class="progress-bar">
+    <mat-progress-bar
+      mode="determinate"
+      [style.width]="(progress / questions.length) * 100 + '%'"
+    ></mat-progress-bar>
+  </div>
+
+  <div class="right-content">
+    <p>{{ questions.length }}</p>
+  </div>
 </div>
+
+<div class="container">
+  <div class="main-content" *ngIf="!showScore; else scoreTemplate">
+    <div class="question">
+      <h2>{{ currentQuestion.questions }}</h2>
+    </div>
+
+    <div class="mid-content">
+      <p>Choose matching term</p>
+    </div>
+    <div class="corner-buttons">
+      <button
+        mat-stroked-button
+        class="top-left"
+        (click)="selectOption(questions[currentQuestionIndex].answer[0])"
+      >
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
+        class="top-right"
+        (click)="selectOption(questions[currentQuestionIndex].answer[1])"
+      >
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
+        class="bottom-left"
+        (click)="selectOption(questions[currentQuestionIndex].answer[2])"
+      >
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
+        class="bottom-right"
+        (click)="selectOption(questions[currentQuestionIndex].answer[3])"
+      >
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+    </div>
+
+    <div class="feedback" *ngIf="showFeedback">
+      <p>{{ feedback }}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #scoreTemplate>
+  <h2>Your Score: {{ progress }}/{{ questions.length }}</h2>
+  <button (click)="restartQuiz()">Restart Quiz</button>
+</ng-template>

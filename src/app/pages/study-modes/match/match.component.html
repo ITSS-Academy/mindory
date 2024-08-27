@@ -11,7 +11,7 @@
   } @else {
     <div class="game-container">
       <div class="score">
-        <p>Points: {{ points }}</p>
+        <!--        <p>Points: {{ points }}</p>-->
       </div>
       <div class="game-board">
         @for (card of cards; track $index) {
@@ -27,20 +27,13 @@
               <div class="card-front"></div>
               <div class="card-back">{{ card.content }}</div>
             </div>
-            <div
-              class="card-inner"
-              [ngClass]="{ flipped: card.flipped || card.matched }"
-            >
-              <div class="card-front"></div>
-              <div class="card-back">{{ card.content }}</div>
-            </div>
           </div>
         }
       </div>
-      <button mat-button color="primary" (click)="resetGame()">
-        Reset Game
-      </button>
-      <p *ngIf="matchedCardsCount === cards.length">You won! 🎉</p>
+      <!--      <button mat-button color="primary" (click)="resetGame()">-->
+      <!--        Reset Game-->
+      <!--      </button>-->
+      <!--      <p *ngIf="matchedCardsCount === cards.length">{{ time }}</p>-->
     </div>
   }
 </div>

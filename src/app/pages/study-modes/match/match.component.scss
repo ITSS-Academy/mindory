@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   margin: 0;
 }
@@ -46,16 +46,16 @@
   width: 100%;
   //height: auto;
   display: grid;
-  grid-template-columns: repeat(4, 300px); /* Increased size */
-  grid-gap: 50px; /* Increased gap between cards */
+  grid-template-columns: repeat(4, 275px); /* Increased size */
+  grid-gap: 20px; /* Increased gap between cards */
   justify-content: center;
   align-items: center;
 }
 
 .card {
-  width: 300px; /* Increased width */
-  height: 300px; /* Increased height */
-  //perspective: 1000px;
+  width: 280px; /* Increased width */
+  height: 180px; /* Increased height */
+  perspective: 1000px;
 }
 
 .card-inner {
@@ -82,6 +82,7 @@
   border-radius: 8px;
   border: 2px solid #3946eb; /* Add a border to both sides */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  padding: 5px;
 }
 
 .card-front {
