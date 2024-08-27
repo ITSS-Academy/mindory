@@ -37,5 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.store.dispatch(SubjectActions.getSubjects());
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.subscription.forEach((sub) => sub.unsubscribe());
+  }
 }

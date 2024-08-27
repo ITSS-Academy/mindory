@@ -1,5 +1,5 @@
 import { SubjectModel } from './subject.model';
-import { CardModel } from './card.model';
+import { CardDTO, CardModel } from './card.model';
 import { Profile } from './profile.model';
 
 export interface FlashcardModel {
@@ -18,6 +18,6 @@ export interface FlashcardDTO {
     description: string;
     isPublic: boolean;
     subject: SubjectModel;
-    cards: CardModel[];
+    cards: CardDTO[];
   };
 }

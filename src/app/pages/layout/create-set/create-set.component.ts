@@ -43,7 +43,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
     },
     cards: [
       {
-        uid: '',
+        id: '',
         term: '',
         definition: '',
       },
@@ -60,7 +60,10 @@ export class CreateSetComponent implements OnInit, OnDestroy {
     title: '',
     description: '',
     isPublic: false,
-    subject: <SubjectModel>{},
+    subject: {
+      uid: '64bf69b7-0b0f-4f37-90a5-6eea3bf9466f',
+      name: 'Social Science',
+    },
   };
 
   constructor(
@@ -88,6 +91,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
         .subscribe((res) => {
           if (res) {
             this.router.navigate(['/home']);
+            this.store.dispatch(FlashCardActions.clearState());
           }
         }),
     );
@@ -114,6 +118,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
   }
 
   convertToFlashcardDTO(flashcard: FlashcardModel): FlashcardDTO {
+    const cardsWithoutId = flashcard.cards.map(({ id, ...rest }) => rest);
     return {
       flashcard: {
         title: flashcard.title,
@@ -123,14 +128,13 @@ export class CreateSetComponent implements OnInit, OnDestroy {
           uid: flashcard.subject.uid,
           name: flashcard.subject.name,
         },
-        cards: flashcard.cards,
+        cards: cardsWithoutId,
       },
     };
   }
 
   createFlashcard() {
     const flashcardDTO = this.convertToFlashcardDTO(this.flashcard);
-    console.log(flashcardDTO);
     this.store.dispatch(
       FlashCardActions.createFlashcard({
         idToken: this.idToke,
@@ -158,5 +162,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
     return JSON.parse(JSON.stringify(obj));
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.subscription.forEach((sub) => sub.unsubscribe());
+  }
 }

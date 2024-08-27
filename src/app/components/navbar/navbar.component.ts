@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { MaterialModule } from '../../shared/modules/material.module';
 import { SharedModule } from '../../shared/modules/shared.module';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -19,6 +19,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class NavbarComponent implements OnInit {
   @Output() menuClick = new EventEmitter<void>();
+  subscription: Subscription[] = [];
 
   onMenuClick(): void {
     this.menuClick.emit();
@@ -60,14 +61,19 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select('auth', 'isLoginSuccess').subscribe((isLoginSuccess) => {
-      if (isLoginSuccess) {
-        this.dialog.closeAll();
-      }
-    });
-    this.store.select('profile', 'profile').subscribe((profile) => {
-      this.photoUrl = profile.photoUrl;
-    });
+    this.subscription.push(
+      this.store
+        .select('auth', 'isLoginSuccess')
+        .subscribe((isLoginSuccess) => {
+          if (isLoginSuccess) {
+            this.dialog.closeAll();
+          }
+        }),
+      this.store.select('profile', 'profile').subscribe((profile) => {
+        this.photoUrl = profile.photoUrl;
+      }),
+    );
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -104,5 +110,13 @@ export class NavbarComponent implements OnInit {
 
   navigateToHome() {
     this.router.navigate(['/']);
+  }
+
+  createFlashcard() {
+    this.router.navigate(['/create-set']);
+  }
+
+  ngOnDestroy() {
+    this.subscription.forEach((sub) => sub.unsubscribe());
   }
 }

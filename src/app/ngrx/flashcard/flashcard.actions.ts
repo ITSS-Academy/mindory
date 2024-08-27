@@ -65,3 +65,5 @@ export const updateFlashcard = createAction(
   '[Flashcard] Update Flashcard',
   props<{ setting: any }>(),
 );
+
+export const clearState = createAction('[Flashcard] Clear State');
