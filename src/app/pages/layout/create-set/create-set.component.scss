@@ -4,62 +4,107 @@
   --mdc-outlined-card-container-color: none;
 }
 
-.left-content h2{
-  margin-top: 20px;
-  margin-left: 190px;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.top-content{
-  margin-left: 190px;
-}
-
-.example-card{
-  width: 80%;
+#container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f6f7fb;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
 }
 
-.title{
-  margin-left: 16px;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: space-between;
+#main-content {
+  width: 80%;
+  height: 100%;
+  padding: 20px 0;
 }
 
-.content{
-  display: flex;
-  flex-direction: row;
+#title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#header {
   width: 100%;
-  justify-content: space-between;
-}
-
-.input-field{
-  background-color: #ffffff;
-  width: 500px;
-}
-
-.input-field-left p {
-  margin-left: 16px;
-}
-
-.input-field-right p {
-  margin-left: 16px;
-}
-
-
-.bottom{
   display: flex;
-  justify-content: right;
-  margin-top: 30px;
-  margin-right: 140px;
-
+  justify-content: space-between;
+  align-items: center;
 }
 
-.bottom-example-card{
-  margin: 0 auto;
-  margin-top: 50px;
+.info {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.info-input {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-setting {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.label-input {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-outline);
+}
+
+.cards {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.term {
+  width: 50%;
+}
+
+.term-input {
+  width: 100%;
+}
+
+.definition {
+  width: 50%;
+}
+
+.definition-input {
+  width: 100%;
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--md-sys-color-outline);
 }

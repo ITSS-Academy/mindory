@@ -29,15 +29,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.push(
-      this.store.select('auth', 'idToken').subscribe((idToken) => {
-        if (idToken) {
-          this.store.dispatch(SubjectActions.getSubjects({ idToken }));
-        }
-      }),
       this.store.select('subject', 'subjects').subscribe((subjects) => {
         console.log(subjects);
       }),
     );
+
+    this.store.dispatch(SubjectActions.getSubjects());
   }
 
   ngOnDestroy(): void {}

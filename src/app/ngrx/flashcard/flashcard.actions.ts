@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { FlashcardModel } from '../../models/flashcard.model';
+import { FlashcardDTO, FlashcardModel } from '../../models/flashcard.model';
+import { CardModel } from '../../models/card.model';
 
 export const getFlashcard = createAction(
   '[Flashcard] Get Flashcard',
@@ -27,4 +28,40 @@ export const getFlashcardBySubjectSuccess = createAction(
 export const getFlashcardBySubjectFailure = createAction(
   '[Flashcard] Get Flashcard By Subject Failure',
   props<{ errorMessage: string }>(),
+);
+
+export const createFlashcard = createAction(
+  '[Flashcard] Create Flashcard',
+  props<{ idToken: string; flashcard: FlashcardDTO }>(),
+);
+
+export const createFlashcardSuccess = createAction(
+  '[Flashcard] Create Flashcard Success',
+);
+
+export const createFlashcardFailure = createAction(
+  '[Flashcard] Create Flashcard Failure',
+  props<{ errorMessage: string }>(),
+);
+
+export const storeDefaultFlashcard = createAction(
+  '[Flashcard] Store Default Flashcard',
+  props<{ flashcard: FlashcardModel }>(),
+);
+
+export const addNewCard = createAction('[Flashcard] Add New Card');
+
+export const updateCardByIndex = createAction(
+  '[Flashcard] Update Card By Index',
+  props<{ index: number; card: CardModel }>(),
+);
+
+export const deleteCardByIndex = createAction(
+  '[Flashcard] Delete Card By Index',
+  props<{ index: number }>(),
+);
+
+export const updateFlashcard = createAction(
+  '[Flashcard] Update Flashcard',
+  props<{ setting: any }>(),
 );

@@ -7,7 +7,17 @@ export interface FlashcardModel {
   title: string;
   description: string;
   isPublic: boolean;
-  subjectId: SubjectModel;
+  subject: SubjectModel;
   cards: CardModel[];
   authorId: Profile;
+}
+
+export interface FlashcardDTO {
+  flashcard: {
+    title: string;
+    description: string;
+    isPublic: boolean;
+    subject: SubjectModel;
+    cards: CardModel[];
+  };
 }
