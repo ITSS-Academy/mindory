@@ -12,11 +12,19 @@ import { FlashcardModel } from '../../../models/flashcard.model';
 import { CardModel } from '../../../models/card.model';
 import { ProfileState } from '../../../ngrx/profile/profile.state';
 import { Profile } from '../../../models/profile.model';
+import { AsyncPipe } from '@angular/common';
+import { LocalTimePipe } from '../../../shared/pipes/local-time.pipe';
 
 @Component({
   selector: 'app-flashcards',
   standalone: true,
-  imports: [LessonContentComponent, ViewComponent, MatIcon],
+  imports: [
+    LessonContentComponent,
+    ViewComponent,
+    MatIcon,
+    AsyncPipe,
+    LocalTimePipe,
+  ],
   templateUrl: './flashcards.component.html',
   styleUrls: ['./flashcards.component.scss'],
 })
@@ -26,6 +34,11 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   cards: CardModel[] = [];
   profile!: Profile;
   page = 0;
+
+  isGetFlashcardSuccess$ = this.store.select(
+    'flashcard',
+    'isGetFlashcardSuccess',
+  );
 
   constructor(
     private store: Store<{
@@ -53,8 +66,8 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
         this.flashcard = flashcard as FlashcardModel;
         this.cards = flashcard.cards as CardModel[];
-        console.log(this.cards.length);
         this.profile = flashcard.authorId as Profile;
+        console.log(this.flashcard);
       }),
     );
   }

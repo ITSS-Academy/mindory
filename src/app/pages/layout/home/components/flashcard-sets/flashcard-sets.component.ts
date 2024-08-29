@@ -7,6 +7,7 @@ import {
 } from '@angular/cdk/scrolling';
 import { SubjectByUid } from '../../../../../models/subject.model';
 import { NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flashcard-sets',
@@ -24,5 +25,9 @@ import { NgOptimizedImage } from '@angular/common';
 export class FlashcardSetsComponent {
   @Input() subject!: SubjectByUid;
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  flashcardDetail(id: string) {
+    this.router.navigate([`/flashcard/${id}`]);
+  }
 }
