@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { MaterialModule } from '../../../shared/modules/material.module';
-import { Question } from '../test/test.component';
-import { NgClass, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../ngrx/auth/auth.state';
@@ -12,25 +11,24 @@ import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
 import { FlashcardModel } from '../../../models/flashcard.model';
 
 interface Card {
-  id: number;
-  questions: string;
+  id: string;
+  term: string;
+  definition: string;
 }
 
 @Component({
   selector: 'app-learn',
   standalone: true,
-  imports: [SharedModule, MaterialModule, NgClass, NgIf],
+  imports: [SharedModule, MaterialModule, NgClass, NgIf, AsyncPipe],
   templateUrl: './learn.component.html',
-  styleUrl: './learn.component.scss',
+  styleUrls: ['./learn.component.scss'],
 })
 export class LearnComponent implements OnInit {
   subscription: Subscription[] = [];
-
   idFlashcard!: string;
-
   cards: Card[] = [];
   currentQuestionIndex = 0;
-  selectedOption: any[] = [];
+  selectedOption: string = '';
 
   feedback: string = '';
   showFeedback: boolean = false;
@@ -39,6 +37,10 @@ export class LearnComponent implements OnInit {
 
   questions: any[] = [];
   answer: any[] = [];
+  isGetFlashcardSuccess$ = this.store.select(
+    'flashcard',
+    'isGetFlashcardSuccess',
+  );
 
   constructor(
     private store: Store<{
@@ -66,35 +68,7 @@ export class LearnComponent implements OnInit {
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
         if (flashcard.cards !== undefined) {
           const newFlashcard: FlashcardModel = this.deepCopy(flashcard);
-          let card: {
-            questions: string;
-            answer: string;
-            uid: string;
-          }[] = [];
-
-          // Shuffle the flashcard.cards array
-          const shuffledCards = newFlashcard.cards.sort(
-            () => Math.random() - 0.5,
-          );
-
-          // Select the first 6 cards
-          const selectedCards = shuffledCards.slice(0, 6);
-
-          selectedCards.forEach((c) => {
-            card.push({
-              questions: c.term,
-              answer: c.definition,
-              uid: c.id,
-            });
-            card.push({
-              questions: c.term,
-              answer: c.definition,
-              uid: c.id,
-            });
-          });
-
-          this.questions = card;
-          this.answer = card;
+          this.cards = newFlashcard.cards;
           this.initializeQuestions();
         }
       }),
@@ -102,21 +76,37 @@ export class LearnComponent implements OnInit {
   }
 
   initializeQuestions() {
-    this.questions = this.questions
-      .map((content) => ({
-        id: content.uid,
-        questions: content.questions,
-        answer: content.answer,
-      }))
-      .sort(() => Math.random() - 0.5); // Shuffle cards
+    for (let i = 0; i < this.cards.length; i++) {
+      const selectedCard =
+        this.cards[Math.floor(Math.random() * this.cards.length)]; //lấy ngẫu nhiên 1 phần tử trong mảng
+      const incorrectAnswers = this.cards // tạo biến hứng
+        .filter((card) => card.id !== selectedCard.id) //
+        .sort(() => Math.random() - 0.5) //trộn lấy giá trị âm hoặc dương ngẫu nhiên
+        .slice(0, 3); //cắt 3 phần tử đầu tiên
+
+      const answers = [selectedCard, ...incorrectAnswers] // tạo mảng mới gồm 2 biến selectedCard và incorrectAnswers
+        .map((card) => card.definition)
+        .sort(() => Math.random() - 0.5);
+
+      this.questions.push({
+        term: selectedCard.term,
+        correctAnswer: selectedCard.definition,
+        answers: answers,
+      });
+    }
   }
 
   get currentQuestion() {
+    if (this.questions.length === 0) {
+      return;
+    }
+
     return this.questions[this.currentQuestionIndex];
   }
 
   selectOption(answer: string) {
-    this.selectedOption = this.answer;
+    this.selectedOption = answer;
+    console.log(this.selectedOption);
     this.checkAnswer();
   }
 
@@ -125,7 +115,6 @@ export class LearnComponent implements OnInit {
 
     if (this.selectedOption === this.currentQuestion.correctAnswer) {
       this.feedback = 'Correct!';
-      this.currentQuestion.answeredCorrectly = true;
       this.progress++;
     } else {
       this.feedback =
@@ -136,7 +125,7 @@ export class LearnComponent implements OnInit {
 
     setTimeout(() => {
       this.nextQuestion();
-    }, 2000); // Delay before moving to the next question
+    }, 2000);
   }
 
   nextQuestion() {
@@ -151,7 +140,6 @@ export class LearnComponent implements OnInit {
 
   restartQuiz() {
     this.currentQuestionIndex = 0;
-
     this.progress = 0;
     this.showScore = false;
     this.questions.forEach((q) => (q.answeredCorrectly = undefined));

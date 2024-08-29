@@ -11,6 +11,7 @@ export interface FlashcardModel {
   subject: SubjectModel;
   cards: CardModel[];
   authorId: Profile;
+  createdAt: Date;
 }
 
 export interface FlashcardDTO {

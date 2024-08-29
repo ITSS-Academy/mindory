@@ -38,6 +38,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
     description: '',
     totalCards: 0,
     isPublic: false,
+    createdAt: new Date(),
     subject: {
       uid: '64bf69b7-0b0f-4f37-90a5-6eea3bf9466f',
       name: 'Social Science',

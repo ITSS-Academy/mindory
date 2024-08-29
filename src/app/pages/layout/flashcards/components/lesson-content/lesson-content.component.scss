@@ -35,6 +35,9 @@
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
   font-size: 30px;
+  padding: 20px;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .front {
@@ -58,7 +61,7 @@
 
 mat-icon {
   background-color: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-surface-variant);
+  color: #bababa;
   width: 40px;
   height: 40px;
   font-size: 40px;
@@ -71,4 +74,5 @@ mat-icon {
 
 mat-icon:hover {
   background-color: var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-shadow);
 }

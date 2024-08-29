@@ -1,44 +1,48 @@
-<div id="container">
-  <div id="main-content">
-    <div id="topic-hierarchy">
-      <h3 class="title">{{ flashcard.title }}</h3>
-      <div class="author-info">
-        <div class="author-avatar">
-          <img [src]="profile.photoUrl" alt="" />
-        </div>
-        <div class="author-details">
-          <span class="name">{{ profile.fullName }}</span>
-          <span class="time">Thời gian tạo</span>
-        </div>
-      </div>
-    </div>
-    <div id="box-content">
-      <div id="regime">
-        <div class="card">
-          <img src="assets/icon/flashcard.svg" alt="Flashcard" />
-          <span>Flashcard</span>
-        </div>
-        <div class="card">
-          <img src="assets/icon/learn.svg" alt="Learn" />
-          <span>Learn</span>
-        </div>
-        <div class="card">
-          <img src="assets/icon/match.svg" alt="Test" />
-          <span>Test</span>
-        </div>
-        <div class="card">
-          <img src="assets/icon/test.svg" alt="Match" />
-          <span>Match</span>
+@if (isGetFlashcardSuccess$ | async) {
+  <div id="container">
+    <div id="main-content">
+      <div id="topic-hierarchy">
+        <h3 class="title">{{ flashcard.title }}</h3>
+        <div class="author-info">
+          <div class="author-avatar">
+            <img [src]="profile.photoUrl" alt="" />
+          </div>
+          <div class="author-details">
+            <span class="name">{{ profile.fullName }}</span>
+            <span class="time"
+              >Thời gian tạo: {{ flashcard.createdAt | localTime }}</span
+            >
+          </div>
         </div>
       </div>
-      <div id="lesson-content">
-        <app-lesson-content [cards]="cards"></app-lesson-content>
+      <div id="box-content">
+        <div id="regime">
+          <div class="card">
+            <img src="assets/icon/flashcard.svg" alt="Flashcard" />
+            <span>Flashcard</span>
+          </div>
+          <div class="card">
+            <img src="assets/icon/learn.svg" alt="Learn" />
+            <span>Learn</span>
+          </div>
+          <div class="card">
+            <img src="assets/icon/match.svg" alt="Test" />
+            <span>Test</span>
+          </div>
+          <div class="card">
+            <img src="assets/icon/test.svg" alt="Match" />
+            <span>Match</span>
+          </div>
+        </div>
+        <div id="lesson-content">
+          <app-lesson-content [cards]="cards"></app-lesson-content>
+        </div>
       </div>
-    </div>
-    <div id="view">
-      @for (item of cards; track $index) {
-        <app-view [card]="item"></app-view>
-      }
+      <div id="view">
+        @for (item of cards; track $index) {
+          <app-view [card]="item"></app-view>
+        }
+      </div>
     </div>
   </div>
-</div>
+}
