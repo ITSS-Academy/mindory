@@ -1,6 +1,11 @@
+:host {
+  --mdc-outlined-card-container-color: #ffffff;
+}
+
 mat-card-title {
   font-size: 15px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 mat-chip::ng-deep .mdc-evolution-chip__action--primary::before {

@@ -144,7 +144,7 @@ $light-theme: mat.define-theme(
 :root {
   @include mat.all-component-themes($light-theme);
   --md-sys-color-primary: rgb(0 10 166);
-  --md-sys-color-surface-tint: rgb(57 70 235);
+  --md-sys-color-surface-tint: rgba(57, 70, 235, 0.5);
   --md-sys-color-on-primary: rgb(255 255 255);
   --md-sys-color-primary-container: rgb(42 54 222);
   --md-sys-color-on-primary-container: rgb(244 242 255);
@@ -166,7 +166,7 @@ $light-theme: mat.define-theme(
   --md-sys-color-on-surface: rgb(26 27 36);
   --md-sys-color-surface-variant: rgb(226 225 245);
   --md-sys-color-on-surface-variant: rgb(246, 247, 252);
-  --md-sys-color-outline: rgb(117 118 135);
+  --md-sys-color-outline: rgba(117, 118, 135, 0.2);
   --md-sys-color-outline-variant: rgb(216, 216, 221);
   --md-sys-color-shadow: rgb(0 0 0);
   --md-sys-color-scrim: rgb(0 0 0);

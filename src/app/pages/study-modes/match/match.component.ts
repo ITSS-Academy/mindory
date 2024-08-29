@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
-import { interval, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../ngrx/auth/auth.state';
 import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
@@ -134,7 +134,7 @@ export class MatchComponent implements OnInit, OnDestroy {
         card1.visible = false;
         card2.visible = false;
         this.matchedCardsCount += 2;
-      }, 500);
+      }, 2000);
     } else {
       setTimeout(() => {
         card1.flipped = false;
@@ -145,13 +145,6 @@ export class MatchComponent implements OnInit, OnDestroy {
     this.flippedCards = [];
   }
 
-  resetGame() {
-    this.matchedCardsCount = 0;
-    this.flippedCards = [];
-    this.points = 0; // Reset points
-    this.initializeCards();
-  }
-
   start() {
     this.isStarted = true;
   }
@@ -160,5 +153,7 @@ export class MatchComponent implements OnInit, OnDestroy {
     return JSON.parse(JSON.stringify(obj));
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscription.forEach((s) => s.unsubscribe());
+  }
 }

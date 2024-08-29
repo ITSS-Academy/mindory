@@ -17,8 +17,15 @@ export class FlashcardService {
     });
   }
 
-  getFlashcardBySubjectId(idToken: string, id: string) {
-    return this.http.get(`${environment.apiUrl}/flashcard/subject?id=${id}`, {
+  getFlashcardBySubjectId(id: string) {
+    return this.http.get(
+      `${environment.apiUrl}/flashcard/subject?id=${id}`,
+      {},
+    );
+  }
+
+  getAllFlashcards(idToken: string) {
+    return this.http.get(`${environment.apiUrl}/flashcard/all`, {
       headers: new HttpHeaders({
         Authorization: `${idToken}`,
       }),

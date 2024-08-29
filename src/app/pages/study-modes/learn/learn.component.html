@@ -18,85 +18,41 @@
 <div class="container">
   <div class="main-content" *ngIf="!showScore; else scoreTemplate">
     <div class="question">
-      <h2>{{ currentQuestion.question }}</h2>
+      <h2>{{ currentQuestion.questions }}</h2>
     </div>
 
     <div class="mid-content">
       <p>Choose matching term</p>
     </div>
     <div class="corner-buttons">
-      <p
+      <button
+        mat-stroked-button
         class="top-left"
-        (click)="selectOption(questions[currentQuestionIndex].options[0])"
-        [ngClass]="{
-          selected:
-            questions[currentQuestionIndex].options[0] === selectedOption,
-          correct:
-            questions[currentQuestionIndex].options[0] ===
-              currentQuestion.correctAnswer &&
-            selectedOption === currentQuestion.correctAnswer,
-          incorrect:
-            questions[currentQuestionIndex].options[0] !==
-              currentQuestion.correctAnswer &&
-            selectedOption === questions[currentQuestionIndex].options[0]
-        }"
+        (click)="selectOption(questions[currentQuestionIndex].answer[0])"
       >
-        {{ questions[currentQuestionIndex].options[0] }}
-      </p>
-      <p
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
         class="top-right"
-        (click)="selectOption(questions[currentQuestionIndex].options[1])"
-        [ngClass]="{
-          selected:
-            questions[currentQuestionIndex].options[1] === selectedOption,
-          correct:
-            questions[currentQuestionIndex].options[1] ===
-              currentQuestion.correctAnswer &&
-            selectedOption === currentQuestion.correctAnswer,
-          incorrect:
-            questions[currentQuestionIndex].options[1] !==
-              currentQuestion.correctAnswer &&
-            selectedOption === questions[currentQuestionIndex].options[1]
-        }"
+        (click)="selectOption(questions[currentQuestionIndex].answer[1])"
       >
-        {{ questions[currentQuestionIndex].options[1] }}
-      </p>
-      <p
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
         class="bottom-left"
-        (click)="selectOption(questions[currentQuestionIndex].options[2])"
-        [ngClass]="{
-          selected:
-            questions[currentQuestionIndex].options[2] === selectedOption,
-          correct:
-            questions[currentQuestionIndex].options[2] ===
-              currentQuestion.correctAnswer &&
-            selectedOption === currentQuestion.correctAnswer,
-          incorrect:
-            questions[currentQuestionIndex].options[2] !==
-              currentQuestion.correctAnswer &&
-            selectedOption === questions[currentQuestionIndex].options[2]
-        }"
+        (click)="selectOption(questions[currentQuestionIndex].answer[2])"
       >
-        {{ questions[currentQuestionIndex].options[2] }}
-      </p>
-      <p
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
+      <button
+        mat-stroked-button
         class="bottom-right"
-        (click)="selectOption(questions[currentQuestionIndex].options[3])"
-        [ngClass]="{
-          selected:
-            questions[currentQuestionIndex].options[3] === selectedOption,
-          correct:
-            questions[currentQuestionIndex].options[3] ===
-              currentQuestion.correctAnswer &&
-            selectedOption === currentQuestion.correctAnswer,
-          incorrect:
-            questions[currentQuestionIndex].options[3] !==
-              currentQuestion.correctAnswer &&
-            selectedOption === questions[currentQuestionIndex].options[3]
-        }"
+        (click)="selectOption(questions[currentQuestionIndex].answer[3])"
       >
-        {{ questions[currentQuestionIndex].options[3] }}
-      </p>
+        {{ questions[currentQuestionIndex].answer }}
+      </button>
     </div>
 
     <div class="feedback" *ngIf="showFeedback">

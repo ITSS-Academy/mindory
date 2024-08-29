@@ -11,4 +11,7 @@ export interface FlashcardState {
 
   isCreateFlashcardSuccess: boolean;
   createFlashcardError: string;
+
+  isGetAllFlashcardSuccess: boolean;
+  getAllFlashcardError: string;
 }
