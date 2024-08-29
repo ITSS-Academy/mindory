@@ -1,4 +1,4 @@
-<div>
+@if (isGetFlashcardSuccess$ | async) {
   <div class="containers">
     <div class="left-content">
       <p>{{ progress }}</p>
@@ -19,40 +19,45 @@
   <div class="container">
     <div class="main-content" *ngIf="!showScore; else scoreTemplate">
       <div class="question">
-        <h2>{{ currentQuestion.questions }}</h2>
+        <h2>{{ currentQuestion.term }}</h2>
       </div>
 
       <div class="mid-content">
         <p>Choose matching term</p>
       </div>
+
       <div class="corner-buttons">
         <button
           mat-stroked-button
           class="top-left"
-          (click)="selectOption(questions[currentQuestionIndex].answer[0])"
+          (click)="selectOption(currentQuestion.answers[0])"
+          [disabled]="selectedOption !== ''"
         >
-          {{ questions[currentQuestionIndex].answer }}
+          {{ currentQuestion.answers[0] }}
         </button>
         <button
           mat-stroked-button
           class="top-right"
-          (click)="selectOption(questions[currentQuestionIndex].answer[1])"
+          (click)="selectOption(currentQuestion.answers[1])"
+          [disabled]="selectedOption !== ''"
         >
-          {{ questions[currentQuestionIndex].answer }}
+          {{ currentQuestion.answers[1] }}
         </button>
         <button
           mat-stroked-button
           class="bottom-left"
-          (click)="selectOption(questions[currentQuestionIndex].answer[2])"
+          (click)="selectOption(currentQuestion.answers[2])"
+          [disabled]="selectedOption !== ''"
         >
-          {{ questions[currentQuestionIndex].answer }}
+          {{ currentQuestion.answers[2] }}
         </button>
         <button
           mat-stroked-button
           class="bottom-right"
-          (click)="selectOption(questions[currentQuestionIndex].answer[3])"
+          (click)="selectOption(currentQuestion.answers[3])"
+          [disabled]="selectedOption !== ''"
         >
-          {{ questions[currentQuestionIndex].answer }}
+          {{ currentQuestion.answers[3] }}
         </button>
       </div>
 
@@ -66,4 +71,4 @@
     <h2>Your Score: {{ progress }}/{{ questions.length }}</h2>
     <button (click)="restartQuiz()">Restart Quiz</button>
   </ng-template>
-</div>
+}
