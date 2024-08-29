@@ -1,8 +1,10 @@
 <div class="container">
   <div class="main-content">
-    <app-flashcard-sets></app-flashcard-sets>
-    <app-flashcard-sets></app-flashcard-sets>
-    <app-flashcard-sets></app-flashcard-sets>
-    <app-flashcard-sets></app-flashcard-sets>
+    @if (isGettingSubjects$) {
+      <app-flashcard-sets [subject]="socialScience"></app-flashcard-sets>
+      <app-flashcard-sets [subject]="business"></app-flashcard-sets>
+      <app-flashcard-sets [subject]="economics"></app-flashcard-sets>
+      <app-flashcard-sets [subject]="humanGeography"></app-flashcard-sets>
+    }
   </div>
 </div>

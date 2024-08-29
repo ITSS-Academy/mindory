@@ -1,8 +1,12 @@
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-subtitle>
-      <mat-chip>3 subtitle</mat-chip>
-    </mat-card-subtitle>
-    <mat-card-title>header</mat-card-title>
-  </mat-card-header>
-</mat-card>
+@if (flashcard.length > 0) {
+  @for (flashcard of flashcard; track $index) {
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-subtitle>
+          <mat-chip>{{ flashcard.totalCards }} terms</mat-chip>
+        </mat-card-subtitle>
+        <mat-card-title>{{ flashcard.title }}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  }
+}

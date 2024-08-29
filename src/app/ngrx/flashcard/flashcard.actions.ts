@@ -17,7 +17,7 @@ export const getFlashcardFailure = createAction(
 
 export const getFlashcardBySubject = createAction(
   '[Flashcard] Get Flashcard By Subject',
-  props<{ idToken: string; subjectId: string }>(),
+  props<{ subjectId: string }>(),
 );
 
 export const getFlashcardBySubjectSuccess = createAction(
@@ -64,6 +64,21 @@ export const deleteCardByIndex = createAction(
 export const updateFlashcard = createAction(
   '[Flashcard] Update Flashcard',
   props<{ setting: any }>(),
+);
+
+export const getAllFlashcard = createAction(
+  '[Flashcard] Get All Flashcard',
+  props<{ idToken: string }>(),
+);
+
+export const getAllFlashcardSuccess = createAction(
+  '[Flashcard] Get All Flashcard Success',
+  props<{ flashcards: FlashcardModel[] }>(),
+);
+
+export const getAllFlashcardFailure = createAction(
+  '[Flashcard] Get All Flashcard Failure',
+  props<{ errorMessage: string }>(),
 );
 
 export const clearState = createAction('[Flashcard] Clear State');

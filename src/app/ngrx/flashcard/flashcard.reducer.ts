@@ -15,6 +15,9 @@ export const initialState: FlashcardState = {
 
   isCreateFlashcardSuccess: false,
   createFlashcardError: '',
+
+  isGetAllFlashcardSuccess: false,
+  getAllFlashcardError: '',
 };
 
 export const flashcardReducer = createReducer(
@@ -168,4 +171,29 @@ export const flashcardReducer = createReducer(
       createFlashcardError: '',
     };
   }),
+  on(FlashcardActions.getAllFlashcard, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+    };
+  }),
+  on(FlashcardActions.getAllFlashcardSuccess, (state, { flashcards, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isGetAllFlashcardSuccess: true,
+      flashcards: flashcards,
+    };
+  }),
+  on(
+    FlashcardActions.getAllFlashcardFailure,
+    (state, { errorMessage, type }) => {
+      console.log(type);
+      return {
+        ...state,
+        isGetAllFlashcardSuccess: false,
+        getAllFlashcardError: errorMessage,
+      };
+    },
+  ),
 );
