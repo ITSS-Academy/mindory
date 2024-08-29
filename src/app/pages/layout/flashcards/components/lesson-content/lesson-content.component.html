@@ -1,19 +1,17 @@
 <div class="main-content">
   <div class="card">
-    @for (card of cards; track $index) {
+    @if (cards.length > 0) {
       <div class="front">
-        <p>{{ card.term }}</p>
+        <p>{{ cards[page].term }}</p>
       </div>
-    }
-    @for (card of cards; track $index) {
       <div class="back">
-        <p>{{ card.definition }}</p>
+        <p>{{ cards[page].definition }}</p>
       </div>
     }
   </div>
 </div>
 <div class="pagination-control">
-  <mat-icon>arrow_back</mat-icon>
-  <span>1</span>
-  <mat-icon>arrow_forward</mat-icon>
+  <mat-icon (click)="prevPage()">arrow_back</mat-icon>
+  <span>{{ page + 1 }}</span>
+  <mat-icon (click)="nextPage()">arrow_forward</mat-icon>
 </div>

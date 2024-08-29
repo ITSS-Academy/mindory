@@ -1,3 +1,10 @@
+:host {
+  --mdc-linear-progress-active-indicator-height: 20px;
+  --mdc-linear-progress-track-height: 20px;
+  --mdc-linear-progress-buffer-height: 20px;
+  --mdc-linear-progress-buffer-color: var(--mdc-filled-button-container-color);
+}
+
 .containers {
   display: flex;
   justify-content: center;
@@ -18,7 +25,7 @@
 .left-content {
   display: flex;
   justify-content: center;
-  background-color: rgba(144, 238, 144, 0.5);
+  background-color: var(--mdc-filled-button-container-color);
   width: 95px;
   border-radius: 30px;
   height: 50px;
@@ -34,7 +41,7 @@
 .right-content {
   display: flex;
   justify-content: center;
-  background-color: rgba(144, 238, 144, 0.5);
+  background-color: var(--mdc-filled-button-container-color);
   width: 95px;
   border-radius: 30px;
   height: 50px;

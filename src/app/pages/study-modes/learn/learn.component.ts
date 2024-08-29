@@ -78,14 +78,9 @@ export class LearnComponent implements OnInit {
           );
 
           // Select the first 6 cards
-          const selectedCards = shuffledCards.slice(0, 6);
+          const currentQuestionIndex = shuffledCards.slice(0, 6);
 
-          selectedCards.forEach((c) => {
-            card.push({
-              questions: c.term,
-              answer: c.definition,
-              uid: c.id,
-            });
+          currentQuestionIndex.forEach((c) => {
             card.push({
               questions: c.term,
               answer: c.definition,
@@ -113,6 +108,7 @@ export class LearnComponent implements OnInit {
 
   get currentQuestion() {
     return this.questions[this.currentQuestionIndex];
+    console.log(this.currentQuestion);
   }
 
   selectOption(answer: string) {
