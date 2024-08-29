@@ -7,7 +7,7 @@ import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
 import { Store } from '@ngrx/store';
 import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
 import { AuthState } from '../../../ngrx/auth/auth.state';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FlashcardModel } from '../../../models/flashcard.model';
 import { CardModel } from '../../../models/card.model';
 import { ProfileState } from '../../../ngrx/profile/profile.state';
@@ -33,7 +33,26 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
   flashcard!: FlashcardModel;
   cards: CardModel[] = [];
   profile!: Profile;
-  page = 0;
+  flashcardId!: string;
+
+  regime = [
+    {
+      value: 'Flashcard',
+      img: 'assets/icon/flashcard.svg',
+    },
+    {
+      value: 'Learn',
+      img: 'assets/icon/learn.svg',
+    },
+    {
+      value: 'Match',
+      img: 'assets/icon/match.svg',
+    },
+    {
+      value: 'Test',
+      img: 'assets/icon/test.svg',
+    },
+  ];
 
   isGetFlashcardSuccess$ = this.store.select(
     'flashcard',
@@ -47,18 +66,18 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
       profile: ProfileState;
     }>,
     private activeRoute: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    const flashcardId = this.activeRoute.snapshot.params['id'];
-    console.log(flashcardId);
+    this.flashcardId = this.activeRoute.snapshot.params['id'];
     this.subscription.push(
       this.store.select('auth', 'idToken').subscribe((idToken) => {
         if (idToken) {
           this.store.dispatch(
             FlashcardActions.getFlashcard({
               idToken: idToken,
-              flashcardId: flashcardId,
+              flashcardId: this.flashcardId,
             }),
           );
         }
@@ -72,12 +91,12 @@ export class FlashcardsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
-    this.subscription.forEach((sub) => sub.unsubscribe());
+  navigate(value: string): void {
+    const name = value.toLowerCase();
+    this.router.navigate([`/study-modes/${this.flashcardId}/${name}`]);
   }
 
-  onPageChange(newPage: number) {
-    this.page = newPage;
-    console.log(`Page changed to: ${this.page}`);
+  ngOnDestroy(): void {
+    this.subscription.forEach((sub) => sub.unsubscribe());
   }
 }

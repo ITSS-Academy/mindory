@@ -1,6 +1,6 @@
 <div class="cards-container">
   @for (card of flashcard; track card) {
-    <mat-card (click)="chooseFlashcard(card)">
+    <mat-card (click)="navigate(card.id)" class="card">
       <mat-card-header>
         <mat-card-title>{{ card.title }}</mat-card-title>
         <mat-card-subtitle>
@@ -13,7 +13,12 @@
           <img [src]="card.authorId.photoUrl" alt="Avatar" class="avatar" />
           <span> {{ card.authorId.fullName }}</span>
         </div>
-        <button mat-button (click)="openPreview()">Preview</button>
+        <button
+          mat-button
+          (click)="openPreviewAndChooseFlashcard($event, card)"
+        >
+          Preview
+        </button>
       </mat-card-actions>
     </mat-card>
   }

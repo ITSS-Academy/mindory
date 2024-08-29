@@ -7,6 +7,7 @@ import { FlashcardState } from '../../../../../ngrx/flashcard/flashcard.state';
 import { Subscription } from 'rxjs';
 import { FlashcardModel } from '../../../../../models/flashcard.model';
 import * as FlashcardActions from '../../../../../ngrx/flashcard/flashcard.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flashcard-card',
@@ -21,7 +22,10 @@ export class FlashcardCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<{ auth: AuthState; flashcard: FlashcardState }>,
-  ) {
+    private router: Router,
+  ) {}
+
+  ngOnInit() {
     this.subscription.push(
       this.store.select('auth', 'idToken').subscribe((idToken) => {
         if (idToken) {
@@ -34,7 +38,11 @@ export class FlashcardCardComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() {}
+  navigate(id: string) {
+    this.router.navigate(['/flashcard', id]);
+  }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscription.forEach((sub) => sub.unsubscribe());
+  }
 }

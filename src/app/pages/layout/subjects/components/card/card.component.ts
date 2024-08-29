@@ -7,6 +7,7 @@ import { FlashcardBySubject } from '../../../../../models/flashcard.model';
 import { Store } from '@ngrx/store';
 import { FlashcardState } from '../../../../../ngrx/flashcard/flashcard.state';
 import * as FlashcardActions from '../../../../../ngrx/flashcard/flashcard.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -21,6 +22,7 @@ export class CardComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private store: Store<{ flashcard: FlashcardState }>,
+    private router: Router,
   ) {}
 
   ngOnInit() {}
@@ -34,9 +36,19 @@ export class CardComponent implements OnInit, OnDestroy {
     });
   }
 
+  navigate(id: string) {
+    this.router.navigate(['/flashcard', id]);
+  }
+
   chooseFlashcard(flashcard: FlashcardBySubject): void {
     this.store.dispatch(
       FlashcardActions.storeFlashcardBySubject({ flashcards: flashcard }),
     );
+  }
+
+  openPreviewAndChooseFlashcard(event: Event, card: FlashcardBySubject): void {
+    event.stopPropagation();
+    this.openPreview();
+    this.chooseFlashcard(card);
   }
 }

@@ -17,22 +17,12 @@
       </div>
       <div id="box-content">
         <div id="regime">
-          <div class="card">
-            <img src="assets/icon/flashcard.svg" alt="Flashcard" />
-            <span>Flashcard</span>
-          </div>
-          <div class="card">
-            <img src="assets/icon/learn.svg" alt="Learn" />
-            <span>Learn</span>
-          </div>
-          <div class="card">
-            <img src="assets/icon/match.svg" alt="Test" />
-            <span>Test</span>
-          </div>
-          <div class="card">
-            <img src="assets/icon/test.svg" alt="Match" />
-            <span>Match</span>
-          </div>
+          @for (item of regime; track $index) {
+            <div class="card" (click)="navigate(item.value)">
+              <img [src]="item.img" alt="Flashcard" />
+              <span>{{ item.value }}</span>
+            </div>
+          }
         </div>
         <div id="lesson-content">
           <app-lesson-content [cards]="cards"></app-lesson-content>

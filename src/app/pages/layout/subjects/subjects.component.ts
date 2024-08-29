@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { FlashcardBySubject } from '../../../models/flashcard.model';
 import { SharedModule } from '../../../shared/modules/shared.module';
+import { LoadingComponent } from '../../../components/loading/loading.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subjects',
@@ -23,6 +25,7 @@ import { SharedModule } from '../../../shared/modules/shared.module';
     MatChipsModule,
     AsyncPipe,
     SharedModule,
+    LoadingComponent,
   ],
   templateUrl: './subjects.component.html',
   styleUrl: './subjects.component.scss',

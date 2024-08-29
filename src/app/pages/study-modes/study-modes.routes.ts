@@ -12,11 +12,11 @@ export const STUDY_MODES_ROUTERS: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'flashcards',
+        redirectTo: 'flashcard',
         pathMatch: 'full',
       },
       {
-        path: 'flashcards',
+        path: 'flashcard',
         component: FlashcardsComponent,
       },
       {

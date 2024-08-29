@@ -1,10 +1,10 @@
 <div id="container">
-  <div id="container-center">
-    <div id="social">
-      <h3 class="title-First">Subjects</h3>
-    </div>
-    <div class="category-bar">
-      @if (isGettingSubjectsSuccess$ | async) {
+  @if (isGettingSubjectsSuccess$ | async) {
+    <div id="container-center">
+      <div id="social">
+        <h3 class="title-First">Subjects</h3>
+      </div>
+      <div class="category-bar">
         <mat-chip-listbox
           class="mat-mdc-chip-set-stacked"
           [(ngModel)]="currentSubject"
@@ -16,10 +16,14 @@
             </mat-chip-option>
           }
         </mat-chip-listbox>
-      }
+      </div>
+      <div id="vegeta">
+        <app-card [flashcard]="flashcard"></app-card>
+      </div>
     </div>
-    <div id="vegeta">
-      <app-card [flashcard]="flashcard"></app-card>
+  } @else {
+    <div class="loading-container">
+      <app-loading></app-loading>
     </div>
-  </div>
+  }
 </div>

@@ -31,6 +31,7 @@
           mat-stroked-button
           class="top-left"
           (click)="selectOption(currentQuestion.answers[0])"
+          [disabled]="selectedOption !== ''"
         >
           {{ currentQuestion.answers[0] }}
         </button>
@@ -38,6 +39,7 @@
           mat-stroked-button
           class="top-right"
           (click)="selectOption(currentQuestion.answers[1])"
+          [disabled]="selectedOption !== ''"
         >
           {{ currentQuestion.answers[1] }}
         </button>
@@ -45,6 +47,7 @@
           mat-stroked-button
           class="bottom-left"
           (click)="selectOption(currentQuestion.answers[2])"
+          [disabled]="selectedOption !== ''"
         >
           {{ currentQuestion.answers[2] }}
         </button>
@@ -52,6 +55,7 @@
           mat-stroked-button
           class="bottom-right"
           (click)="selectOption(currentQuestion.answers[3])"
+          [disabled]="selectedOption !== ''"
         >
           {{ currentQuestion.answers[3] }}
         </button>
