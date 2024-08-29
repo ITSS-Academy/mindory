@@ -6,7 +6,7 @@
     </div>
     <cdk-virtual-scroll-viewport itemSize="50" class="scroll">
       <div class="card-container">
-        @for (flashcard of subject.flashcards.slice(0, 9); track $index) {
+        @for (flashcard of subject.flashcards; track $index) {
           <mat-card appearance="outlined" class="card">
             <mat-card-content>
               <span class="title">{{ flashcard.title }}</span>
