@@ -105,9 +105,11 @@ export class LearnComponent implements OnInit {
   }
 
   selectOption(answer: string) {
-    this.selectedOption = answer;
-    console.log(this.selectedOption);
-    this.checkAnswer();
+    if (this.selectedOption === '') {
+      // Check if an option has already been selected
+      this.selectedOption = answer;
+      this.checkAnswer();
+    }
   }
 
   checkAnswer() {
@@ -133,6 +135,7 @@ export class LearnComponent implements OnInit {
 
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
+      this.selectedOption = '';
     } else {
       this.showScore = true;
     }
