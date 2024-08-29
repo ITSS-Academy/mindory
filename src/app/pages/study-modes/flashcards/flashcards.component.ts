@@ -11,11 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 import * as FlashcardActions from '../../../ngrx/flashcard/flashcard.actions';
 import { ProfileState } from '../../../ngrx/profile/profile.state';
 import { StudyModeState } from '../../../ngrx/study-mode/study-mode.state';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-flashcards',
   standalone: true,
-  imports: [MatIcon],
+  imports: [MatIcon, AsyncPipe],
   templateUrl: './flashcards.component.html',
   styleUrls: ['./flashcards.component.scss'],
 })
@@ -58,8 +59,8 @@ export class FlashcardsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store.select('flashcard', 'flashcard').subscribe((flashcard) => {
         this.flashcard = flashcard as FlashcardModel;
         this.cards = flashcard.cards;
-        console.log(this.cards.length);
         this.profile = flashcard.authorId as Profile;
+        console.log(this.flashcard);
       }),
     );
   }
@@ -103,6 +104,5 @@ export class FlashcardsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onPageChange(newPage: number) {
     this.page = newPage;
-    console.log(`Page changed to: ${this.page}`);
   }
 }
