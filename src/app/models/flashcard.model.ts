@@ -7,9 +7,11 @@ export interface FlashcardModel {
   title: string;
   description: string;
   isPublic: boolean;
+  totalCards: number;
   subject: SubjectModel;
   cards: CardModel[];
   authorId: Profile;
+  createdAt: Date;
 }
 
 export interface FlashcardDTO {
@@ -20,4 +22,13 @@ export interface FlashcardDTO {
     subject: SubjectModel;
     cards: CardDTO[];
   };
+}
+
+export interface FlashcardBySubject {
+  id: string;
+  title: string;
+  description: string;
+  isPublic: boolean;
+  totalCards: number;
+  authorId: Profile;
 }

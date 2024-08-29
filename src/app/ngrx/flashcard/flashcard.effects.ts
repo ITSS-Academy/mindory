@@ -36,10 +36,7 @@ export class FlashcardEffects {
     return this.actions$.pipe(
       ofType(FlashcardActions.getFlashcardBySubject),
       switchMap((action) => {
-        return this.flashcardService.getFlashcardBySubjectId(
-          action.idToken,
-          action.subjectId,
-        );
+        return this.flashcardService.getFlashcardBySubjectId(action.subjectId);
       }),
       map((flashcard: any) => {
         return FlashcardActions.getFlashcardBySubjectSuccess({
@@ -51,6 +48,23 @@ export class FlashcardEffects {
           FlashcardActions.getFlashcardBySubjectFailure({
             errorMessage: error,
           }),
+        );
+      }),
+    );
+  });
+
+  getAllFlashcards$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(FlashcardActions.getAllFlashcard),
+      switchMap((action) => {
+        return this.flashcardService.getAllFlashcards(action.idToken);
+      }),
+      map((flashcards: any) => {
+        return FlashcardActions.getAllFlashcardSuccess({ flashcards });
+      }),
+      catchError((error) => {
+        return of(
+          FlashcardActions.getAllFlashcardFailure({ errorMessage: error }),
         );
       }),
     );
