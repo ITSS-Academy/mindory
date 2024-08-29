@@ -1,14 +1,16 @@
 <div id="container">
   <div id="container-center">
     <div id="social">
-      <h3 class="title-First">Social Science Flashcards</h3>
+      <h3 class="title-First">Subjects</h3>
     </div>
     <div class="category-bar">
-      <mat-chip-listbox class="mat-mdc-chip-set-stacked">
-        @for (category of categories; track category) {
-          <mat-chip-option>{{ category }}</mat-chip-option>
-        }
-      </mat-chip-listbox>
+      @if (isGettingSubjectsSuccess$ | async) {
+        <mat-chip-listbox class="mat-mdc-chip-set-stacked">
+          @for (category of listSubjects; track category) {
+            <mat-chip-option>{{ category }}</mat-chip-option>
+          }
+        </mat-chip-listbox>
+      }
     </div>
     <div id="vegeta">
       <app-card></app-card>

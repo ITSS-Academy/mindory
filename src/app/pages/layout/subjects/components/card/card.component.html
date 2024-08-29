@@ -1,17 +1,17 @@
 <div class="cards-container">
-  @for (card of cards; track card) {
+  @for (card of flashcard; track card) {
     <mat-card>
       <mat-card-header>
-        <mat-card-title>{{ card.header }}</mat-card-title>
+        <mat-card-title>{{ card.title }}</mat-card-title>
         <mat-card-subtitle>
-          <mat-chip>{{ card.subtitle }}</mat-chip>
+          <mat-chip>{{ card.description }}</mat-chip>
         </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-actions align="end">
         <div class="card-content">
-          <img [src]="card.imgSrc" alt="Avatar" class="avatar" />
-          <span> {{ card.name }}</span>
+          <img [src]="card.authorId.photoUrl" alt="Avatar" class="avatar" />
+          <span> {{ card.authorId.fullName }}</span>
         </div>
         <button mat-button (click)="openPreview()">Preview</button>
       </mat-card-actions>

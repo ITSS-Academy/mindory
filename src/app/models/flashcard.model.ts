@@ -30,5 +30,6 @@ export interface FlashcardBySubject {
   description: string;
   isPublic: boolean;
   totalCards: number;
+  cards: CardModel[];
   authorId: Profile;
 }
