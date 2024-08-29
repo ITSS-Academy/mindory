@@ -1,3 +1,12 @@
+:host {
+  --mdc-linear-progress-active-indicator-height: 20px;
+  --mdc-linear-progress-track-height: 20px;
+  --mdc-linear-progress-buffer-height: 20px;
+  --mdc-linear-progress-buffer-color: var(--mdc-filled-button-container-color);
+  --mdc-linear-progress-track-color: var(--mdc-filled-button-container-color);
+  --mdc-linear-progress-track-shape: 10px;
+}
+
 .containers {
   display: flex;
   justify-content: center;
@@ -9,158 +18,122 @@
 .progress-bar {
   width: 40%;
   height: 20px;
-  //background-color: red;
   border-radius: 30px;
   display: flex;
   margin-top: 14px;
+  background-color: rgba(128, 128, 128, 0.2);
 }
 
-.left-content {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(144, 238, 144, 0.5);
-  width: 95px;
-  border-radius: 30px;
-  height: 50px;
-  padding: 14px;
-}
-
-.left-content p {
-  color: #000;
-  font-size: 20px;
-  font-weight: bold;
-}
-
+.left-content,
 .right-content {
   display: flex;
   justify-content: center;
-  background-color: rgba(144, 238, 144, 0.5);
+  background-color: var(--mdc-filled-button-container-color);
   width: 95px;
   border-radius: 30px;
   height: 50px;
   padding: 14px;
-}
 
-.right-content p {
-  color: #000;
-  font-size: 20px;
-  font-weight: bold;
+  p {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
 
 .container {
   display: flex;
-  margin-top: 30px;
-  margin-left: 380px;
-  width: 60%;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  padding: 40px;
   width: 100%;
+  padding: 20px;
 }
 
 .mid-content {
   color: black;
   margin-top: 100px;
+  text-align: left;
 }
 
 .question h2 {
   color: black;
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .corner-buttons {
   position: relative;
-  height: 150px; /* Adjust this height as needed */
+  height: 150px;
   width: 100%;
-}
-
-.corner-buttons button {
-  position: absolute;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-button.top-left {
-  top: 0;
-  left: 0;
-  width: 500px;
-  border: 2px solid;
-  border-color: var(--md-sys-color-outline);
-  height: 60px;
-  border-radius: 5px;
-}
-
-button.top-left:hover {
-  border-color: var(--mdc-filled-button-container-color);
-}
-
-button.top-right {
-  top: 0;
-  right: 0;
-  width: 500px;
-  border: 2px solid;
-  border-color: var(--md-sys-color-outline);
-  cursor: pointer;
-
-  height: 60px;
-  border-radius: 5px;
-}
-
-button.top-right:hover {
-  border-color: var(--mdc-filled-button-container-color);
-}
-
-button.bottom-left {
-  bottom: 0;
-  left: 0;
-  width: 500px;
-  border: 2px solid;
-  border-color: var(--md-sys-color-outline);
-  cursor: pointer;
-  height: 60px;
-  border-radius: 5px;
-}
-
-button.bottom-left:hover {
-  border-color: var(--mdc-filled-button-container-color);
-}
-
-button.bottom-right {
-  bottom: 0;
-  right: 0;
-  width: 500px;
-  border: 2px solid;
-  border-color: var(--md-sys-color-outline);
-  cursor: pointer;
-  height: 60px;
-  border-radius: 5px;
-}
-
-button.bottom-right:hover {
-  border-color: var(--mdc-filled-button-container-color);
-}
-
-.question {
   margin-bottom: 20px;
+
+  button {
+    position: absolute;
+    width: calc(50% - 10px);
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid var(--md-sys-color-outline);
+    transition:
+      border-color 0.3s,
+      background-color 0.3s;
+
+    &:hover {
+      border-color: var(--mdc-filled-button-container-color);
+      background-color: var(--mdc-filled-button-container-color);
+      color: white;
+    }
+  }
+
+  .top-left {
+    top: 0;
+    left: 0;
+  }
+
+  .top-right {
+    top: 0;
+    right: 0;
+  }
+
+  .bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+
+  .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
 }
 
-.feedback p {
-  font-size: 18px;
-  margin-bottom: 20px;
+.feedback {
+  p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 }
 
 .progress {
   font-weight: bold;
   margin-bottom: 20px;
-}
-
-.question {
-  margin-bottom: 20px;
+  text-align: center;
 }
 
 .options button {
@@ -172,23 +145,21 @@ button.bottom-right:hover {
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  &.selected {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+  }
 }
 
-button.selected {
-  background-color: #007bff;
-  color: white;
-  border: 1px solid #007bff;
+.correct {
+  border-color: #28a745;
 }
 
-.corner-buttons p.correct {
-  border-color: #28a745; /* Green color for correct answer */
-}
-
-.corner-buttons p.incorrect {
-  border-color: #dc3545; /* Red color for incorrect answer */
-}
-
-.feedback p {
-  font-size: 18px;
-  color: black;
+.incorrect {
+  border-color: #dc3545;
 }

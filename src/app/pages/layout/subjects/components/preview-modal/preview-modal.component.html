@@ -1,23 +1,11 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 <div class="modal-container">
-  <h5>Test 9 court cases and vocab</h5>
+  <h5>{{ flashcards.title }}</h5>
   <ul>
-
-      <strong>Marbury v Madison</strong>
-      <br>judicial review<br>
-      <strong>Schenck v US</strong>
-      <br>limits on speech especially during wartime<br>
-      <strong>McCulloch v Maryland</strong>
-      <br>established national supremacy, implied powers, elastic clause<br>
-      <strong>US v Lopez</strong>
-      <br>Congress may not use the commerce clause to make possession of a gun in school zone a federal crime<br>
-      <strong>Gitlow v New York</strong>
-      <br>states cannot deny freedom of speech protected by due process clause of Amendment 14<br>
-      <strong>New York Times Company v United States</strong>
-      <br>freedom of the press, even in cases involving national supremacy
-    <br>
-      <strong>Gideon v Wainwright</strong>
-
+    @for (card of flashcards.cards; track $index) {
+      <strong>{{ card.term }}</strong>
+      <br />{{ card.definition }}<br />
+    }
   </ul>
   <button mat-button (click)="closeModal()">x</button>
 </div>

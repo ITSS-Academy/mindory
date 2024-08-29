@@ -5,15 +5,21 @@
     </div>
     <div class="category-bar">
       @if (isGettingSubjectsSuccess$ | async) {
-        <mat-chip-listbox class="mat-mdc-chip-set-stacked">
-          @for (category of listSubjects; track category) {
-            <mat-chip-option>{{ category }}</mat-chip-option>
+        <mat-chip-listbox
+          class="mat-mdc-chip-set-stacked"
+          [(ngModel)]="currentSubject"
+          (change)="onCategoryChange($event)"
+        >
+          @for (subject of listSubjects; track $index) {
+            <mat-chip-option [value]="$index"
+              >{{ subject.name }}
+            </mat-chip-option>
           }
         </mat-chip-listbox>
       }
     </div>
     <div id="vegeta">
-      <app-card></app-card>
+      <app-card [flashcard]="flashcard"></app-card>
     </div>
   </div>
 </div>
