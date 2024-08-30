@@ -24,6 +24,8 @@ interface Card {
   styleUrls: ['./learn.component.scss'],
 })
 export class LearnComponent implements OnInit {
+  correctSound = new Audio('assets/sound/correct-choice.mp3');
+
   subscription: Subscription[] = [];
   idFlashcard!: string;
   cards: Card[] = [];
@@ -36,7 +38,7 @@ export class LearnComponent implements OnInit {
   showScore = false;
 
   questions: any[] = [];
-  answer: any[] = [];
+
   isGetFlashcardSuccess$ = this.store.select(
     'flashcard',
     'isGetFlashcardSuccess',
@@ -117,6 +119,7 @@ export class LearnComponent implements OnInit {
 
     if (this.selectedOption === this.currentQuestion.correctAnswer) {
       this.feedback = 'Correct!';
+      this.correctSound.play();
       this.progress++;
     } else {
       this.feedback =

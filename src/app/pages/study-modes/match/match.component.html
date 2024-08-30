@@ -1,41 +1,93 @@
+<!--<div class="container">-->
+<!--  @if (!isStarted || isFinished) {-->
+<!--    <div class="main-content">-->
+<!--      <span class="ready">Ready to play ?</span>-->
+<!--      <p>Match all the terms with their definitions as fast as you can.</p>-->
+<!--      <p>Avoid wrong matches, they add extra time!</p>-->
+<!--      <button class="button-play" mat-flat-button (click)="start()">-->
+<!--        Start game!-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  } @else {-->
+<!--    <div class="game-container">-->
+<!--      <div class="score">-->
+<!--        &lt;!&ndash;        <p>Points: {{ points }}</p>&ndash;&gt;-->
+<!--        <p>Time: {{ elapsedTime / 1000 | number: "1.0-2" }} seconds</p>-->
+<!--      </div>-->
+<!--      <div class="game-board">-->
+<!--        @for (card of cards; track $index) {-->
+<!--          <div-->
+<!--            class="card"-->
+<!--            [ngClass]="{ hidden: !card.visible }"-->
+<!--            (click)="flipCard(card)"-->
+<!--          >-->
+<!--            <div-->
+<!--              class="card-inner"-->
+<!--              [ngClass]="{ flipped: card.flipped || card.matched }"-->
+<!--            >-->
+<!--              <div class="card-front"></div>-->
+<!--              <div class="card-back">{{ card.content }}</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        }-->
+<!--      </div>-->
+<!--      <div *ngIf="isFinished" class="game-over">-->
+<!--        <p>Game Over!</p>-->
+<!--        <p>Final Time: {{ elapsedTime / 1000 | number: "1.0-2" }} seconds</p>-->
+<!--        <p *ngIf="bestTime !== null">-->
+<!--          Best Time: {{ bestTime / 1000 | number: "1.0-2" }} seconds-->
+<!--        </p>-->
+<!--        <button class="button-play" mat-flat-button (click)="start()">-->
+<!--          Play Again-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  }-->
+<!--</div>-->
+
 <div class="container">
-  @if (!isStarted) {
+  <div *ngIf="!isStarted">
     <div class="main-content">
-      <span class="ready">Ready to play ?</span>
+      <span class="ready">Ready to play?</span>
       <p>Match all the terms with their definitions as fast as you can.</p>
       <p>Avoid wrong matches, they add extra time!</p>
       <button class="button-play" mat-flat-button (click)="start()">
         Start game!
       </button>
     </div>
-  } @else {
-    <div class="game-container">
-      <div class="score">
-        <!--        <p>Points: {{ points }}</p>-->
-      </div>
-      <div class="game-board">
-        @for (card of cards; track $index) {
-          <div
-            class="card"
-            [ngClass]="{ hidden: !card.visible }"
-            (click)="flipCard(card)"
-          >
-            <div
-              class="card-inner"
-              [ngClass]="{ flipped: card.flipped || card.matched }"
-            >
-              <div class="card-front"></div>
-              <div class="card-back">{{ card.content }}</div>
-            </div>
-          </div>
-        }
-      </div>
-      <!--      <button mat-button color="primary" (click)="resetGame()">-->
-      <!--        Reset Game-->
-      <!--      </button>-->
-      <!--      <p *ngIf="matchedCardsCount === cards.length">{{ time }}</p>-->
+  </div>
+
+  <div *ngIf="isStarted && !isFinished" class="game-container">
+    <div class="score">
+      <p>Points: {{ points }}</p>
+      <p>Time: {{ elapsedTime / 1000 | number: "1.0-2" }} seconds</p>
     </div>
-  }
+    <div class="game-board">
+      <div
+        class="card"
+        [ngClass]="{ hidden: !card.visible }"
+        *ngFor="let card of cards"
+        (click)="flipCard(card)"
+      >
+        <div
+          class="card-inner"
+          [ngClass]="{ flipped: card.flipped || card.matched }"
+        >
+          <div class="card-front"></div>
+          <div class="card-back">{{ card.content }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isFinished" class="game-over">
+    <h1>Game Over!</h1>
+    <!--    <p>Final Time: {{ elapsedTime / 1000 | number: "1.0-2" }} seconds</p>-->
+    <p *ngIf="bestTime !== null">
+      Best Time: {{ bestTime / 1000 | number: "1.0-2" }} seconds
+    </p>
+    <button class="button-play" mat-flat-button (click)="start()">
+      Play Again
+    </button>
+  </div>
 </div>
-<div>Points: {{ points }}</div>
-<!--<button (click)="resetGame()">Reset Game</button>-->
