@@ -67,14 +67,14 @@
 
 .mid-content {
   color: black;
-  margin-top: 100px;
+  margin-top: 50px;
   text-align: left;
 }
 
 .question h2 {
   color: black;
-  font-size: 34px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 800;
   margin-bottom: 20px;
 }
 
@@ -93,9 +93,8 @@
     cursor: pointer;
     border-radius: 5px;
     border: 2px solid var(--md-sys-color-outline);
-    transition:
-      border-color 0.3s,
-      background-color 0.3s;
+    transition: border-color 0.3s,
+    background-color 0.3s;
 
     &:hover {
       border-color: var(--mdc-filled-button-container-color);
@@ -149,9 +148,8 @@
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s,
+  color 0.3s;
 
   &.selected {
     background-color: #007bff;

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   @Output() studyMode = new EventEmitter<string>();
   dropDownLinks = [
     {
-      name: 'Flashcards',
+      name: 'Flashcard',
       imgUrl: 'assets/icon/flashcard.svg',
     },
     {
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     },
   ];
   activeLink = {
-    name: 'Flashcards',
+    name: 'Flashcard',
     imgUrl: 'assets/icon/flashcard.svg',
   };
 
