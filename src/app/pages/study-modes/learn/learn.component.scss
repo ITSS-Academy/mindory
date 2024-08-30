@@ -24,6 +24,10 @@
   background-color: rgba(128, 128, 128, 0.2);
 }
 
+.progress-bar mat-progress-bar {
+  transition: width 0.6s ease; /* Smooth transition for the width */
+}
+
 .left-content,
 .right-content {
   display: flex;
@@ -163,3 +167,33 @@
 .incorrect {
   border-color: #dc3545;
 }
+
+@media (max-width: 590px) {
+  .container {
+    height: 700px;
+  }
+}
+
+//@media (max-width: 480px) {
+//  .left-content,
+//  .right-content {
+//    width: 50px;
+//    height: 30px;
+//
+//    p {
+//      font-size: 16px;
+//    }
+//  }
+//
+//  .question h2 {
+//    font-size: 20px;
+//  }
+//
+//  .corner-buttons button {
+//    font-size: 14px;
+//  }
+//
+//  .mid-content {
+//    font-size: 14px;
+//  }
+//}
