@@ -16,7 +16,7 @@
 }
 
 .button-play {
-  width: 15%;
+  width: 75%;
   height: 70px;
   font-size: 18px;
   font-weight: bold;
@@ -105,4 +105,18 @@
 button {
   margin-top: 20px;
   font-size: 16px; /* Increased font size for button */
+}
+
+.game-over {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.game-over p {
+  font-size: 18px;
+}
+
+button.button-play {
+  margin-top: 20px;
+  font-size: 16px;
 }

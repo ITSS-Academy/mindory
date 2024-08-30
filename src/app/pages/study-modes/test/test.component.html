@@ -1,46 +1,52 @@
+<!-- Display Questions -->
+<div *ngIf="!isSubmitted">
+  <mat-card *ngFor="let question of questions; let i = index" class="container">
+    <div class="main-content">
+      <div class="top">
+        <h1>Definition</h1>
+        <h3>{{ question.term }}</h3>
+      </div>
 
-<!--@for (question of questions; track $index) {-->
-<!--<div class="container">-->
-
-<!--  <div class="main-content">-->
-
-<!--    <div class="top">-->
-<!--      <h3>{{question.question}}</h3>-->
-<!--    </div>-->
-
-<!--    <div class="middle">-->
-<!--      <p>Choose matching term</p>-->
-<!--      <div class="bottom">-->
-<!--        <p>{{question.options[0]}}</p>-->
-<!--        <p>{{question.options[1]}}</p>-->
-<!--        <p>{{question.options[2]}}</p>-->
-<!--        <p>{{question.options[3]}}</p>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-<!--  </div>-->
-<!--</div>-->
-<!--}-->
-
-<mat-card *ngFor="let question of questions; let i = index" class="container">
-
-  <div class="main-content">
-
-    <div class="top">
-      <h3>{{ question.question }}</h3>
-    </div>
-
-    <div class="middle">
-      <p>Choose matching term</p>
-      <div class="bottom">
-        <p
-          *ngFor="let option of question.options"
-          (click)="selectOption(option, i)"
-          [ngClass]="{'selected': isSelected(option, i)}">
-          {{ option }}
-        </p>
+      <div class="middle">
+        <p>Choose the correct definition:</p>
+        <div class="bottom">
+          <button
+            mat-stroked-button
+            *ngFor="let option of question.answers"
+            (click)="selectOption(option, i)"
+            [ngClass]="{ selected: isSelected(option, i) }"
+          >
+            {{ option }}
+          </button>
+        </div>
       </div>
     </div>
+  </mat-card>
+
+  <!-- Submit Button -->
+  <div class="submit-container">
+    <button mat-flat-button color="primary" (click)="submitAnswers()">
+      Submit
+    </button>
   </div>
-</mat-card>
+</div>
+
+<!-- Report Section -->
+<div *ngIf="isSubmitted" class="report-container">
+  <h2>Quiz Report</h2>
+  <div *ngFor="let question of questions; let i = index">
+    <mat-card class="report-card">
+      <h3>{{ question.term }}</h3>
+      <p>Selected: {{ selectedOptions[i] }}</p>
+      <p>Correct Answer: {{ question.correctAnswer }}</p>
+      <p
+        [ngClass]="{
+          correct: correctAnswers[i],
+          incorrect: !correctAnswers[i],
+        }"
+      >
+        {{ correctAnswers[i] ? "Correct" : "Incorrect" }}
+      </p>
+    </mat-card>
+  </div>
+</div>

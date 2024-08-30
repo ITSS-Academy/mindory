@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { DecimalPipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../ngrx/auth/auth.state';
@@ -21,7 +21,7 @@ interface Card {
 @Component({
   selector: 'app-match',
   standalone: true,
-  imports: [MatButton, RouterLink, NgForOf, NgIf, NgClass],
+  imports: [MatButton, RouterLink, NgForOf, NgIf, NgClass, DecimalPipe],
   templateUrl: './match.component.html',
   styleUrl: './match.component.scss',
 })
@@ -32,10 +32,17 @@ export class MatchComponent implements OnInit, OnDestroy {
   contents: any[] = [];
 
   isStarted = false;
+  isFinished = false;
   cards: Card[] = [];
   flippedCards: Card[] = [];
   matchedCardsCount = 0;
   points = 0; // Points tracking
+
+  startTime: number | null = null;
+  endTime: number | null = null;
+  elapsedTime: number = 0; // Time in milliseconds
+  bestTime: number | null = null; // Best time in milliseconds
+  timerInterval: any; // Store interval ID
 
   constructor(
     private store: Store<{
@@ -134,6 +141,13 @@ export class MatchComponent implements OnInit, OnDestroy {
         card1.visible = false;
         card2.visible = false;
         this.matchedCardsCount += 2;
+
+        if (this.matchedCardsCount === this.cards.length) {
+          this.endTime = Date.now();
+          this.elapsedTime = this.endTime - this.startTime!;
+          this.isFinished = true;
+          this.updateBestTime();
+        }
       }, 2000);
     } else {
       setTimeout(() => {
@@ -147,6 +161,25 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   start() {
     this.isStarted = true;
+    this.isFinished = false;
+    this.startTime = Date.now(); // Start the timer
+    this.elapsedTime = 0; // Reset elapsed time
+    this.timerInterval = setInterval(() => {
+      this.elapsedTime = Date.now() - this.startTime!;
+    }, 100); // Update every 100ms
+    this.initializeCards(); // Ensure cards are initialized when starting the game
+  }
+
+  clearTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+  }
+
+  updateBestTime() {
+    if (this.bestTime === null || this.elapsedTime < this.bestTime) {
+      this.bestTime = this.elapsedTime;
+    }
   }
 
   deepCopy(obj: any) {
@@ -155,5 +188,6 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.forEach((s) => s.unsubscribe());
+    this.clearTimer(); // Clear timer on component destroy
   }
 }
