@@ -1,17 +1,29 @@
 <div id="container">
-  <div id="container-center">
-    <div id="social">
-      <h3 class="title-First">Social Science Flashcards</h3>
+  @if (isGettingSubjectsSuccess$ | async) {
+    <div id="container-center">
+      <div id="social">
+        <h3 class="title-First">Subjects</h3>
+      </div>
+      <div class="category-bar">
+        <mat-chip-listbox
+          class="mat-mdc-chip-set-stacked"
+          [(ngModel)]="currentSubject"
+          (change)="onCategoryChange($event)"
+        >
+          @for (subject of listSubjects; track $index) {
+            <mat-chip-option [value]="$index"
+              >{{ subject.name }}
+            </mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </div>
+      <div id="vegeta">
+        <app-card [flashcard]="flashcard"></app-card>
+      </div>
     </div>
-    <div class="category-bar">
-      <mat-chip-listbox class="mat-mdc-chip-set-stacked">
-        @for (category of categories; track category) {
-          <mat-chip-option>{{ category }}</mat-chip-option>
-        }
-      </mat-chip-listbox>
+  } @else {
+    <div class="loading-container">
+      <app-loading></app-loading>
     </div>
-    <div id="vegeta">
-      <app-card></app-card>
-    </div>
-  </div>
+  }
 </div>

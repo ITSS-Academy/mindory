@@ -1,5 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { FlashcardDTO, FlashcardModel } from '../../models/flashcard.model';
+import {
+  FlashcardBySubject,
+  FlashcardDTO,
+  FlashcardModel,
+} from '../../models/flashcard.model';
 import { CardModel } from '../../models/card.model';
 
 export const getFlashcard = createAction(
@@ -79,6 +83,11 @@ export const getAllFlashcardSuccess = createAction(
 export const getAllFlashcardFailure = createAction(
   '[Flashcard] Get All Flashcard Failure',
   props<{ errorMessage: string }>(),
+);
+
+export const storeFlashcardBySubject = createAction(
+  '[Flashcard] Store Flashcard By Subject',
+  props<{ flashcards: FlashcardBySubject }>(),
 );
 
 export const clearState = createAction('[Flashcard] Clear State');

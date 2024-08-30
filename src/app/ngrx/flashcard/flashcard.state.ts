@@ -1,4 +1,7 @@
-import { FlashcardModel } from '../../models/flashcard.model';
+import {
+  FlashcardBySubject,
+  FlashcardModel,
+} from '../../models/flashcard.model';
 
 export interface FlashcardState {
   flashcard: FlashcardModel;
@@ -14,4 +17,6 @@ export interface FlashcardState {
 
   isGetAllFlashcardSuccess: boolean;
   getAllFlashcardError: string;
+
+  flashcardBySubject: FlashcardBySubject;
 }

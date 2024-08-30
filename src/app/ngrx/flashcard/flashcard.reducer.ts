@@ -1,5 +1,8 @@
 import { FlashcardState } from './flashcard.state';
-import { FlashcardModel } from '../../models/flashcard.model';
+import {
+  FlashcardBySubject,
+  FlashcardModel,
+} from '../../models/flashcard.model';
 import { createReducer, on } from '@ngrx/store';
 import * as FlashcardActions from './flashcard.actions';
 import { CardModel } from '../../models/card.model';
@@ -18,6 +21,8 @@ export const initialState: FlashcardState = {
 
   isGetAllFlashcardSuccess: false,
   getAllFlashcardError: '',
+
+  flashcardBySubject: <FlashcardBySubject>{},
 };
 
 export const flashcardReducer = createReducer(
@@ -197,4 +202,10 @@ export const flashcardReducer = createReducer(
       };
     },
   ),
+  on(FlashcardActions.storeFlashcardBySubject, (state, { flashcards }) => {
+    return {
+      ...state,
+      flashcardBySubject: flashcards,
+    };
+  }),
 );

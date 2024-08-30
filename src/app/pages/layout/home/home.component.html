@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="main-content">
-    @if (isGettingSubjects$) {
+  @if (isGettingSubjects$ | async) {
+    <div class="main-content">
       <app-flashcard-sets [subject]="socialScience"></app-flashcard-sets>
       <app-flashcard-sets [subject]="business"></app-flashcard-sets>
       <app-flashcard-sets [subject]="economics"></app-flashcard-sets>
       <app-flashcard-sets [subject]="humanGeography"></app-flashcard-sets>
-    }
-  </div>
+    </div>
+  } @else {
+    <div class="loading-container">
+      <app-loading></app-loading>
+    </div>
+  }
 </div>

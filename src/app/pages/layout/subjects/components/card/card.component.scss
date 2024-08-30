@@ -4,6 +4,14 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  filter: brightness(0.9);
+}
+
 .card-content {
   display: flex;
   align-items: center;

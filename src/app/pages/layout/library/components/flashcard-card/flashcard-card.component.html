@@ -1,6 +1,6 @@
 @if (flashcard.length > 0) {
   @for (flashcard of flashcard; track $index) {
-    <div id="container">
+    <div id="container" (click)="navigate(flashcard.id)">
       <mat-card appearance="outlined">
         <mat-card-header>
           <mat-card-subtitle>

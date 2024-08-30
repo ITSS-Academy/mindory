@@ -9,11 +9,19 @@ import { FlashcardState } from '../../../ngrx/flashcard/flashcard.state';
 import * as SubjectActions from '../../../ngrx/subjects/subjects.actions';
 import { SubjectState } from '../../../ngrx/subjects/subjects.state';
 import { SubjectByUid, SubjectModel } from '../../../models/subject.model';
+import { LoadingComponent } from '../../../components/loading/loading.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MaterialModule, SharedModule, FlashcardSetsComponent],
+  imports: [
+    MaterialModule,
+    SharedModule,
+    FlashcardSetsComponent,
+    LoadingComponent,
+    AsyncPipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

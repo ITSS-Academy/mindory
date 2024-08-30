@@ -235,3 +235,18 @@ body::-webkit-scrollbar {
 div.mat-mdc-select-panel {
   background-color: var(--md-sys-color-on-primary) !important;
 }
+
+.mat-mdc-dialog-surface {
+  overflow-y: auto !important;
+
+  /* Hide scrollbar for WebKit browsers */
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar for Internet Explorer and Edge */
+  -ms-overflow-style: none;
+}
