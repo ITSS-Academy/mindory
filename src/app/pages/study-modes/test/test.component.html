@@ -11,9 +11,10 @@
       </div>
 
       <div class="middle">
-        <p>Choose the correct term</p>
+        <p class="choose">Choose the correct term</p>
         <div class="bottom">
           <button
+            class="btn"
             mat-stroked-button
             *ngFor="let option of question.answers"
             (click)="selectOption(option, i)"
