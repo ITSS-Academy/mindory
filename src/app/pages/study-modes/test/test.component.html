@@ -2,13 +2,16 @@
 <div *ngIf="!isSubmitted">
   <mat-card *ngFor="let question of questions; let i = index" class="container">
     <div class="main-content">
-      <div class="top">
+      <div class="top-cont">
         <h1>Definition</h1>
+        <p>Question {{ i + 1 }} of {{ questions.length }}</p>
+      </div>
+      <div class="top">
         <h3>{{ question.term }}</h3>
       </div>
 
       <div class="middle">
-        <p>Choose the correct definition:</p>
+        <p>Choose the correct term</p>
         <div class="bottom">
           <button
             mat-stroked-button

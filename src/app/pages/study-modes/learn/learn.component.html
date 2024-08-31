@@ -1,13 +1,13 @@
 @if (isGetFlashcardSuccess$ | async) {
   <div class="containers">
     <div class="left-content">
-      <p>{{ progress }}</p>
+      <p>{{ progressbar }}</p>
     </div>
 
     <div class="progress-bar">
       <mat-progress-bar
         mode="determinate"
-        [style.width]="(progress / questions.length) * 100 + '%'"
+        [style.width]="(progressbar / questions.length) * 100 + '%'"
       ></mat-progress-bar>
     </div>
 
@@ -18,8 +18,10 @@
 
   <div class="container">
     <div class="main-content" *ngIf="!showScore; else scoreTemplate">
+      <p>Definition</p>
       <div class="question">
         <h2>{{ currentQuestion.term }}</h2>
+        <p>{{ progress }} of {{ questions.length }}</p>
       </div>
 
       <div class="mid-content">
@@ -68,7 +70,18 @@
   </div>
 
   <ng-template #scoreTemplate>
-    <h2>Your Score: {{ progress }}/{{ questions.length }}</h2>
-    <button (click)="restartQuiz()">Restart Quiz</button>
+    <h2>Your Score: {{ progressbar }}/{{ questions.length }}</h2>
+    <div *ngIf="progressbar >= 8; else tryAgainTemplate">
+      <p>
+        🎉Hooray, you might memorize it! You can do it again by pressing the
+        Restart Quiz.🎉
+      </p>
+    </div>
+    <ng-template #tryAgainTemplate>
+      <p>You should do it again.</p>
+    </ng-template>
+    <button mat-flat-button color="primary" (click)="restartQuiz()">
+      Restart Quiz
+    </button>
   </ng-template>
 }

@@ -11,14 +11,15 @@ import { Store } from '@ngrx/store';
 import { SubjectModel } from '../../../models/subject.model';
 import { SubjectState } from '../../../ngrx/subjects/subjects.state';
 import * as SubjectActions from '../../../ngrx/subjects/subjects.actions';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common';
 import { MatRadioChange } from '@angular/material/radio';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-set',
   standalone: true,
-  imports: [MaterialModule, SharedModule, NavbarComponent, AsyncPipe],
+  imports: [MaterialModule, SharedModule, NavbarComponent, AsyncPipe, NgForOf],
   templateUrl: './create-set.component.html',
   styleUrl: './create-set.component.scss',
 })
@@ -75,6 +76,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
       subject: SubjectState;
     }>,
     private router: Router,
+    private snackBar: MatSnackBar, // Inject MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -136,6 +138,43 @@ export class CreateSetComponent implements OnInit, OnDestroy {
   }
 
   createFlashcard() {
+    // Check if the title is empty
+    if (!this.settings.title.trim()) {
+      this.snackBar.open('Title cannot be empty', 'Close', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    // Check if any card has an empty term or definition
+    for (let i = 0; i < this.flashcard.cards.length; i++) {
+      if (!this.flashcard.cards[i].term.trim()) {
+        this.snackBar.open(`Term for card ${i + 1} cannot be empty`, 'Close', {
+          duration: 3000,
+        });
+        return;
+      }
+      if (!this.flashcard.cards[i].definition.trim()) {
+        this.snackBar.open(
+          `Definition for card ${i + 1} cannot be empty`,
+          'Close',
+          {
+            duration: 3000,
+          },
+        );
+        return;
+      }
+    }
+
+    // Check if there are at least 4 cards
+    if (this.flashcard.cards.length < 4) {
+      this.snackBar.open('You must have at least 4 cards', 'Close', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    // Proceed with flashcard creation
     const flashcardDTO = this.convertToFlashcardDTO(this.flashcard);
     this.store.dispatch(
       FlashCardActions.createFlashcard({
@@ -143,6 +182,10 @@ export class CreateSetComponent implements OnInit, OnDestroy {
         flashcard: flashcardDTO,
       }),
     );
+  }
+
+  deleteCard(index: number) {
+    this.store.dispatch(FlashCardActions.deleteCardByIndex({ index }));
   }
 
   onSubjectChange(event: any) {

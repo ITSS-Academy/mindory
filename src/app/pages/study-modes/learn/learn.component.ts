@@ -25,6 +25,7 @@ interface Card {
 })
 export class LearnComponent implements OnInit {
   correctSound = new Audio('assets/sound/correct-choice.mp3');
+  incorrectSound = new Audio('assets/sound/wrong-answer.mp3');
 
   subscription: Subscription[] = [];
   idFlashcard!: string;
@@ -34,7 +35,8 @@ export class LearnComponent implements OnInit {
 
   feedback: string = '';
   showFeedback: boolean = false;
-  progress: number = 0;
+  progressbar: number = 0;
+  progress: number = 1;
   showScore = false;
 
   questions: any[] = [];
@@ -78,17 +80,22 @@ export class LearnComponent implements OnInit {
   }
 
   initializeQuestions() {
-    for (let i = 0; i < this.cards.length; i++) {
-      const selectedCard =
-        this.cards[Math.floor(Math.random() * this.cards.length)]; //lấy ngẫu nhiên 1 phần tử trong mảng
-      const incorrectAnswers = this.cards // tạo biến hứng
-        .filter((card) => card.id !== selectedCard.id) //
-        .sort(() => Math.random() - 0.5) //trộn lấy giá trị âm hoặc dương ngẫu nhiên
-        .slice(0, 3); //cắt 3 phần tử đầu tiên
+    // Shuffle the cards array once at the beginning
+    const shuffledCards = this.shuffleArray([...this.cards]);
 
-      const answers = [selectedCard, ...incorrectAnswers] // tạo mảng mới gồm 2 biến selectedCard và incorrectAnswers
-        .map((card) => card.definition)
-        .sort(() => Math.random() - 0.5);
+    // Loop through the shuffled array to create the questions array
+    for (let i = 0; i < shuffledCards.length; i++) {
+      const selectedCard = shuffledCards[i];
+
+      const incorrectAnswers = this.cards
+        .filter((card) => card.id !== selectedCard.id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+      const answers = [
+        selectedCard.definition,
+        ...incorrectAnswers.map((card) => card.definition),
+      ].sort(() => Math.random() - 0.5);
 
       this.questions.push({
         term: selectedCard.term,
@@ -96,6 +103,14 @@ export class LearnComponent implements OnInit {
         answers: answers,
       });
     }
+  }
+
+  shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   get currentQuestion() {
@@ -120,17 +135,20 @@ export class LearnComponent implements OnInit {
     if (this.selectedOption === this.currentQuestion.correctAnswer) {
       this.feedback = 'Correct!';
       this.correctSound.play();
-      this.progress++;
+      this.progressbar++;
     } else {
       this.feedback =
         'Incorrect. The correct answer is ' +
         this.currentQuestion.correctAnswer +
         '.';
+
+      this.incorrectSound.play();
     }
 
     setTimeout(() => {
       this.nextQuestion();
-    }, 2000);
+      this.progress++;
+    }, 3500);
   }
 
   nextQuestion() {
@@ -146,9 +164,12 @@ export class LearnComponent implements OnInit {
 
   restartQuiz() {
     this.currentQuestionIndex = 0;
+    this.progressbar = 0;
     this.progress = 0;
     this.showScore = false;
     this.questions.forEach((q) => (q.answeredCorrectly = undefined));
+    this.selectedOption = '';
+    this.progress++;
   }
 
   deepCopy(obj: any) {

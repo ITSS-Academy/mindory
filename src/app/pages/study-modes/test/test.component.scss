@@ -5,7 +5,6 @@
   margin: 100px auto 0;
   width: 1120px;
   border-radius: 20px;
-  color: white;
 }
 
 .test-card {
@@ -19,16 +18,18 @@
   width: 100%;
   height: 100%;
 }
-
+.top-cont {
+  display: flex;
+  justify-content: space-between;
+}
 .top {
   margin-bottom: 100px;
   color: black;
   inline-size: 1000px;
 }
 
-.top h1 {
+.top-cont h1 {
   font-size: 20px;
-  font-weight: bold;
   height: 100px;
 }
 
@@ -90,6 +91,7 @@
 
 .selected {
   background-color: rgba(128, 128, 128, 0.2);
+  border-color: #000aa7;
 }
 
 .submit-container {
