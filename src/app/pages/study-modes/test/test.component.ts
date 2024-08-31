@@ -75,6 +75,11 @@ export class TestComponent implements OnInit {
   }
 
   initializeQuestions() {
+    // Clear the questions array to avoid duplication
+    this.questions = [];
+    this.selectedOptions = [];
+    this.correctAnswers = [];
+
     // Shuffle the cards array
     this.cards = this.shuffleArray(this.cards);
 
