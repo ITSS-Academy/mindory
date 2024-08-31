@@ -5,14 +5,13 @@
 .main-content {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+.term {
+  width: 50%;
+  max-width: 40ch;
+}
 
-  .term {
-    width: 50%;
-  }
-
-  .definition {
-    width: 50%;
-  }
+.definition {
+  width: 40%;
 }

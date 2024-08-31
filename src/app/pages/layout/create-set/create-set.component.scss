@@ -118,3 +118,27 @@
   color: var(--md-sys-color-primary);
   font-weight: 700;
 }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.create-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.create-bottom button {
+  margin-left: auto; /* Push the button to the right */
+}

@@ -20,6 +20,14 @@
   width: 100%;
   height: 100%;
 }
+.top-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-cont h1 {
+  font-size: 16px;
+}
 
 .top {
   .question {
